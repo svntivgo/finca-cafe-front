@@ -12,7 +12,7 @@ export const get = async (endpoint: string): Promise<AxiosResponse> => {
 
 export const post = async (
   endpoint: string,
-  data: unknown
+  data: unknown,
 ): Promise<AxiosResponse> => {
   try {
     const result = await axios.post(endpoint, data);
