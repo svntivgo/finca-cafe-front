@@ -9,6 +9,6 @@ export class WompiApi {
   checkout(reference: string, amountInCents: string): void {
     const referenceParam = `&reference=${reference}`;
     const amountInCentsParam = `&amount-in-cents=${amountInCents}`;
-    window.open(this.apiUrl + referenceParam + amountInCentsParam);
+    window.open(this.apiUrl + referenceParam + amountInCentsParam, '_blank');
   }
 }
