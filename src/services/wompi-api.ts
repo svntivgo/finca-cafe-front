@@ -1,7 +1,8 @@
-export class wompiApi {
-  private readonly publicKey = 'pub_prod_sw4WViA2DS6DNLJ7YAuBV07t9W8IE1La';
-  private readonly signature =
-    'prod_integrity_N3f7Ip8zCqDbdvsWFnkZMD77rRHlLOdc';
+import { CONSTANTS } from '../constants/constants';
+
+export class WompiApi {
+  private readonly publicKey = CONSTANTS.WOMPI.PUBLIC_KEY;
+  private readonly signature = CONSTANTS.WOMPI.SIGNATURE;
   private readonly currency = 'COP';
   private readonly apiUrl = `https://checkout.wompi.co/p/?public-key=${this.publicKey}&signature:integrity=${this.signature}&currency=${this.currency}`;
 
