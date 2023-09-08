@@ -1,1 +1,1 @@
-export * from './http-request';
+export * from './http-adapter';
