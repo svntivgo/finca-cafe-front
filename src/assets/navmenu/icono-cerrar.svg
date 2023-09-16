@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.45 14.45">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #e5d6c5;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="Sub_Menú_Mirador_del_cafe" data-name="Sub Menú Mirador del cafe">
+    <g>
+      <line class="cls-1" x1=".35" y1="14.1" x2="14.1" y2=".35"/>
+      <line class="cls-1" x1="14.1" y1="14.1" x2=".35" y2=".35"/>
+    </g>
+  </g>
+</svg>

@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 //Shared
 import { COLORS } from '../../../constants/colors';
 import LogoSVG from '../../../assets/logo-finca.svg';
-import MenuSVG from '../../../assets/menu-head-home.svg';
+import MenuSVG from '../../../assets/navmenu/menu-head-home.svg';
+import CerrarSVG from '../../../assets/navmenu/icono-cerrar.svg';
 
 //Interfaces & Styled Components
 import {
@@ -24,13 +25,13 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
     <NavMenuContainer isMenuItems={isMenuItems}>
       <NavMenuHeader isMenuItems={isMenuItems}>
         <Icon
-          src={isMenuItems ? MenuSVG : MenuSVG}
+          src={isMenuItems ? CerrarSVG : MenuSVG}
           width="1rem"
           onClick={() => setIsMenuItems(!isMenuItems)}
         />
         <NavMenuInfo>
           <Icon src={LogoSVG} width="100px" />
-          <Button text="Reservar" colors={COLORS.GOLD} />
+          <Button text="Reservar" colors={COLORS.GOLD} font={COLORS.WHITE} />
         </NavMenuInfo>
       </NavMenuHeader>
       {isMenuItems && (
@@ -42,6 +43,7 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
               src={item.src}
               width={item.width}
               text={item.text}
+              weight="300"
             />
           ))}
         </NavMenuItemsContainer>

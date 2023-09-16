@@ -6,10 +6,10 @@ interface StyledMenuProps {
 }
 
 export const NavMenuContainer = styled.div<StyledMenuProps>`
-  background: ${(props) =>
-    props.isMenuItems ? COLORS.PEARL_BLACK : 'transparent'};
+  background-color: ${(props) =>
+    props.isMenuItems ? 'rgba(23, 23, 23, 0.6)' : 'transparent'};
   height: ${(props) => (props.isMenuItems ? '100vh' : 'unset')};
-  opacity: 0.7;
+  backdrop-filter: ${(props) => (props.isMenuItems ? 'blur(8px)' : 'unset')};
   position: fixed;
   width: 100vw;
   z-index: 9999;
