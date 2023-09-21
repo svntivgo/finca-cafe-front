@@ -6,7 +6,13 @@ import { StyledText, TextProps } from '..';
 
 export const Text: React.FC<TextProps> = (props) => {
   return (
-    <StyledText color={props.color} size={props.size} weight={props.weight}>
+    <StyledText
+      align={props.align}
+      capitalize={props.capitalize}
+      color={props.color}
+      size={props.size}
+      weight={props.weight}
+    >
       {props.text}
     </StyledText>
   );

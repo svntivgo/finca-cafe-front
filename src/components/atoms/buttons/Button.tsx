@@ -6,7 +6,12 @@ import { ButtonProps, StyledButton } from '..';
 
 export const Button: React.FC<ButtonProps> = (props) => {
   return (
-    <StyledButton variant="contained" colors={props.colors}>
+    <StyledButton
+      colors={props.colors}
+      font={props.font}
+      onClick={props.onCLick}
+      variant="contained"
+    >
       {props.text}
     </StyledButton>
   );
