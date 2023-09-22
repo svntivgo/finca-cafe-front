@@ -10,8 +10,10 @@ import { Backdrop } from '@mui/material';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { ReservationOccupancyCard } from '../reservation-occupancy-card/reservation-occupancy-card';
+import { useReservation } from '../../../../context';
 
 export const ReservationHome: React.FC = () => {
+  const { setDates, setOccupancy } = useReservation();
   const [state, setState] = useState<{
     backdropCalendar: boolean;
     backdropOccupancy: boolean;
@@ -53,6 +55,17 @@ export const ReservationHome: React.FC = () => {
           minor: state.occupancy.minor + adding,
         },
       }));
+  };
+
+  const setDate = () => {
+    setState((prevState) => ({
+      ...prevState,
+      backdropCalendar: false,
+    }));
+    setDates({
+      start: state.calendar[0].startDate ?? new Date(),
+      end: state.calendar[0].endDate ?? new Date(),
+    });
   };
 
   return (
@@ -97,12 +110,7 @@ export const ReservationHome: React.FC = () => {
               }}
               ranges={state.calendar}
               onRangeFocusChange={(values) =>
-                values[0] === 0 &&
-                values[1] === 0 &&
-                setState((prevState) => ({
-                  ...prevState,
-                  backdropCalendar: false,
-                }))
+                values[0] === 0 && values[1] === 0 && setDate()
               }
               locale={es}
               rangeColors={['#C0985A', '#C0985A', '#C0985A']}
@@ -117,12 +125,13 @@ export const ReservationHome: React.FC = () => {
               minor={state.occupancy.minor.toString()}
               setAdult={setAdult}
               setMinor={setMinor}
-              close={() =>
+              close={() => {
                 setState((prevState) => ({
                   ...prevState,
                   backdropOccupancy: false,
-                }))
-              }
+                }));
+                setOccupancy(state.occupancy);
+              }}
             />
           </Backdrop>
         </StyledInfoContainer>
