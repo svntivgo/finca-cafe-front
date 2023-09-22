@@ -1,6 +1,5 @@
 import { ReactNode, useState } from 'react';
-import { Dates, Occupancy, Reservation } from '..';
-import { ReservationContext } from './context';
+import { Dates, Occupancy, Reservation, ReservationContext } from '..';
 
 export function ReservationProvider({ children }: { children: ReactNode }) {
   const [reservation, setReservation] = useState<Reservation>({});
