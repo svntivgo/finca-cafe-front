@@ -10,6 +10,7 @@ export const Text: React.FC<TextProps> = (props) => {
       align={props.align}
       capitalize={props.capitalize}
       color={props.color}
+      font={props.font}
       size={props.size}
       weight={props.weight}
     >

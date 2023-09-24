@@ -1,6 +1,10 @@
 export interface ButtonProps {
   colors: string;
   font: string;
-  onCLick?: () => void;
+  margin?: string;
+  padding?: string;
+  radius?: string;
   text?: string;
+  weight?: number;
+  onCLick?: () => void;
 }

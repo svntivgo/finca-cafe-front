@@ -1,11 +1,6 @@
 //Libraries
 import React, { useState } from 'react';
-
-//Shared
-import { COLORS } from '../../../constants/colors';
-import LogoSVG from '../../../assets/logo-finca.svg';
-import MenuSVG from '../../../assets/navmenu/menu-head-home.svg';
-import CerrarSVG from '../../../assets/navmenu/icono-cerrar.svg';
+import { Link } from 'react-router-dom';
 
 //Interfaces & Styled Components
 import {
@@ -15,9 +10,14 @@ import {
   NavMenuContainer,
   NavMenuItemsContainer,
 } from '..';
-import { Icon } from '../../atoms';
+
+//Shared & Components
+import { Icon, Button } from '../../atoms';
 import { MenuItem } from '../../molecules';
-import { Button } from '../../atoms/buttons/Button';
+import { COLORS } from '../../../constants/colors';
+import LogoSVG from '../../../assets/logo-finca.svg';
+import MenuSVG from '../../../assets/navmenu/menu-head-home.svg';
+import CerrarSVG from '../../../assets/navmenu/icono-cerrar.svg';
 
 export const NavMenu: React.FC<MenuProps> = (props) => {
   const [isMenuItems, setIsMenuItems] = useState(false);
@@ -30,7 +30,9 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
           onClick={() => setIsMenuItems(!isMenuItems)}
         />
         <NavMenuInfo>
-          <Icon src={LogoSVG} width="100px" />
+          <Link to={'/'}>
+            <Icon src={LogoSVG} width="100px" />
+          </Link>
           <Button text="Reservar" colors={COLORS.GOLD} font={COLORS.WHITE} />
         </NavMenuInfo>
       </NavMenuHeader>

@@ -1,3 +1,6 @@
+export * from './banners/Banner';
+export * from './banners/interfaces';
+export * from './banners/styles';
 export * from './buttons/Button';
 export * from './buttons/interfaces';
 export * from './buttons/styles';
@@ -5,6 +8,6 @@ export * from './icons/Icon';
 export * from './icons/interfaces';
 export * from './icons/styles';
 export * from './inputs/InputField';
+export * from './texts/Text';
 export * from './texts/interfaces';
 export * from './texts/styles';
-export * from './texts/Text';

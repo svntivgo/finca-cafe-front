@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;500;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 @font-face {
-  font-family: 'Royale', 'Helvetica Neue', sans-serif;
+  font-family: 'Royale';
   src: url('./assets/fonts/ROYALE-Semibold.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
@@ -15,7 +15,9 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  background-color: #fafafa;
 
+  scroll-behavior: smooth;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,7 +27,7 @@
 
 a {
   font-weight: 500;
-  color: #c0985a;
+  color: inherit;
   text-decoration: inherit;
 }
 a:hover {

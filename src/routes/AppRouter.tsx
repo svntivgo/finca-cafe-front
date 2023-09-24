@@ -1,8 +1,13 @@
+//Libraries
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home, NavMenu } from '../components/organisms';
-import { NAV_ITEMS } from '../constants/nav-items';
+
+//Components
+import { Home, NavMenu, Rooms } from '../components/organisms';
+
+//Shared
 import { ReservationProvider } from '../context';
+import { NAV_ITEMS } from '../constants/nav-items';
 
 const AppRouter: React.FC = () => {
   return (
@@ -11,6 +16,7 @@ const AppRouter: React.FC = () => {
         <NavMenu items={NAV_ITEMS} />
         <Routes>
           <Route path="/" Component={Home} />
+          <Route path="/habitaciones" Component={Rooms} />
         </Routes>
       </ReservationProvider>
     </Router>
