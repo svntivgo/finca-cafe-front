@@ -5,9 +5,9 @@ export interface RoomEquipment {
   ICON: string;
 }
 
-type RoomEquipments = Record<string, RoomEquipment>;
+export type RoomEquipments = Record<string, RoomEquipment>;
 
-export const ROOM_EQUIPMENTS: RoomEquipments = {
+export const ROOM_EQUIPMENTS = {
   VAULT: {
     NAME: 'Caja de seguridad',
     ICON: icon,
@@ -38,6 +38,10 @@ export const ROOM_EQUIPMENTS: RoomEquipments = {
   },
   JACUZZI: {
     NAME: 'Jacuzzi',
+    ICON: icon,
+  },
+  OPTIC_FIBER: {
+    NAME: 'Fibra óptica',
     ICON: icon,
   },
 };

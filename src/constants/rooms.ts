@@ -1,5 +1,19 @@
 import { RoomCardProps } from '../components/molecules';
 import photo from '../assets/habitaciones/bourbon.png';
+import { ROOM_EQUIPMENTS } from './room-equipments';
+
+const HOTELS = {
+  BOURBON: {
+    NAME: 'Bourbon',
+    DESCRIPTION:
+      'La mezcla del lujo contemporaneo con la inspiración del encanto característico de las haciendas cafeteras. Bourbon está especialmente diseñado y equipado para estadías de placer, negocios y bodas.',
+  },
+  TIPICA: {
+    NAME: 'Tipica',
+    DESCRIPTION:
+      'Ubicado junto a una finca cafetera tradicional con acceso a los cultivos donde nace nuestro café, nuestro alojamiento tradicional es perfecto para extranjeros y nacionales que desean conocer la cultura cafetera y una estadia tradicional con todo el confort de sus habitaciones y espacios',
+  },
+};
 
 export const ROOMS_BOURBON: RoomCardProps[] = [
   {
@@ -10,6 +24,19 @@ export const ROOMS_BOURBON: RoomCardProps[] = [
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: true,
+    hotel: {
+      name: HOTELS.BOURBON.NAME,
+      description: HOTELS.BOURBON.DESCRIPTION,
+    },
+    banner: photo,
+    equipment: [
+      ROOM_EQUIPMENTS.VAULT,
+      ROOM_EQUIPMENTS.PARKING,
+      ROOM_EQUIPMENTS.TV,
+      ROOM_EQUIPMENTS.JACUZZI,
+      ROOM_EQUIPMENTS.HOT_WATER,
+      ROOM_EQUIPMENTS.OPTIC_FIBER,
+    ],
   },
   {
     title: 'ESTANDAR TWIN',
@@ -19,6 +46,19 @@ export const ROOMS_BOURBON: RoomCardProps[] = [
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: false,
+    hotel: {
+      name: HOTELS.BOURBON.NAME,
+      description: HOTELS.BOURBON.DESCRIPTION,
+    },
+    banner: photo,
+    equipment: [
+      ROOM_EQUIPMENTS.VAULT,
+      ROOM_EQUIPMENTS.PARKING,
+      ROOM_EQUIPMENTS.TV,
+      ROOM_EQUIPMENTS.JACUZZI,
+      ROOM_EQUIPMENTS.HOT_WATER,
+      ROOM_EQUIPMENTS.OPTIC_FIBER,
+    ],
   },
 ];
 
@@ -31,6 +71,18 @@ export const ROOMS_TIPICA: RoomCardProps[] = [
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: false,
+    hotel: {
+      name: HOTELS.TIPICA.NAME,
+      description: HOTELS.TIPICA.DESCRIPTION,
+    },
+    banner: photo,
+    equipment: [
+      ROOM_EQUIPMENTS.VAULT,
+      ROOM_EQUIPMENTS.PARKING,
+      ROOM_EQUIPMENTS.TV,
+      ROOM_EQUIPMENTS.HOT_WATER,
+      ROOM_EQUIPMENTS.OPTIC_FIBER,
+    ],
   },
   {
     title: 'SUITE CUADRUPLE ESTANDAR',
@@ -40,6 +92,18 @@ export const ROOMS_TIPICA: RoomCardProps[] = [
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: true,
+    hotel: {
+      name: HOTELS.TIPICA.NAME,
+      description: HOTELS.TIPICA.DESCRIPTION,
+    },
+    banner: photo,
+    equipment: [
+      ROOM_EQUIPMENTS.VAULT,
+      ROOM_EQUIPMENTS.PARKING,
+      ROOM_EQUIPMENTS.TV,
+      ROOM_EQUIPMENTS.HOT_WATER,
+      ROOM_EQUIPMENTS.OPTIC_FIBER,
+    ],
   },
   {
     title: 'SUITE FAMILIAR CONECTING',
@@ -49,5 +113,17 @@ export const ROOMS_TIPICA: RoomCardProps[] = [
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: false,
+    hotel: {
+      name: HOTELS.TIPICA.NAME,
+      description: HOTELS.TIPICA.DESCRIPTION,
+    },
+    banner: photo,
+    equipment: [
+      ROOM_EQUIPMENTS.VAULT,
+      ROOM_EQUIPMENTS.PARKING,
+      ROOM_EQUIPMENTS.TV,
+      ROOM_EQUIPMENTS.HOT_WATER,
+      ROOM_EQUIPMENTS.OPTIC_FIBER,
+    ],
   },
 ];

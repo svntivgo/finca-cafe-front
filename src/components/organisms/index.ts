@@ -3,5 +3,7 @@ export * from './home/styles';
 export * from './navmenu/NavMenu';
 export * from './navmenu/interfaces';
 export * from './navmenu/styles';
+export * from './room/Room';
+export * from './room/styles';
 export * from './rooms/Rooms';
 export * from './rooms/styles';
