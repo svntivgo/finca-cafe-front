@@ -15,6 +15,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
       radius={props.radius}
       variant="contained"
       weight={props.weight}
+      disabled={props.disabled}
+      type={props.type}
     >
       {props.text}
     </StyledButton>

@@ -3,7 +3,14 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Components
-import { Home, NavMenu, Room, Rooms } from '../components/organisms';
+import {
+  Home,
+  Room,
+  Rooms,
+  NavMenu,
+  RoomSelection,
+  Footer,
+} from '../components/organisms';
 
 //Shared
 import { ReservationProvider } from '../context';
@@ -18,7 +25,9 @@ const AppRouter: React.FC = () => {
           <Route path="/" Component={Home} />
           <Route path="/habitaciones" Component={Rooms} />
           <Route path="/habitacion/:hotel/:room" Component={Room} />
+          <Route path="/reserva/selecciona" Component={RoomSelection} />
         </Routes>
+        <Footer />
       </ReservationProvider>
     </Router>
   );

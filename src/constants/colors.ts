@@ -5,4 +5,5 @@ export const COLORS = {
   PEARL_GREY: '#9A9A9A',
   SMOKE_GREY: '#f4f4f4',
   WHITE: '#FAFAFA',
+  CREAM: '#F4E9DB',
 };

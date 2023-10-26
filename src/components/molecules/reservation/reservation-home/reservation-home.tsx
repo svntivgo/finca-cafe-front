@@ -4,16 +4,17 @@ import { Button } from '../../../atoms';
 import { COLORS } from '../../../../constants/colors';
 import { ReservationHomeCards } from '../..';
 import { DateRange, Range } from 'react-date-range';
-import { addDays } from 'date-fns';
+import { addDays, differenceInDays } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Backdrop } from '@mui/material';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { ReservationOccupancyCard } from '../reservation-occupancy-card/reservation-occupancy-card';
 import { useReservation } from '../../../../context';
+import { Link } from 'react-router-dom';
 
 export const ReservationHome: React.FC = () => {
-  const { setDates, setOccupancy } = useReservation();
+  const { setDates, setOccupancy, setRoom, reservation } = useReservation();
   const [state, setState] = useState<{
     backdropCalendar: boolean;
     backdropOccupancy: boolean;
@@ -24,14 +25,14 @@ export const ReservationHome: React.FC = () => {
     backdropOccupancy: false,
     calendar: [
       {
-        startDate: new Date(),
-        endDate: addDays(new Date(), 1),
+        startDate: reservation.dates?.start,
+        endDate: reservation.dates?.end,
         key: 'selection',
       },
     ],
     occupancy: {
-      adult: 0,
-      minor: 0,
+      adult: reservation.occupancy?.adult ?? 0,
+      minor: reservation.occupancy?.minor ?? 0,
     },
   });
 
@@ -57,15 +58,11 @@ export const ReservationHome: React.FC = () => {
       }));
   };
 
-  const setDate = () => {
+  const setBackdropCalendar = () => {
     setState((prevState) => ({
       ...prevState,
       backdropCalendar: false,
     }));
-    setDates({
-      start: state.calendar[0].startDate ?? new Date(),
-      end: state.calendar[0].endDate ?? new Date(),
-    });
   };
 
   return (
@@ -94,8 +91,9 @@ export const ReservationHome: React.FC = () => {
               minor: state.occupancy.minor,
             }}
           />
-          <Button colors={COLORS.GREEN} text="Reservar" font={COLORS.GOLD} />
-
+          <Link to={'/reserva/selecciona'}>
+            <Button colors={COLORS.GREEN} text="Reservar" font={COLORS.GOLD} />
+          </Link>
           <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
             open={state.backdropCalendar}
@@ -107,10 +105,21 @@ export const ReservationHome: React.FC = () => {
                   ...prevState,
                   calendar: [item.selection],
                 }));
+                setDates({
+                  start: item.selection.startDate!,
+                  end: item.selection.endDate!,
+                });
+                setRoom({
+                  ...reservation.room,
+                  quantity: differenceInDays(
+                    item.selection.endDate!,
+                    item.selection.startDate!,
+                  ),
+                });
               }}
               ranges={state.calendar}
               onRangeFocusChange={(values) =>
-                values[0] === 0 && values[1] === 0 && setDate()
+                values[0] === 0 && values[1] === 0 && setBackdropCalendar()
               }
               locale={es}
               rangeColors={['#C0985A', '#C0985A', '#C0985A']}

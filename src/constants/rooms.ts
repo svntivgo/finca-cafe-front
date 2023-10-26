@@ -1,6 +1,26 @@
-import { RoomCardProps } from '../components/molecules';
 import photo from '../assets/habitaciones/bourbon.png';
-import { ROOM_EQUIPMENTS } from './room-equipments';
+import SuiteJaccuzzi from '../assets/rooms/suite-jacuzzi/room.jpg';
+import StandardTwin from '../assets/rooms/standard-twin/room.jpg';
+import SuitePareja from '../assets/rooms/suite-pareja/room.jpg';
+import SuiteCuadruple from '../assets/rooms/suite-cuadruple/room.jpg';
+import SuiteFamiliar from '../assets/rooms/suite-familiar/room.jpg';
+import { ROOM_EQUIPMENTS, RoomEquipment } from './room-equipments';
+
+export interface Room {
+  description: string;
+  detailsUrl: string;
+  inverted?: boolean;
+  photo: string;
+  reserveUrl: string;
+  title: string;
+  hotel: {
+    name: string;
+    description: string;
+  };
+  banner: string;
+  equipment: RoomEquipment[];
+  price: number;
+}
 
 const HOTELS = {
   BOURBON: {
@@ -15,10 +35,10 @@ const HOTELS = {
   },
 };
 
-export const ROOMS_BOURBON: RoomCardProps[] = [
+export const ROOMS_BOURBON: Room[] = [
   {
     title: 'SUITE Jacuzzi',
-    photo: photo,
+    photo: SuiteJaccuzzi,
     description:
       'La suite Bourbon es perfecta para parejas que buscan una escapada romántica y un alojamiento lujoso y relajante. Ideal para cualquier persona que valore la comodidad y el bienestar',
     detailsUrl: '/',
@@ -37,10 +57,11 @@ export const ROOMS_BOURBON: RoomCardProps[] = [
       ROOM_EQUIPMENTS.HOT_WATER,
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
+    price: 773500,
   },
   {
     title: 'ESTANDAR TWIN',
-    photo: photo,
+    photo: StandardTwin,
     description:
       'Las habitaciones estandard twin Bourbon cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un refugio perfecto para tu estancia.',
     detailsUrl: '/',
@@ -59,13 +80,14 @@ export const ROOMS_BOURBON: RoomCardProps[] = [
       ROOM_EQUIPMENTS.HOT_WATER,
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
+    price: 476000,
   },
 ];
 
-export const ROOMS_TIPICA: RoomCardProps[] = [
+export const ROOMS_TIPICA: Room[] = [
   {
     title: 'SUITE PAREJA ESTANDAR',
-    photo: photo,
+    photo: SuitePareja,
     description:
       'Las suites pareja estandard cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un espacio perfecto para tu estancia.',
     detailsUrl: '/',
@@ -83,10 +105,11 @@ export const ROOMS_TIPICA: RoomCardProps[] = [
       ROOM_EQUIPMENTS.HOT_WATER,
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
+    price: 476000,
   },
   {
     title: 'SUITE CUADRUPLE ESTANDAR',
-    photo: photo,
+    photo: SuiteCuadruple,
     description:
       'Experimenta la comodidad de la suite cuádruple con 2 camas dobles. Son espaciosas y rebosan de luz natural, lo que te brindará un ambiente agradable durante tu estancia.',
     detailsUrl: '/',
@@ -104,10 +127,11 @@ export const ROOMS_TIPICA: RoomCardProps[] = [
       ROOM_EQUIPMENTS.HOT_WATER,
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
+    price: 714000,
   },
   {
-    title: 'SUITE FAMILIAR CONECTING',
-    photo: photo,
+    title: 'SUITE FAMILIAR CONNECTING',
+    photo: SuiteFamiliar,
     description:
       'Dos habitaciones contiguas, cada una con dos camas king-size una opción ideal para familias o grupos que desean estar juntos pero con la privacidad de habitaciones separadas.',
     detailsUrl: '/',
@@ -125,5 +149,6 @@ export const ROOMS_TIPICA: RoomCardProps[] = [
       ROOM_EQUIPMENTS.HOT_WATER,
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
+    price: 1071000,
   },
 ];

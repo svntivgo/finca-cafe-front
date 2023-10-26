@@ -4,14 +4,16 @@ import { Banner, Text } from '../../atoms';
 import { RoomCard, RoomEquipments, WingCard } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
 import { useParams } from 'react-router-dom';
-import { HOTELS, HotelKey, RoomKey } from '../../../constants/hotels';
+import { HOTELS, Hotel, HotelKey, RoomKey } from '../../../constants/hotels';
 
 export const Room: React.FC = () => {
   const { hotel, room } = useParams<{ hotel: HotelKey; room: RoomKey }>();
+  const hotelName = hotel?.toUpperCase() ?? '';
+  const roomName = room?.toUpperCase().replace(/ /g, '_') ?? '';
 
-  const hotelInfo = hotel && HOTELS[hotel];
+  const hotelInfo: Hotel = HOTELS[hotelName as HotelKey];
 
-  const roomInfo = room && hotelInfo?.ROOMS[room];
+  const roomInfo = room && hotelInfo?.ROOMS[roomName];
 
   return (
     <StyledRoomContainer>
@@ -37,6 +39,8 @@ export const Room: React.FC = () => {
             photo={roomInfo.photo}
             reserveUrl={roomInfo.reserveUrl}
             title={roomInfo.title}
+            price={0}
+            reserveAction={() => console.log('')}
           />
           <WingCard background={COLORS.PEARL_BLACK} inverted={true}>
             <RoomEquipments

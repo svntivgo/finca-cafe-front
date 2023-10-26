@@ -1,6 +1,7 @@
 import { RoomEquipment } from '../../../constants/room-equipments';
+import { Room } from '../../../constants/rooms';
 
-export interface RoomCardProps {
+export interface RoomCardProps extends Room {
   description: string;
   detailsUrl: string;
   inverted?: boolean;
@@ -13,4 +14,6 @@ export interface RoomCardProps {
   };
   banner: string;
   equipment: RoomEquipment[];
+  price: number;
+  reserveAction: () => void;
 }

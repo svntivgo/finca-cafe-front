@@ -14,14 +14,14 @@ import {
 import { Banner, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { HOTELS } from '../../../constants/hotels';
-import photo from '../../../assets/habitaciones/bourbon.png';
+import Head from '../../../assets/habitaciones/head-habitaciones.jpg';
 import { ROOMS_BOURBON, ROOMS_TIPICA } from '../../../constants/rooms';
 import { MenuRooms, RoomCard, RoomEquipments, WingCard } from '../../molecules';
 
 export const Rooms: React.FC = () => {
   return (
     <>
-      <Banner image={photo} height="240px" />
+      <Banner image={Head} height="240px" />
       <StyledMenuContainer>
         <MenuRooms />
         <StyledTextContainer>
@@ -35,7 +35,7 @@ export const Rooms: React.FC = () => {
           <StyledSeparator />
         </StyledTextContainer>
         <StyledImageContainer>
-          <StyledImage src={photo} />
+          <StyledImage src={Head} />
         </StyledImageContainer>
         <WingCard background={COLORS.SMOKE_GREY}>
           <Text
@@ -67,6 +67,9 @@ export const Rooms: React.FC = () => {
               detailsUrl={room.detailsUrl}
               reserveUrl={room.reserveUrl}
               inverted={room.inverted}
+              banner={room.banner}
+              equipment={room.equipment}
+              hotel={room.hotel}
             />
           </div>
         ))}
@@ -87,6 +90,9 @@ export const Rooms: React.FC = () => {
               detailsUrl={room.detailsUrl}
               reserveUrl={room.reserveUrl}
               inverted={room.inverted}
+              banner={room.banner}
+              equipment={room.equipment}
+              hotel={room.hotel}
             />
           </div>
         ))}

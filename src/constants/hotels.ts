@@ -1,15 +1,21 @@
 import photo from '../assets/habitaciones/bourbon.png';
+import SuiteJaccuzzi from '../assets/rooms/suite-jacuzzi/room.jpg';
+import StandardTwin from '../assets/rooms/standard-twin/room.jpg';
+import SuitePareja from '../assets/rooms/suite-pareja/room.jpg';
+import SuiteCuadruple from '../assets/rooms/suite-cuadruple/room.jpg';
+import SuiteFamiliar from '../assets/rooms/suite-familiar/room.jpg';
 import { ROOM_EQUIPMENTS, RoomEquipment } from './room-equipments';
 
 export interface Room {
   title: string;
-  photo: string; // Reemplaza 'string' con el tipo correcto para la foto
+  photo: string;
   description: string;
-  detailsUrl: string; // Reemplaza 'string' con el tipo correcto para la URL
-  reserveUrl: string; // Reemplaza 'string' con el tipo correcto para la URL
+  detailsUrl: string;
+  reserveUrl: string;
   inverted: boolean;
-  banner: string; // Reemplaza 'string' con el tipo correcto para el banner
+  banner: string;
   equipment: RoomEquipment[];
+  hotel: HotelKey;
 }
 
 export interface Hotel {
@@ -36,7 +42,7 @@ export const HOTELS: Hotels = {
     ROOMS: {
       SUITE_JACUZZI: {
         title: 'SUITE Jacuzzi',
-        photo: photo,
+        photo: SuiteJaccuzzi,
         description:
           'La suite Bourbon es perfecta para parejas que buscan una escapada romántica y un alojamiento lujoso y relajante. Ideal para cualquier persona que valore la comodidad y el bienestar',
         detailsUrl: '/',
@@ -51,10 +57,11 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
+        hotel: 'BOURBON',
       },
       ESTANDAR_TWIN: {
         title: 'ESTANDAR TWIN',
-        photo: photo,
+        photo: StandardTwin,
         description:
           'Las habitaciones estandard twin Bourbon cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un refugio perfecto para tu estancia.',
         detailsUrl: '/',
@@ -69,6 +76,7 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
+        hotel: 'BOURBON',
       },
     },
   },
@@ -79,7 +87,7 @@ export const HOTELS: Hotels = {
     ROOMS: {
       SUITE_PAREJA_ESTANDAR: {
         title: 'SUITE PAREJA ESTANDAR',
-        photo: photo,
+        photo: SuitePareja,
         description:
           'Las suites pareja estandard cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un espacio perfecto para tu estancia.',
         detailsUrl: '/',
@@ -93,10 +101,11 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
+        hotel: 'TIPICA',
       },
       SUITE_CUADRUPLE_ESTANDAR: {
         title: 'SUITE CUADRUPLE ESTANDAR',
-        photo: photo,
+        photo: SuiteCuadruple,
         description:
           'Experimenta la comodidad de la suite cuádruple con 2 camas dobles. Son espaciosas y rebosan de luz natural, lo que te brindará un ambiente agradable durante tu estancia.',
         detailsUrl: '/',
@@ -110,10 +119,11 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
+        hotel: 'TIPICA',
       },
       SUITE_FAMILIAR_CONNECTING: {
-        title: 'SUITE FAMILIAR CONECTING',
-        photo: photo,
+        title: 'SUITE FAMILIAR CONNECTING',
+        photo: SuiteFamiliar,
         description:
           'Dos habitaciones contiguas, cada una con dos camas king-size una opción ideal para familias o grupos que desean estar juntos pero con la privacidad de habitaciones separadas.',
         detailsUrl: '/',
@@ -127,6 +137,7 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
+        hotel: 'TIPICA',
       },
     },
   },

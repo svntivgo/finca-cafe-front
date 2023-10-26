@@ -14,7 +14,7 @@ export const MenuRooms: React.FC = () => {
   const tipicaRooms: Record<string, Room> = HOTELS.TIPICA.ROOMS;
 
   return (
-    <WingCard background={COLORS.GREEN}>
+    <WingCard background={COLORS.PEARL_BLACK}>
       <Text text="ALOJAMIENTOS" font="Royale" color={COLORS.GOLD} size="24px" />
       <StyledMenuContainer>
         <StyledMenuItem>

@@ -12,41 +12,41 @@ export const ReservationDateCard: React.FC<ReservationDateCardProps> = (
       <Text
         align="center"
         color={COLORS.GOLD}
-        size="0.75rem"
+        size="0.5rem"
         text={props.title}
-        weight="300"
+        weight="200"
       />
       <Text
         align="center"
         color={COLORS.GOLD}
         size="2.5rem"
         text={props.data}
-        weight="300"
+        weight="200"
       />
       {props.title !== 'Ocupación' ? (
         <Text
           align="center"
           capitalize={true}
           color={COLORS.GOLD}
-          size="0.75rem"
+          size="0.5rem"
           text={props.description ?? ''}
-          weight="300"
+          weight="200"
         />
       ) : (
         <StyledAgeContainer>
           <Text
             align="center"
             color={COLORS.GOLD}
-            size="0.75rem"
+            size="0.5rem"
             text={props.adult ?? ''}
-            weight="300"
+            weight="200"
           />
           <Text
             align="center"
             color={COLORS.GOLD}
-            size="0.75rem"
+            size="0.5rem"
             text={props.minor ?? ''}
-            weight="300"
+            weight="200"
           />
         </StyledAgeContainer>
       )}
