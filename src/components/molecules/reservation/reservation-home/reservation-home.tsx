@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { StyledBorder, StyledContainer, StyledInfoContainer } from './styles';
-import { Button } from '../../../atoms';
+import {
+  StyledBorder,
+  StyledContainer,
+  StyledInfoContainer,
+  StyledTextHomeContainer,
+} from './styles';
+import { Button, Text } from '../../../atoms';
 import { COLORS } from '../../../../constants/colors';
 import { ReservationHomeCards } from '../..';
 import { DateRange, Range } from 'react-date-range';
@@ -66,85 +71,101 @@ export const ReservationHome: React.FC = () => {
   };
 
   return (
-    <StyledContainer>
-      <StyledBorder>
-        <StyledInfoContainer>
-          <ReservationHomeCards
-            onClickDate={() =>
-              setState((prevState) => ({
-                ...prevState,
-                backdropCalendar: true,
-              }))
-            }
-            onClickOccupancy={() =>
-              setState((prevState) => ({
-                ...prevState,
-                backdropOccupancy: true,
-              }))
-            }
-            reservationDates={{
-              checkin: state.calendar[0].startDate,
-              checkout: state.calendar[0].endDate,
-            }}
-            reservationOccupancy={{
-              adult: state.occupancy.adult,
-              minor: state.occupancy.minor,
-            }}
-          />
-          <Link to={'/reserva/selecciona'}>
-            <Button colors={COLORS.GREEN} text="Reservar" font={COLORS.GOLD} />
-          </Link>
-          <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={state.backdropCalendar}
-          >
-            <DateRange
-              minDate={addDays(new Date(), 0)}
-              onChange={(item) => {
+    <>
+      <StyledTextHomeContainer>
+        <Text
+          text="RESERVA TU MOMENTO DE PLACER LEJOS DEL RUIDO DE LA CIUDAD"
+          align="center"
+          color={COLORS.PEARL_BLACK}
+          size="0.7rem"
+        />
+      </StyledTextHomeContainer>
+      <StyledContainer>
+        <StyledBorder>
+          <StyledInfoContainer>
+            <ReservationHomeCards
+              onClickDate={() =>
                 setState((prevState) => ({
                   ...prevState,
-                  calendar: [item.selection],
-                }));
-                setDates({
-                  start: item.selection.startDate!,
-                  end: item.selection.endDate!,
-                });
-                setRoom({
-                  ...reservation.room,
-                  quantity: differenceInDays(
-                    item.selection.endDate!,
-                    item.selection.startDate!,
-                  ),
-                });
-              }}
-              ranges={state.calendar}
-              onRangeFocusChange={(values) =>
-                values[0] === 0 && values[1] === 0 && setBackdropCalendar()
+                  backdropCalendar: true,
+                }))
               }
-              locale={es}
-              rangeColors={['#C0985A', '#C0985A', '#C0985A']}
-            />
-          </Backdrop>
-          <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={state.backdropOccupancy}
-          >
-            <ReservationOccupancyCard
-              adult={state.occupancy.adult.toString()}
-              minor={state.occupancy.minor.toString()}
-              setAdult={setAdult}
-              setMinor={setMinor}
-              close={() => {
+              onClickOccupancy={() =>
                 setState((prevState) => ({
                   ...prevState,
-                  backdropOccupancy: false,
-                }));
-                setOccupancy(state.occupancy);
+                  backdropOccupancy: true,
+                }))
+              }
+              reservationDates={{
+                checkin: state.calendar[0].startDate,
+                checkout: state.calendar[0].endDate,
+              }}
+              reservationOccupancy={{
+                adult: state.occupancy.adult,
+                minor: state.occupancy.minor,
               }}
             />
-          </Backdrop>
-        </StyledInfoContainer>
-      </StyledBorder>
-    </StyledContainer>
+            {/* <Link to={'/reserva/selecciona'}> */}
+            <Link to={'/'}>
+              <Button
+                colors={COLORS.GREEN}
+                text="Reservar"
+                font={COLORS.WHITE}
+                disabled
+              />
+            </Link>
+            <Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={state.backdropCalendar}
+            >
+              <DateRange
+                minDate={addDays(new Date(), 0)}
+                onChange={(item) => {
+                  setState((prevState) => ({
+                    ...prevState,
+                    calendar: [item.selection],
+                  }));
+                  setDates({
+                    start: item.selection.startDate!,
+                    end: item.selection.endDate!,
+                  });
+                  setRoom({
+                    ...reservation.room,
+                    quantity: differenceInDays(
+                      item.selection.endDate!,
+                      item.selection.startDate!,
+                    ),
+                  });
+                }}
+                ranges={state.calendar}
+                onRangeFocusChange={(values) =>
+                  values[0] === 0 && values[1] === 0 && setBackdropCalendar()
+                }
+                locale={es}
+                rangeColors={['#C0985A', '#C0985A', '#C0985A']}
+              />
+            </Backdrop>
+            <Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={state.backdropOccupancy}
+            >
+              <ReservationOccupancyCard
+                adult={state.occupancy.adult.toString()}
+                minor={state.occupancy.minor.toString()}
+                setAdult={setAdult}
+                setMinor={setMinor}
+                close={() => {
+                  setState((prevState) => ({
+                    ...prevState,
+                    backdropOccupancy: false,
+                  }));
+                  setOccupancy(state.occupancy);
+                }}
+              />
+            </Backdrop>
+          </StyledInfoContainer>
+        </StyledBorder>
+      </StyledContainer>
+    </>
   );
 };

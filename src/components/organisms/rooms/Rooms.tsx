@@ -27,7 +27,7 @@ export const Rooms: React.FC = () => {
         <StyledTextContainer>
           <StyledSeparator />
           <Text
-            text="EXPEMENTE EL DISEÑO CONFORTABLE DE NUESTRAS HABITACIONES, EQUIPADAS PARA QUE PUEDA DESCANSAR, CONOCER EL EJE FETERO, SU CULTURA ENTRE SUS MONATÑAS."
+            text="EXPERIMENTE EL DISEÑO CONFORTABLE DE NUESTRAS HABITACIONES, EQUIPADAS PARA QUE PUEDA DESCANSAR, CONOCER EL EJE CAFETERO, SU CULTURA ENTRE SUS MONTAÑAS."
             align="center"
             font="Royale"
             color={COLORS.GOLD}
@@ -70,6 +70,8 @@ export const Rooms: React.FC = () => {
               banner={room.banner}
               equipment={room.equipment}
               hotel={room.hotel}
+              price={0}
+              reserveAction={() => console.log()}
             />
           </div>
         ))}
@@ -93,6 +95,8 @@ export const Rooms: React.FC = () => {
               banner={room.banner}
               equipment={room.equipment}
               hotel={room.hotel}
+              price={0}
+              reserveAction={() => console.log()}
             />
           </div>
         ))}

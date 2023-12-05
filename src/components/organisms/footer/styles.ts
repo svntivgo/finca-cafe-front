@@ -1,7 +1,11 @@
 import styled from '@emotion/styled';
 import { COLORS } from '../../../constants/colors';
+import { FooterProps } from '..';
 
-export const FooterContainerStyled = styled.div``;
+export const FooterContainerStyled = styled.div<FooterProps>`
+  background-color: ${(props) =>
+    props.location === '/' ? COLORS.CREAM : COLORS.WHITE};
+`;
 
 export const FooterHeadStyled = styled.div`
   display: flex;

@@ -6,4 +6,5 @@ export const COLORS = {
   SMOKE_GREY: '#f4f4f4',
   WHITE: '#FAFAFA',
   CREAM: '#F4E9DB',
+  RED: '#801914',
 };

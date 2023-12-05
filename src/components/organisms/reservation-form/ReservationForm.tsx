@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Formik, useFormik, Form } from 'formik';
 import {
   CafeTourService,
@@ -14,6 +14,7 @@ import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { WompiApi } from '../../../services/wompi-api';
 import { differenceInDays } from 'date-fns';
+import { HotelFive } from '../../../services';
 
 const initialValues: formSchema = {
   name: '',
@@ -52,9 +53,44 @@ export const ReservationForm: React.FC = () => {
         country,
         city,
       });
-      const wompi = new WompiApi();
-      wompi.checkout('ValorDePrueba', totalReservation.toString() + '00');
-      console.log('Valores del estado:', reservation);
+
+      const stringReference = `
+      ini:${reservation.dates.start.toISOString()}_
+      fin:${reservation.dates.end.toISOString()}_
+      personas:${reservation.occupancy.adult + reservation.occupancy.minor}_
+      cliente:${reservation.customer.name} ${reservation.customer.lastName}_
+      cel:${reservation.customer.phone}_
+      mail:${reservation.customer.email}_
+      habitacion:${reservation.room.name}_
+      tour-cantidad:${reservation.extras.tourCafe.quantity}
+      `;
+
+      const reservationData = {
+        nombre: `${reservation.customer.name} ${reservation.customer.lastName}`,
+        identidad: `${reservation.customer.email}`,
+        tipoIdentidad: `CEDULA CIUDADANIA`,
+        telefono: `${reservation.customer.phone}`,
+        email: `${reservation.customer.email}`,
+        idTransaccion: `${reservation.customer.email}`,
+        valorTransaccion: 123,
+        valorTotal: 123,
+        idHabitacion: `${reservation.room.name}`,
+        inicio: 20231201,
+        fin: 20231224,
+        numeroPersonas:
+          reservation.occupancy.adult + reservation.occupancy.minor,
+      };
+
+      const reservationCheckout = async () => {
+        const wompi = new WompiApi();
+        const hotelFive = new HotelFive();
+
+        await wompi.checkout(
+          stringReference,
+          totalReservation.toString() + '00',
+        );
+        await hotelFive.reservation(reservationData);
+      };
     },
   });
 

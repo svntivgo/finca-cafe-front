@@ -6,4 +6,5 @@ export interface TextProps {
   size?: string;
   text: string;
   weight?: string;
+  lineHeight?: string;
 }

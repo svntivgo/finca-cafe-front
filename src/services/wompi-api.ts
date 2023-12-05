@@ -8,9 +8,6 @@ export class WompiApi {
 
   async checkout(reference: string, amountInCents: string): Promise<void> {
     const cadenaConcatenada = `${reference}${amountInCents}COP${this.signature}`;
-    console.log('referencia', reference);
-    console.log('monto', amountInCents);
-    console.log('cadena', cadenaConcatenada);
     const encondedText = new TextEncoder().encode(cadenaConcatenada);
     const hashBuffer = await crypto.subtle.digest('SHA-256', encondedText);
     const hashArray = Array.from(new Uint8Array(hashBuffer));

@@ -60,7 +60,7 @@ export const ROOMS_BOURBON: Room[] = [
     price: 773500,
   },
   {
-    title: 'ESTANDAR TWIN',
+    title: 'SUITE ESTANDAR TWIN',
     photo: StandardTwin,
     description:
       'Las habitaciones estandard twin Bourbon cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un refugio perfecto para tu estancia.',
@@ -86,10 +86,10 @@ export const ROOMS_BOURBON: Room[] = [
 
 export const ROOMS_TIPICA: Room[] = [
   {
-    title: 'SUITE PAREJA ESTANDAR',
+    title: 'PAREJA ESTANDAR',
     photo: SuitePareja,
     description:
-      'Las suites pareja estandard cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un espacio perfecto para tu estancia.',
+      'Las habitaciones pareja estandard cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un espacio perfecto para tu estancia.',
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: false,
@@ -108,10 +108,10 @@ export const ROOMS_TIPICA: Room[] = [
     price: 476000,
   },
   {
-    title: 'SUITE CUADRUPLE ESTANDAR',
+    title: 'CUADRUPLE ESTANDAR',
     photo: SuiteCuadruple,
     description:
-      'Experimenta la comodidad de la suite cuádruple con 2 camas dobles. Son espaciosas y rebosan de luz natural, lo que te brindará un ambiente agradable durante tu estancia.',
+      'Experimenta la comodidad de la habitación cuádruple con 2 camas dobles. Son espaciosas y rebosan de luz natural, lo que te brindará un ambiente agradable durante tu estancia.',
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: true,
@@ -130,7 +130,7 @@ export const ROOMS_TIPICA: Room[] = [
     price: 714000,
   },
   {
-    title: 'SUITE FAMILIAR CONNECTING',
+    title: 'FAMILIAR CONNECTING',
     photo: SuiteFamiliar,
     description:
       'Dos habitaciones contiguas, cada una con dos camas king-size una opción ideal para familias o grupos que desean estar juntos pero con la privacidad de habitaciones separadas.',

@@ -12,13 +12,13 @@ export const ReservationDateCard: React.FC<ReservationDateCardProps> = (
       <Text
         align="center"
         color={COLORS.GOLD}
-        size="0.5rem"
+        size="0.75rem"
         text={props.title}
         weight="200"
       />
       <Text
         align="center"
-        color={COLORS.GOLD}
+        color={COLORS.WHITE}
         size="2.5rem"
         text={props.data}
         weight="200"
@@ -28,7 +28,7 @@ export const ReservationDateCard: React.FC<ReservationDateCardProps> = (
           align="center"
           capitalize={true}
           color={COLORS.GOLD}
-          size="0.5rem"
+          size="0.75rem"
           text={props.description ?? ''}
           weight="200"
         />
@@ -37,14 +37,14 @@ export const ReservationDateCard: React.FC<ReservationDateCardProps> = (
           <Text
             align="center"
             color={COLORS.GOLD}
-            size="0.5rem"
+            size="0.75rem"
             text={props.adult ?? ''}
             weight="200"
           />
           <Text
             align="center"
             color={COLORS.GOLD}
-            size="0.5rem"
+            size="0.75rem"
             text={props.minor ?? ''}
             weight="200"
           />

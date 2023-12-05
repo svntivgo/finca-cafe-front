@@ -1,6 +1,6 @@
 export const FINCA_CAFE_INFO = {
   HOTEL_TEL: '+57 318 3866398',
-  HOTEL_MAIL: 'info@fincadelcafé.com',
+  HOTEL_MAIL: 'info@fincadelcafe.com',
   RESTAURANT_TEL: '+57 317 8000001',
   ADDRESS:
     'Km 1,5 arriba de la Universidad UNISARC, Santa Rosa de Cabal, Risaralda, Colombia.',

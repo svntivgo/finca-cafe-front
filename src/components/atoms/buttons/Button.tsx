@@ -9,6 +9,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     <StyledButton
       colors={props.colors}
       font={props.font}
+      fontSize={props.fontSize}
       margin={props.margin}
       onClick={props.onCLick}
       padding={props.padding}

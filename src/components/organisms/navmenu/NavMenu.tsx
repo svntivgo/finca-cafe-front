@@ -1,5 +1,5 @@
 //Libraries
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //Interfaces & Styled Components
@@ -13,7 +13,7 @@ import {
 
 //Shared & Components
 import { Icon, Button } from '../../atoms';
-import { MenuItem } from '../../molecules';
+import { Disclaimer, MenuItem } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
 import LogoSVG from '../../../assets/logo-finca.svg';
 import MenuSVG from '../../../assets/navmenu/menu-head-home.svg';
@@ -21,19 +21,42 @@ import CerrarSVG from '../../../assets/navmenu/icono-cerrar.svg';
 
 export const NavMenu: React.FC<MenuProps> = (props) => {
   const [isMenuItems, setIsMenuItems] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
   return (
     <NavMenuContainer isMenuItems={isMenuItems}>
-      <NavMenuHeader isMenuItems={isMenuItems}>
+      <Disclaimer></Disclaimer>
+      <NavMenuHeader isMenuItems={isMenuItems} isScrolled={isScrolled}>
         <Icon
           src={isMenuItems ? CerrarSVG : MenuSVG}
-          width="1rem"
+          width="1.5rem"
           onClick={() => setIsMenuItems(!isMenuItems)}
         />
         <NavMenuInfo>
           <Link to={'/'}>
-            <Icon src={LogoSVG} width="100px" />
+            <Icon src={LogoSVG} width="140px" />
           </Link>
-          <Button text="Reservar" colors={COLORS.GOLD} font={COLORS.WHITE} />
+          <Button
+            text="Reservar"
+            colors={COLORS.GOLD}
+            font={COLORS.WHITE}
+            disabled
+          />
         </NavMenuInfo>
       </NavMenuHeader>
       {isMenuItems && (

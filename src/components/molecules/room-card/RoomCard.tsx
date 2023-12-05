@@ -58,6 +58,7 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
             });
             props.reserveAction();
           }}
+          // disabled
         />
       </StyledButtonsContainer>
     </StyledRoomCardContainer>

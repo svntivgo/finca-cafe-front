@@ -1,4 +1,3 @@
-import icon from '../assets/react.svg';
 import StrongBox from '../assets/equipments/strong-box.svg';
 import Parking from '../assets/equipments/parking.svg';
 import Tv from '../assets/equipments/tv.svg';

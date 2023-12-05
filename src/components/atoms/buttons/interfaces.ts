@@ -1,6 +1,7 @@
 export interface ButtonProps {
   colors: string;
   font: string;
+  fontSize?: string;
   margin?: string;
   padding?: string;
   radius?: string;

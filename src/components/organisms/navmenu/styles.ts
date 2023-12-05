@@ -3,6 +3,7 @@ import { COLORS } from '../../../constants/colors';
 
 interface StyledMenuProps {
   isMenuItems: boolean;
+  isScrolled?: boolean;
 }
 
 export const NavMenuContainer = styled.div<StyledMenuProps>`
@@ -17,8 +18,10 @@ export const NavMenuContainer = styled.div<StyledMenuProps>`
 
 export const NavMenuHeader = styled.div<StyledMenuProps>`
   display: flex;
-  margin: 8px 8px 32px 8px;
+  padding: 8px;
   margin-bottom: ${(props) => (props.isMenuItems ? '32px' : '8px')};
+  background-color: ${(props) =>
+    props.isScrolled && props.isScrolled ? COLORS.RED : 'transparent'};
 `;
 
 export const NavMenuInfo = styled.div`

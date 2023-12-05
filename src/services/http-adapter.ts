@@ -1,20 +1,30 @@
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { CONSTANTS } from '../constants/constants';
 
 export class HttpAdapter {
-  async get(endpoint: string): Promise<AxiosResponse> {
+  private readonly config: AxiosRequestConfig = {
+    headers: {
+      NIT: CONSTANTS.HOTEL.NIT,
+      'Authorization-Token': CONSTANTS.HOTEL.TOKEN,
+    },
+  };
+
+  async get<T>(endpoint: string): Promise<AxiosResponse<T>> {
     try {
-      const result = await axios.get(endpoint);
-      return result;
+      return await axios.get<T>(endpoint, {
+        headers: this.config.headers,
+      });
     } catch (error) {
       console.error(error);
       throw new Error('Error trying to get at axios request');
     }
   }
 
-  async post(endpoint: string, data: unknown): Promise<AxiosResponse> {
+  async post<T>(endpoint: string, data: unknown): Promise<AxiosResponse<T>> {
     try {
-      const result = await axios.post(endpoint, data);
-      return result;
+      return await axios.post<T>(endpoint, data, {
+        headers: this.config.headers,
+      });
     } catch (error) {
       console.error(error);
       throw new Error('Error trying to post at axios request');
