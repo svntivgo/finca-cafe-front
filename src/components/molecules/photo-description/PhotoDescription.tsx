@@ -28,7 +28,7 @@ export const PhotoDescription: React.FC<PhotoDescriptionProps> = (props) => {
         padding="0.25rem"
         radius="8px"
         onCLick={props.onClick}
-        margin="0 auto"
+        margin="-8px auto 0 auto"
       />
     </PhotoDescriptionContainerStyled>
   );

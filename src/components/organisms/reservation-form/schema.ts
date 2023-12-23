@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 export const validationSchema = Yup.object().shape({
   name: Yup.string().required('Campo obligatorio'),
   lastName: Yup.string().required('Campo obligatorio'),
+  id: Yup.number()
+    .required('Campo obligatorio')
+    .typeError('Se debe ingresar solo números'),
   phone: Yup.string()
     .required('Campo obligatorio')
     .matches(/^\d{10}$/, 'El número de teléfono debe tener 10 dígitos'),

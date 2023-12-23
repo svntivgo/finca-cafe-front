@@ -18,6 +18,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
       weight={props.weight}
       disabled={props.disabled}
       type={props.type}
+      width={props.width}
     >
       {props.text}
     </StyledButton>

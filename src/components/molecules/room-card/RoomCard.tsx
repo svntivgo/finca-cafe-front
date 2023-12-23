@@ -20,6 +20,7 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
   const { setRoom, reservation } = useReservation();
   return (
     <StyledRoomCardContainer inverted={props.inverted}>
+      <StyledRoomImage src={props.photo} />
       <Text
         color={COLORS.GOLD}
         font="Royale"
@@ -27,7 +28,6 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
         text={props.title}
         weight="400"
       />
-      <StyledRoomImage src={props.photo} />
       <Text text={props.description} color={COLORS.PEARL_BLACK} weight="300" />
       <StyleSeparator />
       <StyledButtonsContainer>
@@ -55,6 +55,8 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
               hotel: props.hotel.name,
               name: props.title,
               price: props.price,
+              id: props.id,
+              iva: props.iva,
             });
             props.reserveAction();
           }}

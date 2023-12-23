@@ -26,6 +26,8 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       hotel: '',
       price: 0,
       quantity: 0,
+      id: '',
+      iva: 0,
     },
     customer: {
       name: '',
@@ -34,6 +36,8 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       email: '',
       country: '',
       city: '',
+      id: '',
+      idType: '',
     },
     extras: {
       tourCafe: {

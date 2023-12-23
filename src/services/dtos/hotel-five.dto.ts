@@ -31,7 +31,7 @@ interface IDisponibilidad {
 
 type ICaracteristicas = Record<string, string[]>;
 
-interface IHabitaciones {
+export interface IHabitaciones {
   id: string;
   habitacion: string;
   estado: string;

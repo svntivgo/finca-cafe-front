@@ -105,13 +105,11 @@ export const ReservationHome: React.FC = () => {
                 minor: state.occupancy.minor,
               }}
             />
-            {/* <Link to={'/reserva/selecciona'}> */}
-            <Link to={'/'}>
+            <Link to={'/reserva/selecciona'}>
               <Button
                 colors={COLORS.GREEN}
                 text="Reservar"
                 font={COLORS.WHITE}
-                disabled
               />
             </Link>
             <Backdrop

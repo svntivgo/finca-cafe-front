@@ -1,15 +1,19 @@
 import React, { useRef, useState } from 'react';
 import {
-  ReviewerNameContainerStyled,
+  ReviewerInfoContainerStyled,
   ReviewContainerStyled,
   WingCard,
   ReviewTextContainerStyled,
-  ArrowStyled,
-  ArrowInvertedStyled,
+  ReviewerNameContainerStyled,
+  ReviewerFlagContainerStyled,
+  ReviewBoxContainerStyled,
+  HomeSpanStyled,
 } from '..';
 import { COLORS } from '../../../constants/colors';
-import { Text } from '../../atoms';
+import { Icon, Text } from '../../atoms';
 import { REVIEWS } from '../../../constants/reviews';
+import rowLeft from '../../../assets/row-left.svg';
+import rowRight from '../../../assets/row-right.svg';
 
 export const Reviews: React.FC = () => {
   const position = useRef(1);
@@ -38,35 +42,46 @@ export const Reviews: React.FC = () => {
   };
 
   return (
-    <WingCard background={COLORS.PEARL_BLACK} inverted>
-      <Text
-        text="NUESTROS VIAJEROS DAN SU OPINIÓN"
-        color={COLORS.GOLD}
-        font="Royale"
-        align="center"
-        size="0.75rem"
-      />
-      <ReviewerNameContainerStyled>
+    <ReviewBoxContainerStyled>
+      <WingCard background={COLORS.PEARL_BLACK}>
+        <HomeSpanStyled />
         <Text
-          text={review.user}
-          color={COLORS.WHITE}
-          weight="200"
+          text="NUESTROS VIAJEROS DAN SU OPINIÓN"
+          color={COLORS.GOLD}
+          font="Royale"
+          align="center"
           size="0.75rem"
         />
-      </ReviewerNameContainerStyled>
-      <ReviewContainerStyled>
-        <ArrowStyled onClick={prevReview} />
-        <ReviewTextContainerStyled>
-          <Text
-            text={review.review}
-            color={COLORS.WHITE}
-            weight="200"
-            align="justify"
-            size="0.75rem"
-          />
-        </ReviewTextContainerStyled>
-        <ArrowInvertedStyled onClick={nextReview} />
-      </ReviewContainerStyled>
-    </WingCard>
+        <HomeSpanStyled />
+        <HomeSpanStyled />
+        <ReviewerInfoContainerStyled>
+          <ReviewerFlagContainerStyled>
+            <Icon src={review.flag} width="32px" />
+          </ReviewerFlagContainerStyled>
+          <ReviewerNameContainerStyled>
+            <Text
+              text={review.user}
+              color={COLORS.WHITE}
+              weight="200"
+              size="0.75rem"
+              lineHeight="0.75rem"
+            />
+          </ReviewerNameContainerStyled>
+        </ReviewerInfoContainerStyled>
+        <ReviewContainerStyled>
+          <Icon src={rowLeft} width="12px" onClick={prevReview} />
+          <ReviewTextContainerStyled>
+            <Text
+              text={review.review}
+              color={COLORS.WHITE}
+              weight="200"
+              align="justify"
+              size="0.75rem"
+            />
+          </ReviewTextContainerStyled>
+          <Icon src={rowRight} width="12px" onClick={nextReview} />
+        </ReviewContainerStyled>
+      </WingCard>
+    </ReviewBoxContainerStyled>
   );
 };

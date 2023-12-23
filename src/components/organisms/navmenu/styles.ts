@@ -8,7 +8,7 @@ interface StyledMenuProps {
 
 export const NavMenuContainer = styled.div<StyledMenuProps>`
   background-color: ${(props) =>
-    props.isMenuItems ? 'rgba(23, 23, 23, 0.6)' : 'transparent'};
+    props.isMenuItems ? COLORS.PEARL_BLACK : 'transparent'};
   height: ${(props) => (props.isMenuItems ? '100vh' : 'unset')};
   backdrop-filter: ${(props) => (props.isMenuItems ? 'blur(8px)' : 'unset')};
   position: fixed;
@@ -35,7 +35,7 @@ export const NavMenuInfo = styled.div`
 
 export const NavMenuItemsContainer = styled.div`
   border-radius: 8px;
-  border: 1px solid ${COLORS.GOLD};
+  border: 1px solid ${COLORS.WHITE};
   height: 75%;
   margin: 0px 8px 0px 8px;
   padding: 0 16px;

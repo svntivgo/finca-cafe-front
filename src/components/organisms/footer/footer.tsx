@@ -4,9 +4,11 @@ import { WingCard } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
 import { Icon, Text } from '../../atoms';
 import {
+  FooterBoxGroupStyled,
   FooterBoxStyled,
   FooterContainerStyled,
   FooterHeadStyled,
+  FooterInfoStyled,
   NavigationIconsContainerStyled,
   NavigationIconsStyled,
   PartnersIconsContainerStyled,
@@ -18,10 +20,10 @@ import WazeIcon from '../../../assets/waze.svg';
 import GoogleMapsIcon from '../../../assets/google-maps.svg';
 import ColombiaIcon from '../../../assets/colombia-logo.svg';
 import PaisajeIcon from '../../../assets/paisaje-cultural-cafetero.svg';
-import SantaRosaIcon from '../../../assets/santa-rosa.svg';
 import AsoturismoIcon from '../../../assets/asoturismo.svg';
 import PereiraIcon from '../../../assets/pereira-bouru.svg';
 import CertificadoIcon from '../../../assets/certificado-calidad-turistica.svg';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const location = useLocation();
@@ -29,120 +31,114 @@ export const Footer: React.FC = () => {
     <FooterContainerStyled location={location.pathname}>
       <WingCard background={COLORS.GREEN}>
         <FooterHeadStyled>
-          <Icon src={Logo} width="100px" />
+          <Icon src={Logo} width="180px" />
           <Text
             text="Círculo de experiencias"
             color={COLORS.WHITE}
             weight="200"
           />
+          <Text
+            text="Garantizamos la mejor tarifa en tu reserva por nuestra página web"
+            color={COLORS.GOLD}
+            weight="200"
+          />
         </FooterHeadStyled>
-        <div>
-          <FooterBoxStyled>
-            <Text
-              text="Garantizamos la mejor tarifa en tu reserva por nuestra página web"
-              color={COLORS.GOLD}
-              weight="200"
-            />
-          </FooterBoxStyled>
-          <FooterBoxStyled>
-            <Text
-              text="Reservas de alojamiento y tour del café"
-              color={COLORS.GOLD}
-              weight="400"
-            />
-            <Text
-              text={`Comunícate al ${FINCA_CAFE_INFO.HOTEL_TEL}`}
-              weight="200"
-              color={COLORS.WHITE}
-            />
-            <Text
-              text={`${FINCA_CAFE_INFO.HOTEL_MAIL}`}
-              weight="200"
-              color={COLORS.WHITE}
-            />
-          </FooterBoxStyled>
-          <FooterBoxStyled>
-            <Text
-              text="Contacto para reservas de Mirador del café"
-              color={COLORS.GOLD}
-              weight="400"
-            />
-            <Text
-              text="Restaurante / Piqueteadero / Bodas / Eventos Corporativos"
-              weight="200"
-              color={COLORS.WHITE}
-            />
-            <Text
-              text={`Comunícate al ${FINCA_CAFE_INFO.RESTAURANT_TEL}`}
-              weight="200"
-              color={COLORS.WHITE}
-            />
-          </FooterBoxStyled>
-          <FooterBoxStyled>
-            <Text
-              text={`Dirección; ${FINCA_CAFE_INFO.ADDRESS}`}
-              weight="200"
-              color={COLORS.WHITE}
-            />
-            <NavigationIconsContainerStyled>
-              <NavigationIconsStyled>
-                <Icon src={WazeIcon} width="80px" />
-                <Text
-                  text="Llegar con Waze"
-                  weight="200"
-                  size="12px"
-                  color={COLORS.WHITE}
-                />
-              </NavigationIconsStyled>
-              <NavigationIconsStyled>
-                <Icon src={GoogleMapsIcon} width="50px" />
-                <Text
-                  text="Llegar con Google Maps"
-                  weight="200"
-                  size="12px"
-                  color={COLORS.WHITE}
-                />
-              </NavigationIconsStyled>
-            </NavigationIconsContainerStyled>
-          </FooterBoxStyled>
-        </div>
-        <div>
-          <FooterBoxStyled>
-            <Text text="Razón social" color={COLORS.GOLD} weight="400" />
-            <Text
-              text={`${FINCA_CAFE_INFO.BUSINESS_NAME}`}
-              weight="200"
-              color={COLORS.WHITE}
-            />
-            <Text text="NIT" color={COLORS.GOLD} weight="400" />
-            <Text
-              text={`${FINCA_CAFE_INFO.NIT}`}
-              weight="200"
-              color={COLORS.WHITE}
-            />
-          </FooterBoxStyled>
-          <FooterBoxStyled>
-            <PartnersIconsContainerStyled>
-              <PartnersIconsStyled>
-                <Icon src={ColombiaIcon} width="80px" />
-              </PartnersIconsStyled>
-              <PartnersIconsStyled>
-                <Icon src={PaisajeIcon} width="80px" />
-              </PartnersIconsStyled>
-              <PartnersIconsStyled>
-                <Icon src={SantaRosaIcon} width="80px" />
-              </PartnersIconsStyled>
-              <PartnersIconsStyled>
-                <Icon src={AsoturismoIcon} width="80px" />
-              </PartnersIconsStyled>
-              <PartnersIconsStyled>
-                <Icon src={PereiraIcon} width="80px" />
-              </PartnersIconsStyled>
-              <PartnersIconsStyled>
-                <Icon src={CertificadoIcon} width="80px" />
-              </PartnersIconsStyled>
-            </PartnersIconsContainerStyled>
-          </FooterBoxStyled>
+        <FooterInfoStyled>
+          <FooterBoxGroupStyled>
+            <FooterBoxStyled>
+              <Text
+                text="Reservas de alojamiento y tour del café"
+                color={COLORS.GOLD}
+                weight="400"
+              />
+              <Text
+                text={`Comunícate al ${FINCA_CAFE_INFO.HOTEL_TEL}`}
+                weight="200"
+                color={COLORS.WHITE}
+              />
+              <Text
+                text={`${FINCA_CAFE_INFO.HOTEL_MAIL}`}
+                weight="200"
+                color={COLORS.WHITE}
+              />
+            </FooterBoxStyled>
+            <FooterBoxStyled>
+              <Text
+                text="Contacto para reservas de Mirador del café"
+                color={COLORS.GOLD}
+                weight="400"
+              />
+              <Text
+                text="Restaurante / Piqueteadero / Bodas / Eventos Corporativos"
+                weight="200"
+                color={COLORS.WHITE}
+              />
+              <Text
+                text={`Comunícate al ${FINCA_CAFE_INFO.RESTAURANT_TEL}`}
+                weight="200"
+                color={COLORS.WHITE}
+              />
+              <Text
+                text={`${FINCA_CAFE_INFO.MARKETING_MAIL}`}
+                weight="200"
+                color={COLORS.WHITE}
+              />
+            </FooterBoxStyled>
+          </FooterBoxGroupStyled>
+          <FooterBoxGroupStyled>
+            <FooterBoxStyled>
+              <NavigationIconsContainerStyled>
+                <NavigationIconsStyled>
+                  <Icon src={WazeIcon} width="80px" />
+                  <Text
+                    text="Llegar con Waze"
+                    weight="200"
+                    size="12px"
+                    color={COLORS.WHITE}
+                  />
+                </NavigationIconsStyled>
+                <NavigationIconsStyled>
+                  <Link to={'https://maps.app.goo.gl/d365gPoYEe4npFfr7'}>
+                    <Icon src={GoogleMapsIcon} width="50px" />
+                    <Text
+                      text="Llegar con Google Maps"
+                      weight="200"
+                      size="12px"
+                      color={COLORS.WHITE}
+                    />
+                  </Link>
+                </NavigationIconsStyled>
+              </NavigationIconsContainerStyled>
+              <Text
+                text={`Dirección; ${FINCA_CAFE_INFO.ADDRESS}`}
+                weight="200"
+                color={COLORS.WHITE}
+              />
+            </FooterBoxStyled>
+          </FooterBoxGroupStyled>
+          <FooterBoxGroupStyled>
+            <FooterBoxStyled>
+              <PartnersIconsContainerStyled>
+                <PartnersIconsStyled>
+                  <Icon src={ColombiaIcon} width="60px" />
+                </PartnersIconsStyled>
+                <PartnersIconsStyled>
+                  <Icon src={PereiraIcon} width="100px" />
+                </PartnersIconsStyled>
+                <PartnersIconsStyled>
+                  <Icon src={PaisajeIcon} width="80px" />
+                </PartnersIconsStyled>
+                <PartnersIconsStyled>
+                  <Icon src={AsoturismoIcon} width="100px" />
+                </PartnersIconsStyled>
+                <PartnersIconsStyled>
+                  <Icon src={CertificadoIcon} width="80px" />
+                </PartnersIconsStyled>
+              </PartnersIconsContainerStyled>
+            </FooterBoxStyled>
+          </FooterBoxGroupStyled>
+        </FooterInfoStyled>
+        <FooterInfoStyled>
           <FooterBoxStyled>
             <Text
               text={`${FINCA_CAFE_INFO.LEGAL_INFO}`}
@@ -151,7 +147,7 @@ export const Footer: React.FC = () => {
               color={COLORS.WHITE}
             />
           </FooterBoxStyled>
-        </div>
+        </FooterInfoStyled>
       </WingCard>
     </FooterContainerStyled>
   );

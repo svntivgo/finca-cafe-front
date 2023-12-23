@@ -72,6 +72,8 @@ export const Rooms: React.FC = () => {
               hotel={room.hotel}
               price={0}
               reserveAction={() => console.log()}
+              id={room.id}
+              iva={room.iva}
             />
           </div>
         ))}
@@ -97,6 +99,8 @@ export const Rooms: React.FC = () => {
               hotel={room.hotel}
               price={0}
               reserveAction={() => console.log()}
+              id={room.id}
+              iva={room.iva}
             />
           </div>
         ))}

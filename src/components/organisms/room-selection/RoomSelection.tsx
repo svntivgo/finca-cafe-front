@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Banner, Button, Text } from '../../atoms';
-import photo from '../../../assets/home/home-banner.png';
+import photo from '../../../assets/home/home-banner.jpg';
 import {
   ReservationHomeCards,
   ReservationOccupancyCard,
@@ -21,7 +21,9 @@ import {
   RoomList,
   ReservationForm,
 } from '..';
-import { ROOMS_BOURBON, ROOMS_TIPICA } from '../../../constants/rooms';
+import { ROOMS_BOURBON, ROOMS_TIPICA, Room } from '../../../constants/rooms';
+import { HotelFive, IHabitaciones } from '../../../services';
+import { hotelFiveDate } from '../../../shared/helper/date-formatter';
 
 export const RoomSelection: React.FC = () => {
   const steps = [
@@ -32,6 +34,7 @@ export const RoomSelection: React.FC = () => {
   const { setDates, setOccupancy, setRoom, setExtras, reservation } =
     useReservation();
   const [activeStep, setActiveState] = useState(0);
+  const [rooms, setRooms] = useState<Room[]>([]);
   const [state, setState] = useState<{
     backdropCalendar: boolean;
     backdropOccupancy: boolean;
@@ -86,6 +89,75 @@ export const RoomSelection: React.FC = () => {
     setActiveState(activeStep + 1);
   };
 
+  enum nombres {
+    'SUITE' = 'SUITE Jacuzzi',
+    'ESTANDAR TWIN' = 'SUITE ESTANDAR TWIN',
+    'QUEEN ROOM' = 'PAREJA ESTANDAR',
+    'CUADRUPLE' = 'CUADRUPLE ESTANDAR',
+    'CONNECTING FAMILIAR' = 'FAMILIAR CONNECTING',
+  }
+
+  const availableRooms = async () => {
+    const hotelApi = new HotelFive();
+    const { data } = await hotelApi.rooms();
+    const { habitaciones } = data;
+    const occupancy = reservation.occupancy.adult + reservation.occupancy.minor;
+    const availableRooms: IHabitaciones[] = [];
+    const startDate = hotelFiveDate(reservation.dates.start);
+    const endDate = hotelFiveDate(reservation.dates.end);
+    console.log(startDate);
+    habitaciones.reduce((acc: IHabitaciones[], habitacion: IHabitaciones) => {
+      const found = habitacion.disponibilidad.some(
+        (available, index, array) => {
+          if (
+            available.fechaInicio <= startDate &&
+            available.fechaFin >= endDate
+          ) {
+            return true;
+          }
+          if (
+            available.fechaInicio <= startDate &&
+            available.fechaFin === null &&
+            index === array.length - 1
+          ) {
+            return true;
+          }
+          return false;
+        },
+      );
+
+      if (found && habitacion.capacidadMax >= occupancy) {
+        availableRooms.push(habitacion);
+      }
+      return acc;
+    }, []);
+    return availableRooms;
+  };
+
+  const roomsReduced = (roomsHotelFive: IHabitaciones[]) => {
+    const availableRooms: Room[] = [];
+    roomsHotelFive.reduce((acc: IHabitaciones[], habitacion: IHabitaciones) => {
+      const allRooms = [...ROOMS_BOURBON, ...ROOMS_TIPICA];
+      const found = acc.some((item) => item.tipo === habitacion.tipo);
+      if (!found) {
+        acc.push(habitacion);
+        const name =
+          nombres[habitacion.tipo as keyof typeof nombres]?.toString() ?? '';
+        const foundRoom = allRooms.find((room) => room.title === name ?? '');
+
+        if (foundRoom) {
+          foundRoom.id = habitacion.id;
+          foundRoom.price = habitacion.precioMin;
+          foundRoom.iva = habitacion.ivaPrecioMin;
+          availableRooms.push(foundRoom);
+        }
+      }
+      return acc;
+    }, []);
+
+    setRooms(availableRooms);
+  };
+
   useEffect(() => {
     setActiveState(0);
     setRoom({ ...reservation.room, hotel: '', name: '', price: 0 });
@@ -94,6 +166,12 @@ export const RoomSelection: React.FC = () => {
       tourCafe: { ...reservation.extras.tourCafe, quantity: 0 },
     });
   }, []);
+
+  useEffect(() => {
+    void availableRooms().then((roomsHotelFive) =>
+      roomsReduced(roomsHotelFive),
+    );
+  }, [reservation.dates, reservation.occupancy]);
 
   return (
     <>
@@ -202,10 +280,7 @@ export const RoomSelection: React.FC = () => {
         )}
       </StyledReservationInfoContainer>
       {activeStep === 0 && (
-        <RoomList
-          rooms={[...ROOMS_BOURBON, ...ROOMS_TIPICA]}
-          reservationAction={setNextStep}
-        />
+        <RoomList rooms={rooms} reservationAction={setNextStep} />
       )}
       {activeStep === 1 && <ReservationForm />}
     </>

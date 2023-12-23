@@ -5,16 +5,51 @@ import { FooterProps } from '..';
 export const FooterContainerStyled = styled.div<FooterProps>`
   background-color: ${(props) =>
     props.location === '/' ? COLORS.CREAM : COLORS.WHITE};
+
+  @media (min-width: 1023px) {
+    background-color: ${(props) =>
+      props.location === '/' ? COLORS.PEARL_BLACK : COLORS.WHITE};
+    padding-left: 0;
+    padding-right: 32px;
+  }
 `;
 
 export const FooterHeadStyled = styled.div`
   display: flex;
+  flex-direction: column;
   place-content: space-between;
+  border-bottom: 1px solid ${COLORS.WHITE};
+  padding: 16px 0;
+
+  @media (min-width: 1023px) {
+    flex-direction: column;
+    place-items: center;
+    padding: 32px 0;
+    margin: 0 80px;
+  }
 `;
 
 export const FooterBoxStyled = styled.div`
   padding: 16px 0;
   border-bottom: 1px solid ${COLORS.WHITE};
+  @media (min-width: 1023px) {
+    padding: 32px 0;
+  }
+`;
+
+export const FooterInfoStyled = styled.div`
+  @media (min-width: 1023px) {
+    display: flex;
+    flex-wrap: nowrap;
+    place-content: space-between;
+    margin: 0 80px;
+  }
+`;
+
+export const FooterBoxGroupStyled = styled.div`
+  @media (min-width: 1023px) {
+    width: 30%;
+  }
 `;
 
 export const NavigationIconsContainerStyled = styled.div`
@@ -24,11 +59,10 @@ export const NavigationIconsContainerStyled = styled.div`
 `;
 
 export const PartnersIconsContainerStyled = styled.div`
-  /* width: 100%; */
   display: flex;
   flex-wrap: wrap;
   padding: 0 16px;
-  place-content: space-between;
+  place-content: initial;
 `;
 
 export const NavigationIconsStyled = styled.div`
@@ -41,5 +75,5 @@ export const PartnersIconsStyled = styled.div`
   display: flex;
   place-content: center;
   place-items: center;
-  padding: 16px 0;
+  padding: 16px 4px;
 `;

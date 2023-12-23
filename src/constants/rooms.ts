@@ -20,6 +20,8 @@ export interface Room {
   banner: string;
   equipment: RoomEquipment[];
   price: number;
+  iva: number;
+  id: string;
 }
 
 const HOTELS = {
@@ -58,6 +60,8 @@ export const ROOMS_BOURBON: Room[] = [
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
     price: 773500,
+    iva: 0,
+    id: '',
   },
   {
     title: 'SUITE ESTANDAR TWIN',
@@ -81,6 +85,8 @@ export const ROOMS_BOURBON: Room[] = [
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
     price: 476000,
+    iva: 0,
+    id: '',
   },
 ];
 
@@ -106,6 +112,8 @@ export const ROOMS_TIPICA: Room[] = [
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
     price: 476000,
+    iva: 0,
+    id: '',
   },
   {
     title: 'CUADRUPLE ESTANDAR',
@@ -128,6 +136,8 @@ export const ROOMS_TIPICA: Room[] = [
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
     price: 714000,
+    iva: 0,
+    id: '',
   },
   {
     title: 'FAMILIAR CONNECTING',
@@ -150,5 +160,7 @@ export const ROOMS_TIPICA: Room[] = [
       ROOM_EQUIPMENTS.OPTIC_FIBER,
     ],
     price: 1071000,
+    iva: 0,
+    id: '',
   },
 ];

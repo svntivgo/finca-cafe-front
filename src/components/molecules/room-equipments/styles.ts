@@ -4,8 +4,8 @@ export const StyledEquipmentContainer = styled.div`
   display: grid;
   gap: 8px;
   grid-template-columns: repeat(4, 1fr);
-  margin-top: 16px;
   margin: 0 auto;
+  margin-top: 16px;
 `;
 
 export const StyledEquipmentItem = styled.div`

@@ -17,9 +17,11 @@ export interface Dates {
 }
 
 export interface Room {
+  id: string;
   name: string;
   hotel: string;
   price: number;
+  iva: number;
   quantity: number;
 }
 
@@ -30,6 +32,8 @@ export interface Customer {
   email: string;
   country: string;
   city: string;
+  id: string;
+  idType: string;
 }
 
 export interface ExtrasDetail {

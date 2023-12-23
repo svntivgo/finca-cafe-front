@@ -41,6 +41,8 @@ export const Room: React.FC = () => {
             title={roomInfo.title}
             price={0}
             reserveAction={() => console.log('')}
+            id={''}
+            iva={0}
           />
           <WingCard background={COLORS.PEARL_BLACK} inverted={true}>
             <RoomEquipments

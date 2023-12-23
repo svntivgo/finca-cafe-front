@@ -8,6 +8,7 @@ export interface ButtonProps {
   text?: string;
   weight?: number;
   disabled?: boolean;
+  width?: string;
   type?: 'submit' | 'button' | 'reset' | undefined;
   onCLick?: () => void;
 }

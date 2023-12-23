@@ -3,6 +3,10 @@ import { COLORS } from '../../../../constants/colors';
 
 export const StyledContainer = styled.div`
   background: ${COLORS.CREAM};
+
+  @media (min-width: 1023px) {
+    padding: 0 5%;
+  }
 `;
 
 export const StyledBorder = styled.div`
@@ -20,7 +24,7 @@ export const StyledInfoContainer = styled.div`
   border: 1px solid ${COLORS.PEARL_BLACK};
   display: flex;
   margin: 16px 8px 0 8px;
-  padding: 16px 8px;
+  padding: 29px 8px;
   place-content: center;
   place-items: center;
   width: 100%;

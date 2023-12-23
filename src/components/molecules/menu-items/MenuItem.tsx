@@ -10,10 +10,17 @@ import { MenuItemProps, StyledLink, Separator } from '..';
 
 export const MenuItem: React.FC<MenuItemProps> = (props) => {
   return (
-    <StyledLink to={props.path}>
+    <StyledLink to={props.path} onClick={props.onClick}>
+      <Separator />
       <Icon src={props.src} width={props.width} />
       <Separator />
-      <Text text={props.text} color={COLORS.GOLD} weight={props.weight} />
+      <Separator />
+      <Text
+        text={props.text}
+        color={COLORS.WHITE}
+        weight={props.weight}
+        size="1.5rem"
+      />
     </StyledLink>
   );
 };

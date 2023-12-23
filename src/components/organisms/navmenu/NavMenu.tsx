@@ -51,12 +51,9 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
           <Link to={'/'}>
             <Icon src={LogoSVG} width="140px" />
           </Link>
-          <Button
-            text="Reservar"
-            colors={COLORS.GOLD}
-            font={COLORS.WHITE}
-            disabled
-          />
+          <Link to={'/reserva/selecciona'}>
+            <Button text="Reservar" colors={COLORS.GOLD} font={COLORS.WHITE} />
+          </Link>
         </NavMenuInfo>
       </NavMenuHeader>
       {isMenuItems && (
@@ -69,6 +66,7 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
               width={item.width}
               text={item.text}
               weight="300"
+              onClick={() => setIsMenuItems(!isMenuItems)}
             />
           ))}
         </NavMenuItemsContainer>

@@ -20,6 +20,8 @@ export const RoomList: React.FC<RoomListProps> = (props) => {
             hotel={room.hotel}
             price={room.price}
             reserveAction={props.reservationAction}
+            id={room.id}
+            iva={room.iva}
           />
           <WingCard background={COLORS.PEARL_BLACK} inverted>
             <RoomEquipments

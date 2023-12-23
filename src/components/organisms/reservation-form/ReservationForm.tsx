@@ -2,10 +2,11 @@ import React from 'react';
 import { Formik, useFormik, Form } from 'formik';
 import {
   CafeTourService,
-  StyledContainer,
-  StyledFormContainer,
-  StyledInputContainer,
-  StyledSpan,
+  PaymentButtonContainerStyled,
+  StyledContactContainer,
+  StyledContactFormContainer,
+  StyledContactInputContainer,
+  StyledContactSpan,
   formSchema,
   validationSchema,
 } from '..';
@@ -14,7 +15,9 @@ import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { WompiApi } from '../../../services/wompi-api';
 import { differenceInDays } from 'date-fns';
-import { HotelFive } from '../../../services';
+import { customAlphabet } from 'nanoid';
+import { FincafeBack } from '../../../services/fincafe-back';
+import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
 
 const initialValues: formSchema = {
   name: '',
@@ -23,18 +26,20 @@ const initialValues: formSchema = {
   email: '',
   country: '',
   city: '',
+  id: '',
+  idType: '',
   countCafeTour: 0,
   termsConditions: false,
 };
 
 export const ReservationForm: React.FC = () => {
   const { setCustomer, reservation } = useReservation();
-
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      const { name, lastName, phone, email, country, city } = values;
+    onSubmit: async (values) => {
+      const { name, lastName, phone, email, country, city, id, idType } =
+        values;
       const quantityDays = differenceInDays(
         reservation.dates.end,
         reservation.dates.start,
@@ -45,6 +50,7 @@ export const ReservationForm: React.FC = () => {
         reservation.extras.tourCafe.quantity;
 
       const totalReservation = totalPriceRoom + totalCafeTour;
+
       setCustomer({
         name,
         lastName,
@@ -52,64 +58,77 @@ export const ReservationForm: React.FC = () => {
         email,
         country,
         city,
+        id,
+        idType: 'Cedula de Ciudadania',
       });
 
-      const stringReference = `
-      ini:${reservation.dates.start.toISOString()}_
-      fin:${reservation.dates.end.toISOString()}_
-      personas:${reservation.occupancy.adult + reservation.occupancy.minor}_
-      cliente:${reservation.customer.name} ${reservation.customer.lastName}_
-      cel:${reservation.customer.phone}_
-      mail:${reservation.customer.email}_
-      habitacion:${reservation.room.name}_
-      tour-cantidad:${reservation.extras.tourCafe.quantity}
-      `;
+      const characters =
+        'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const stringReference = customAlphabet(characters, 9)();
 
-      const reservationData = {
-        nombre: `${reservation.customer.name} ${reservation.customer.lastName}`,
-        identidad: `${reservation.customer.email}`,
-        tipoIdentidad: `CEDULA CIUDADANIA`,
-        telefono: `${reservation.customer.phone}`,
-        email: `${reservation.customer.email}`,
-        idTransaccion: `${reservation.customer.email}`,
-        valorTransaccion: 123,
-        valorTotal: 123,
-        idHabitacion: `${reservation.room.name}`,
-        inicio: 20231201,
-        fin: 20231224,
-        numeroPersonas:
-          reservation.occupancy.adult + reservation.occupancy.minor,
+      const reservationData: IReservationTransaction = {
+        name,
+        lastname: lastName,
+        phone,
+        email,
+        country,
+        city,
+        docNumber: id,
+        docType: idType || 'Cedula de Ciudadania',
+        adults: reservation.occupancy.adult,
+        minors: reservation.occupancy.minor,
+        startDate: reservation.dates.start,
+        endDate: reservation.dates.end,
+        hotelName: reservation.room.hotel,
+        room: reservation.room.id,
+        roomName: reservation.room.name,
+        roomPrice: reservation.room.price,
+        roomIva: reservation.room.iva,
+        roomTotal: totalPriceRoom,
+        extra: '',
+        extraIva: 0,
+        extraPrice: reservation.extras.tourCafe.price,
+        extraTotal: totalCafeTour,
+        reservationTotal: totalReservation,
+        transactionTotal: totalReservation,
+        transactionGateway: 'Wompi',
+        transactionReference: stringReference,
       };
 
       const reservationCheckout = async () => {
         const wompi = new WompiApi();
-        const hotelFive = new HotelFive();
-
-        await wompi.checkout(
+        const fincafeBack = new FincafeBack();
+        const { data: fincafeBackResponse } =
+          await fincafeBack.createReservationTransaction(reservationData);
+        const { publicKey, signatureIntegrity } = fincafeBackResponse;
+        const result = wompi.checkout(
+          publicKey,
           stringReference,
-          totalReservation.toString() + '00',
+          `${totalReservation}00`,
+          signatureIntegrity,
         );
-        await hotelFive.reservation(reservationData);
+        console.log(result);
       };
+      await reservationCheckout();
     },
   });
 
   return (
-    <StyledContainer>
+    <StyledContactContainer>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={() => console.log('enviado')}
       >
-        <Form onSubmit={formik.handleSubmit}>
-          <StyledFormContainer>
+        <Form onSubmit={formik.handleSubmit} style={{ placeContent: 'center' }}>
+          <StyledContactFormContainer>
             <Text
               text="Información de contacto"
               color={COLORS.PEARL_GREY}
               size="2rem"
             />
-            <StyledSpan />
-            <StyledInputContainer>
+            <StyledContactSpan />
+            <StyledContactInputContainer>
               <InputField
                 label="Nombre"
                 type="text"
@@ -121,8 +140,8 @@ export const ReservationForm: React.FC = () => {
                 error={formik.touched.name && Boolean(formik.errors.name)}
                 helperText={formik.touched.name && formik.errors.name}
               />
-            </StyledInputContainer>
-            <StyledInputContainer>
+            </StyledContactInputContainer>
+            <StyledContactInputContainer>
               <InputField
                 label="Apellidos"
                 type="text"
@@ -136,8 +155,21 @@ export const ReservationForm: React.FC = () => {
                 }
                 helperText={formik.touched.lastName && formik.errors.lastName}
               />
-            </StyledInputContainer>
-            <StyledInputContainer>
+            </StyledContactInputContainer>
+            <StyledContactInputContainer>
+              <InputField
+                label="Número de identificación"
+                type="string"
+                id="id"
+                name="id"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.id}
+                error={formik.touched.id && Boolean(formik.errors.id)}
+                helperText={formik.touched.id && formik.errors.id}
+              />
+            </StyledContactInputContainer>
+            <StyledContactInputContainer>
               <InputField
                 label="Teléfono móvil"
                 type="text"
@@ -149,8 +181,8 @@ export const ReservationForm: React.FC = () => {
                 error={formik.touched.phone && Boolean(formik.errors.phone)}
                 helperText={formik.touched.phone && formik.errors.phone}
               />
-            </StyledInputContainer>
-            <StyledInputContainer>
+            </StyledContactInputContainer>
+            <StyledContactInputContainer>
               <InputField
                 label="Dirección de correo electrónico"
                 type="email"
@@ -162,12 +194,12 @@ export const ReservationForm: React.FC = () => {
                 error={formik.touched.email && Boolean(formik.errors.email)}
                 helperText={formik.touched.email && formik.errors.email}
               />
-            </StyledInputContainer>
-          </StyledFormContainer>
-          <StyledFormContainer>
+            </StyledContactInputContainer>
+          </StyledContactFormContainer>
+          <StyledContactFormContainer>
             <Text text="Dirección" color={COLORS.PEARL_GREY} size="2rem" />
-            <StyledSpan />
-            <StyledInputContainer>
+            <StyledContactSpan />
+            <StyledContactInputContainer>
               <InputField
                 label="País"
                 type="text"
@@ -179,8 +211,8 @@ export const ReservationForm: React.FC = () => {
                 error={formik.touched.country && Boolean(formik.errors.country)}
                 helperText={formik.touched.country && formik.errors.country}
               />
-            </StyledInputContainer>
-            <StyledInputContainer>
+            </StyledContactInputContainer>
+            <StyledContactInputContainer>
               <InputField
                 label="Ciudad"
                 id="city"
@@ -191,21 +223,21 @@ export const ReservationForm: React.FC = () => {
                 error={formik.touched.city && Boolean(formik.errors.city)}
                 helperText={formik.touched.city && formik.errors.city}
               />
-            </StyledInputContainer>
-          </StyledFormContainer>
-          <StyledFormContainer>
+            </StyledContactInputContainer>
+          </StyledContactFormContainer>
+          <StyledContactFormContainer>
             <Text
               text="Servicios adicionales"
               color={COLORS.PEARL_GREY}
               size="2rem"
             />
             <Text text="(Opcional)" color={COLORS.PEARL_GREY} size="1rem" />
-            <StyledSpan />
+            <StyledContactSpan />
             <CafeTourService />
-          </StyledFormContainer>
-          <StyledFormContainer>
+          </StyledContactFormContainer>
+          <StyledContactFormContainer>
             <Text text="Consentimiento" color={COLORS.PEARL_GREY} size="2rem" />
-            <StyledSpan />
+            <StyledContactSpan />
             <Text
               text="Al completar esta reserva, acepto terminos y condiciones de la reserva."
               color={COLORS.PEARL_GREY}
@@ -226,18 +258,37 @@ export const ReservationForm: React.FC = () => {
                 <div className="error">{formik.errors.termsConditions}</div>
               ) : null}
             </div>
-            <StyledSpan />
-          </StyledFormContainer>
-          <Button
-            font={COLORS.WHITE}
-            text="Pagar ahora"
-            colors={COLORS.GREEN}
-            radius="3rem"
-            disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-            type="submit"
-          />
+            <StyledContactSpan />
+          </StyledContactFormContainer>
+          <PaymentButtonContainerStyled>
+            <Button
+              font={COLORS.WHITE}
+              text="Pagar ahora"
+              colors={COLORS.GREEN}
+              radius="3rem"
+              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              type="submit"
+            />
+            <StyledContactSpan />
+            <div>
+              <Text
+                text={`Importe de ${
+                  reservation.room.price * reservation.room.quantity
+                } COP debido el 29 de septiembre de 2023.`}
+                weight="600"
+                size="0.7rem"
+                color={COLORS.GREEN}
+              />
+              <Text
+                text={`Proporcione un
+                método de pago válido.`}
+                size="0.7rem"
+                color={COLORS.GREEN}
+              />
+            </div>
+          </PaymentButtonContainerStyled>
         </Form>
       </Formik>
-    </StyledContainer>
+    </StyledContactContainer>
   );
 };

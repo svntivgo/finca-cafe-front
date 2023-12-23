@@ -10,13 +10,14 @@ export const ReservationOccupancyCard: React.FC<
   return (
     <div>
       <div>
-        <Text text="Mayores" />
+        <Text text="Adultos" />
         <Text text={props.adult} />
         <Button
           colors={COLORS.GREEN}
           font={COLORS.GOLD}
           text="+"
           onCLick={() => props.setAdult(+1)}
+          margin="0 1rem 0 0"
         />
         <Button
           colors={COLORS.GREEN}
@@ -26,19 +27,21 @@ export const ReservationOccupancyCard: React.FC<
         />
       </div>
       <div>
-        <Text text="Menores" />
+        <Text text="Niños" />
         <Text text={props.minor} />
         <Button
           colors={COLORS.GREEN}
           font={COLORS.GOLD}
           text="+"
           onCLick={() => props.setMinor(+1)}
+          margin="0 1rem 0 0"
         />
         <Button
           colors={COLORS.GREEN}
           font={COLORS.GOLD}
           text="-"
           onCLick={() => props.setMinor(-1)}
+          margin="0 1rem 0 0"
         />
       </div>
       <Button
@@ -46,6 +49,7 @@ export const ReservationOccupancyCard: React.FC<
         font={COLORS.GOLD}
         text="Aceptar"
         onCLick={() => props.close()}
+        margin="1rem 0"
       />
     </div>
   );
