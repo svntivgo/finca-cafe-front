@@ -25,6 +25,7 @@ import { ROOMS_BOURBON, ROOMS_TIPICA, Room } from '../../../constants/rooms';
 import { HotelFive, IHabitaciones } from '../../../services';
 import { hotelFiveDate } from '../../../shared/helper/date-formatter';
 import LoadingScreen from '../loading-screen/LoadingScreen';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const RoomSelection: React.FC = () => {
   const steps = [
@@ -239,8 +240,8 @@ export const RoomSelection: React.FC = () => {
                     reservation.extras.tourCafe.quantity,
               )} COP`}
               font={COLORS.GOLD}
-              padding={window.innerWidth > 1023 ? '6px 16px' : '6px 6px'}
-              fontSize={window.innerWidth > 1023 ? '0.8rem' : '0.6rem'}
+              padding={DEVICE_SCREEN.isDesktop ? '6px 16px' : '6px 6px'}
+              fontSize={DEVICE_SCREEN.isDesktop ? '0.8rem' : '0.6rem'}
             />
           </StyledInfoContainer>
           <Text

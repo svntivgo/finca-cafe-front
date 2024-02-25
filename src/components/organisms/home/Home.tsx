@@ -30,11 +30,14 @@ import GastronomyPhoto from '../../../assets/home/gastronomia.jpg';
 import LogoMirador from '../../../assets/logo-mirador-cafe.svg';
 import { ContactForm } from '..';
 import BannerPhoto from '../../../assets/hoteles/banner.jpg';
+import BannerPhotoMobile from '../../../assets/hoteles/banner-mobile.jpg';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Home: React.FC = () => {
+  const { isDesktop } = DEVICE_SCREEN;
   return (
     <HomeContainerStyled>
-      <Banner image={BannerPhoto} height="43vw" />
+      <Banner image={isDesktop ? BannerPhoto : BannerPhotoMobile} />
       <ReservationHome />
       <HomeDescription />
       <HomePhotoDescriptionContainer>

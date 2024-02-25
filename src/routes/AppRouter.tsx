@@ -1,5 +1,5 @@
 //Libraries
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Components
@@ -29,7 +29,6 @@ import { NAV_ITEMS } from '../constants/nav-items';
 import { Whatsapp } from '../components/molecules';
 import { INTERNAL_PLACE } from '../constants/internal-place';
 import ScrollToTop from './scroll-top/ScrollTop';
-import LoadingScreen from '../components/organisms/loading-screen/LoadingScreen';
 
 const AppRouter: React.FC = () => {
   const { RESTAURANT, PIQUETEADERO, BAR, CAFE } = INTERNAL_PLACE;

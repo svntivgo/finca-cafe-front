@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../../constants/colors';
 
 export const StyledMenuContainer = styled.div`
-  margin-top: -36px;
+  margin-top: -24px;
   margin-bottom: 3rem;
 `;
 

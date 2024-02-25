@@ -19,6 +19,7 @@ import {
 } from '..';
 import { COLORS } from '../../../constants/colors';
 import HallBanner from '../../../assets/celebraciones/hall-banner.jpg';
+import HallBannerMobile from '../../../assets/celebraciones/hall-banner-mobile.jpg';
 import HallUtilsGold from '../../../assets/celebraciones/hall-utils-gold.jpg';
 import HallGoldDish from '../../../assets/celebraciones/hall-gold-dish.jpg';
 import HallDesert from '../../../assets/celebraciones/hall-desert.jpg';
@@ -30,11 +31,13 @@ import { CelebracionesCard } from '../../molecules/celebraciones-card/Celebracio
 import { CelebracionesContact, Gallery } from '../../molecules';
 import { GALLERY_CELEBRATIONS } from '../../../constants/gallery';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Celebraciones: React.FC = () => {
+  const { isDesktop } = DEVICE_SCREEN;
   return (
     <>
-      <Banner height="500px" image={HallBanner} />
+      <Banner image={isDesktop ? HallBanner : HallBannerMobile} />
       <StyledCelebrationsContainer>
         <CelebrationsLogoContainerStyled>
           <Icon src={LogoBlack} width="10rem" />

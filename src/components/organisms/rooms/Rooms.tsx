@@ -22,20 +22,23 @@ import { HOTELS } from '../../../constants/hotels';
 import Head from '../../../assets/habitaciones/head-habitaciones.jpg';
 import TypicaPiscinas from '../../../assets/habitaciones/typica-piscinas.jpg';
 import BannerPhoto from '../../../assets/habitaciones/banner.jpg';
+import BannerPhotoMobile from '../../../assets/habitaciones/banner-mobile.jpg';
 import LogoBourbon from '../../../assets/logo-bourbon.svg';
 import LogoTypica from '../../../assets/logo-typica.svg';
 import { ROOMS_BOURBON, ROOMS_TIPICA } from '../../../constants/rooms';
 import { MenuRooms, RoomCard, RoomEquipments, WingCard } from '../../molecules';
 import { useNavigate } from 'react-router-dom';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Rooms: React.FC = () => {
+  const { isDesktop } = DEVICE_SCREEN;
   const navigate = useNavigate();
   const changeRoute = () => {
     navigate('/reserva/selecciona');
   };
   return (
     <>
-      <Banner image={BannerPhoto} height="600px" />
+      <Banner image={isDesktop ? BannerPhoto : BannerPhotoMobile} />
       <StyledMenuContainer>
         <MenuRooms />
         <StyledTextContainer>
@@ -44,17 +47,17 @@ export const Rooms: React.FC = () => {
             align="center"
             font="Royale"
             color={COLORS.PEARL_BLACK}
-            size={window.innerWidth > 1023 ? '2rem' : '1rem'}
+            size={DEVICE_SCREEN.isDesktop ? '2rem' : '1rem'}
           />
         </StyledTextContainer>
-        <StyledHotelDescription>
+        <StyledHotelDescription id={'bourbon-description'}>
           <StyledImageContainer>
             <StyledImage src={Head} />
           </StyledImageContainer>
           <StyledHotelDescriptionText>
             <WingCard
               background={COLORS.GREEN}
-              inverted={window.innerWidth > 1023}
+              inverted={DEVICE_SCREEN.isDesktop}
             >
               <StyledRoomsSeparator />
               <StyledTextRooms>
@@ -111,14 +114,14 @@ export const Rooms: React.FC = () => {
           </WingCard>
         </StyledRoomsEquipmentContainer>
         <StyledRoomsSeparator />
-        <StyledHotelDescription>
+        <StyledHotelDescription id={'typica-description'}>
           <StyledImageContainer>
             <StyledImage src={TypicaPiscinas} />
           </StyledImageContainer>
           <StyledHotelDescriptionText>
             <WingCard
               background={COLORS.GREEN}
-              inverted={window.innerWidth > 1023}
+              inverted={DEVICE_SCREEN.isDesktop}
             >
               <StyledImg
                 src={LogoTypica}

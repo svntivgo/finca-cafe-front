@@ -43,7 +43,6 @@ import CuadrupleStandard_1 from '../assets/rooms/suite-cuadruple/room-1.jpg';
 import CuadrupleStandard_2 from '../assets/rooms/suite-cuadruple/room-2.jpg';
 import CuadrupleStandard_3 from '../assets/rooms/suite-cuadruple/room-3.jpg';
 import CuadrupleStandard_4 from '../assets/rooms/suite-cuadruple/room-4.jpg';
-import CuadrupleStandard_5 from '../assets/rooms/suite-cuadruple/room-5.jpg';
 
 import FamiliarConnecting_1 from '../assets/rooms/suite-familiar/room-1.jpg';
 import FamiliarConnecting_2 from '../assets/rooms/suite-familiar/room-2.jpg';
@@ -215,9 +214,6 @@ export const GALLERY_CUADRUPLE_STANDARD: IGallery[] = [
   },
   {
     photo: CuadrupleStandard_4,
-  },
-  {
-    photo: CuadrupleStandard_5,
   },
 ];
 

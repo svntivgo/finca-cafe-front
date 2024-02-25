@@ -66,8 +66,8 @@ export const HomeGallery: React.FC = () => {
             colors={COLORS.PEARL_BLACK}
             text="Celebraciones"
             font="Poppins"
-            fontSize="0.5rem"
-            padding="0.25rem 1rem"
+            fontSize="1rem"
+            padding="0.5rem 2rem"
             radius="8px"
             margin="2rem auto 0 auto"
           />

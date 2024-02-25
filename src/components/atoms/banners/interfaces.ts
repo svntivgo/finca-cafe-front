@@ -1,5 +1,5 @@
 export interface BannerProps {
-  height: string;
+  height?: string;
   image: string;
   width?: string;
 }

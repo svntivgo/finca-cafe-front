@@ -15,6 +15,7 @@ import {
 } from '..';
 import { COLORS } from '../../../constants/colors';
 import PhotoBanner from '../../../assets/mirador-cafe/banner.jpg';
+import PhotoBannerMobile from '../../../assets/mirador-cafe/banner-mobile.jpg';
 import BarPhoto from '../../../assets/mirador-cafe/bar.jpg';
 import CafePhoto from '../../../assets/mirador-cafe/cafe.jpg';
 import ResturantPhoto from '../../../assets/mirador-cafe/restaurante.jpg';
@@ -24,11 +25,13 @@ import LogoFincaCafe from '../../../assets/logo-finca-circulo-negro.svg';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 import { Link } from 'react-router-dom';
 import { CelebracionesContact } from '../../molecules';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const MiradorCafe: React.FC = () => {
+  const { isDesktop } = DEVICE_SCREEN;
   return (
     <>
-      <Banner height="800px" image={PhotoBanner} />
+      <Banner image={isDesktop ? PhotoBanner : PhotoBannerMobile} />
       <StyledMiradorCafeContainer>
         <MiradorCafeLogoContainerStyled>
           <Icon src={LogoFincaCafe} width="10rem" />
@@ -100,117 +103,74 @@ export const MiradorCafe: React.FC = () => {
         <MiradorCafeSpanStyled />
         <MiradorCafeDescriptionContainerStyled>
           <MiradorCafePhotoDescriptionContainerStyled>
-            <img src={ResturantPhoto} width={'100%'} />
-            <MiradorCafePhotoDescriptionTextContainerStyled>
-              <Text
-                text={`RESTAURANTE`}
-                align="center"
-                font="Royale"
-                size="1.5rem"
-              />
-              <Text
-                text={'GASTRONOMÍA CREATIVA EN EL PAISAJE CAFETERO'}
-                align="center"
-                weight="200"
-                size="0.7rem"
-              />
-            </MiradorCafePhotoDescriptionTextContainerStyled>
-            <Link
-              to={'/restaurante'}
-              style={{ width: 'max-content', margin: '0 auto' }}
-            >
-              <Button
-                colors={COLORS.PEARL_BLACK}
-                text="Ver más"
-                font="Poppins"
-                fontSize="0.7rem"
-                padding="0.25rem 0.5rem"
-                radius="8px"
-                margin="-8px auto 0 auto"
-              />
+            <Link to={'/restaurante'} style={{ width: '100%' }}>
+              <img src={ResturantPhoto} width={'100%'} />
+              <MiradorCafePhotoDescriptionTextContainerStyled>
+                <Text
+                  text={`RESTAURANTE`}
+                  align="center"
+                  font="Royale"
+                  size="1.5rem"
+                />
+                <Text
+                  text={'GASTRONOMÍA CREATIVA EN EL PAISAJE CAFETERO'}
+                  align="center"
+                  weight="200"
+                  size="0.7rem"
+                />
+              </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
           </MiradorCafePhotoDescriptionContainerStyled>
           <MiradorCafePhotoDescriptionContainerStyled>
-            <img src={CafePhoto} width={'100%'} />
-            <MiradorCafePhotoDescriptionTextContainerStyled>
-              <Text text={`CAFÉ`} align="center" font="Royale" size="1.5rem" />
-              <Text
-                text={'DE NUESTRAS MONTAÑAS A TU MESA'}
-                align="center"
-                weight="200"
-                size="0.7rem"
-              />
-            </MiradorCafePhotoDescriptionTextContainerStyled>
-            <Link
-              to={'/cafe'}
-              style={{ width: 'max-content', margin: '0 auto' }}
-            >
-              <Button
-                colors={COLORS.PEARL_BLACK}
-                text="Ver más"
-                font="Poppins"
-                fontSize="0.7rem"
-                padding="0.25rem 0.5rem"
-                radius="8px"
-                margin="-8px auto 0 auto"
-              />
+            <Link to={'/cafe'} style={{ width: '100%' }}>
+              <img src={CafePhoto} width={'100%'} />
+              <MiradorCafePhotoDescriptionTextContainerStyled>
+                <Text
+                  text={`CAFÉ`}
+                  align="center"
+                  font="Royale"
+                  size="1.5rem"
+                />
+                <Text
+                  text={'DE NUESTRAS MONTAÑAS A TU MESA'}
+                  align="center"
+                  weight="200"
+                  size="0.7rem"
+                />
+              </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
           </MiradorCafePhotoDescriptionContainerStyled>
           <MiradorCafePhotoDescriptionContainerStyled>
-            <img src={BarPhoto} width={'100%'} />
-            <MiradorCafePhotoDescriptionTextContainerStyled>
-              <Text text={`BAR`} align="center" font="Royale" size="1.5rem" />
-              <Text
-                text={'SUMÉRGETE EN LA ATMÓSFERA VIBRANTE DE NUESTRO BAR'}
-                align="center"
-                weight="200"
-                size="0.7rem"
-              />
-            </MiradorCafePhotoDescriptionTextContainerStyled>
-            <Link
-              to={'/bar'}
-              style={{ width: 'max-content', margin: '0 auto' }}
-            >
-              <Button
-                colors={COLORS.PEARL_BLACK}
-                text="Ver más"
-                font="Poppins"
-                fontSize="0.7rem"
-                padding="0.25rem 0.5rem"
-                radius="8px"
-                margin="-8px auto 0 auto"
-              />
+            <Link to={'/bar'} style={{ width: '100%' }}>
+              <img src={BarPhoto} width={'100%'} />
+              <MiradorCafePhotoDescriptionTextContainerStyled>
+                <Text text={`BAR`} align="center" font="Royale" size="1.5rem" />
+                <Text
+                  text={'SUMÉRGETE EN LA ATMÓSFERA VIBRANTE DE NUESTRO BAR'}
+                  align="center"
+                  weight="200"
+                  size="0.7rem"
+                />
+              </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
           </MiradorCafePhotoDescriptionContainerStyled>
           <MiradorCafePhotoDescriptionContainerStyled>
-            <img src={PiqueteaderoPhoto} width={'100%'} />
-            <MiradorCafePhotoDescriptionTextContainerStyled>
-              <Text
-                text={`PIQUETEADERO`}
-                align="center"
-                font="Royale"
-                size="1.5rem"
-              />
-              <Text
-                text={'MÚSICA EN VIVO Y LAS MEJORES PICADAS'}
-                align="center"
-                weight="200"
-                size="0.7rem"
-              />
-            </MiradorCafePhotoDescriptionTextContainerStyled>
-            <Link
-              to={'/piqueteadero'}
-              style={{ width: 'max-content', margin: '0 auto' }}
-            >
-              <Button
-                colors={COLORS.PEARL_BLACK}
-                text="Ver más"
-                font="Poppins"
-                fontSize="0.7rem"
-                padding="0.25rem 0.5rem"
-                radius="8px"
-                margin="-8px auto 0 auto"
-              />
+            <Link to={'/piqueteadero'} style={{ width: '100%' }}>
+              <img src={PiqueteaderoPhoto} width={'100%'} />
+              <MiradorCafePhotoDescriptionTextContainerStyled>
+                <Text
+                  text={`PIQUETEADERO`}
+                  align="center"
+                  font="Royale"
+                  size="1.5rem"
+                />
+                <Text
+                  text={'MÚSICA EN VIVO Y LAS MEJORES PICADAS'}
+                  align="center"
+                  weight="200"
+                  size="0.7rem"
+                />
+              </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
           </MiradorCafePhotoDescriptionContainerStyled>
         </MiradorCafeDescriptionContainerStyled>

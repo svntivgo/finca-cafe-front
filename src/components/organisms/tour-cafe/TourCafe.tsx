@@ -15,6 +15,7 @@ import {
 } from '..';
 import { COLORS } from '../../../constants/colors';
 import PhotoBanner from '../../../assets/tour-cafe/recorre.jpg';
+import PhotoBannerMobile from '../../../assets/tour-cafe/banner-mobile.jpg';
 import CulturaMagica from '../../../assets/tour-cafe/cultura-magica.jpg';
 import Descubre from '../../../assets/tour-cafe/descubre.jpg';
 import Recorre from '../../../assets/tour-cafe/recorre.jpg';
@@ -26,8 +27,10 @@ import { CelebracionesCard } from '../../molecules/celebraciones-card/Celebracio
 import { CelebracionesContact, Gallery, WingCard } from '../../molecules';
 import { GALLERY_TOUR_CAFE } from '../../../constants/gallery';
 import { useNavigate } from 'react-router-dom';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const TourCafe: React.FC = () => {
+  const { isDesktop } = DEVICE_SCREEN;
   const navigate = useNavigate();
   const changeRoute = () => {
     navigate('/tour-cafe-reservation');
@@ -35,7 +38,7 @@ export const TourCafe: React.FC = () => {
 
   return (
     <>
-      <Banner height="800px" image={PhotoBanner} />
+      <Banner image={isDesktop ? PhotoBanner : PhotoBannerMobile} />
       <StyledTourCafeContainer>
         <TourCafeLogoContainerStyled>
           <Icon src={LogoTourCafe} width="10rem" />

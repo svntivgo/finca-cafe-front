@@ -15,6 +15,7 @@ import {
 } from '..';
 import { COLORS } from '../../../constants/colors';
 import PhotoBanner from '../../../assets/hoteles/banner.jpg';
+import PhotoBannerMobile from '../../../assets/hoteles/banner-mobile.jpg';
 import CulturaMagica from '../../../assets/tour-cafe/cultura-magica.jpg';
 import BourbonModelPhoto from '../../../assets/hoteles/modelo.jpg';
 import BourbonPhoto from '../../../assets/hoteles/bourbon.jpg';
@@ -26,11 +27,13 @@ import { GALLERY_BOURBON, GALLERY_TYPICA } from '../../../constants/gallery';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 import { Link } from 'react-router-dom';
 import { HOTELS } from '../../../constants/hotels';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Hotels: React.FC = () => {
+  const { isDesktop } = DEVICE_SCREEN;
   return (
     <>
-      <Banner height="800px" image={PhotoBanner} />
+      <Banner image={isDesktop ? PhotoBanner : PhotoBannerMobile} />
       <StyledHotelsContainer>
         <HotelsLogoContainerStyled>
           <Icon src={LogoHotels} width="10rem" />
@@ -87,15 +90,15 @@ export const Hotels: React.FC = () => {
             />
             <HotelsSpanStyled />
             <Link
-              to={'/habitaciones#bourbon-room-0'}
+              to={'/habitaciones#bourbon-description'}
               style={{ width: 'max-content', margin: '0 auto' }}
             >
               <Button
                 colors={COLORS.PEARL_BLACK}
                 text="Ver habitaciones"
                 font="Poppins"
-                fontSize="0.7rem"
-                padding="0.25rem 0.5rem"
+                fontSize="1rem"
+                padding="0.5rem 2rem"
                 radius="8px"
                 margin="-8px auto 0 auto"
               />
@@ -131,15 +134,15 @@ export const Hotels: React.FC = () => {
             />
             <HotelsSpanStyled />
             <Link
-              to={'/habitaciones#tipica-room-0'}
+              to={'/habitaciones#typica-description'}
               style={{ width: 'max-content', margin: '0 auto' }}
             >
               <Button
                 colors={COLORS.PEARL_BLACK}
                 text="Ver habitaciones"
                 font="Poppins"
-                fontSize="0.7rem"
-                padding="0.25rem 0.5rem"
+                fontSize="1rem"
+                padding="0.5rem 2rem"
                 radius="8px"
                 margin="-8px auto 0 auto"
               />

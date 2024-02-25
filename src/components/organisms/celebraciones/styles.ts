@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { COLORS } from '../../../constants/colors';
 import Speaker from '../../../assets/celebraciones/speaker.jpg';
+import SpeakerMobile from '../../../assets/celebraciones/speaker-mobile.jpg';
 
 export const StyledCelebrationsContainer = styled.div`
   display: flex;
@@ -21,15 +22,13 @@ export const CelebrationsPhotoContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
   padding: auto 0 32px 0;
-  background: url(${Speaker});
-  background-size: 450%;
-  background-position: 68% 100%;
-  width: 100%;
-  height: 700px;
+  background: url(${SpeakerMobile});
+  background-size: cover;
+  width: 90%;
+  height: 200vw;
   @media (min-width: 1023px) {
-    background-size: cover;
-    background-position: center;
-    width: 90%;
+    background: url(${Speaker});
+    height: 700px;
   }
 `;
 

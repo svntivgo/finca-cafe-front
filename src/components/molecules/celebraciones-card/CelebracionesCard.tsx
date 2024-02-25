@@ -52,8 +52,8 @@ export const CelebracionesCard: React.FC<CelebracionesCardProps> = (props) => {
             colors={COLORS.PEARL_BLACK}
             text="Reservar"
             font="Poppins"
-            fontSize="0.5rem"
-            padding="0.25rem 1rem"
+            fontSize="1rem"
+            padding="0.5rem 2rem"
             radius="8px"
             margin="2rem 0"
             onCLick={props.onClick ? props.onClick : () => ({})}

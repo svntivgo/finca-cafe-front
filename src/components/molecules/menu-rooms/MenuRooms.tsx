@@ -27,24 +27,34 @@ export const MenuRooms: React.FC = () => {
         <StyledMenuBox>
           <Text text="HOTELES" font="Royale" color={COLORS.GOLD} size="24px" />
           <StyledMenuItemsContainer>
-            <StyledMenuItem>
-              <Text
-                text={`Hotel ${HOTELS.BOURBON.NAME}`}
-                size="24px"
-                weight="200"
-                capitalize={true}
-                color={COLORS.SMOKE_GREY}
-              />
-            </StyledMenuItem>
-            <StyledMenuItem>
-              <Text
-                text={`Hotel ${HOTELS.TIPICA.NAME}`}
-                size="24px"
-                weight="200"
-                capitalize={true}
-                color={COLORS.SMOKE_GREY}
-              />
-            </StyledMenuItem>
+            <StyledLinkMenuRooms
+              href={`#bourbon-description`}
+              style={{ paddingRight: 0 }}
+            >
+              <StyledMenuItem>
+                <Text
+                  text={`Hotel ${HOTELS.BOURBON.NAME}`}
+                  size="24px"
+                  weight="200"
+                  capitalize={true}
+                  color={COLORS.SMOKE_GREY}
+                />
+              </StyledMenuItem>
+            </StyledLinkMenuRooms>
+            <StyledLinkMenuRooms
+              href={`#typica-description`}
+              style={{ paddingRight: 0 }}
+            >
+              <StyledMenuItem>
+                <Text
+                  text={`Hotel ${HOTELS.TIPICA.NAME}`}
+                  size="24px"
+                  weight="200"
+                  capitalize={true}
+                  color={COLORS.SMOKE_GREY}
+                />
+              </StyledMenuItem>
+            </StyledLinkMenuRooms>
           </StyledMenuItemsContainer>
         </StyledMenuBox>
         <StyledMenuRoomBox>

@@ -17,6 +17,7 @@ import { Button, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { Link } from 'react-router-dom';
+import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const RoomCard: React.FC<RoomCardProps> = (props) => {
   const { setRoom, reservation } = useReservation();
@@ -27,7 +28,7 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
         <Text
           color={COLORS.GOLD}
           font="Royale"
-          size={window.innerWidth > 1023 ? '2rem' : '1.5rem'}
+          size={DEVICE_SCREEN.isDesktop ? '2rem' : '1.5rem'}
           text={props.title}
           weight="400"
           align="center"
