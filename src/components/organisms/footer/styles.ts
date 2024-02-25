@@ -4,11 +4,11 @@ import { FooterProps } from '..';
 
 export const FooterContainerStyled = styled.div<FooterProps>`
   background-color: ${(props) =>
-    props.location === '/' ? COLORS.CREAM : COLORS.WHITE};
+    props.location === '/reserva/selecciona'
+      ? COLORS.WHITE
+      : COLORS.PEARL_BLACK};
 
   @media (min-width: 1023px) {
-    background-color: ${(props) =>
-      props.location === '/' ? COLORS.PEARL_BLACK : COLORS.WHITE};
     padding-left: 0;
     padding-right: 32px;
   }
@@ -76,4 +76,19 @@ export const PartnersIconsStyled = styled.div`
   place-content: center;
   place-items: center;
   padding: 16px 4px;
+`;
+
+export const AgencyInfo = styled.div`
+  display: flex;
+  place-content: end;
+  align-items: center;
+  margin-top: 16px;
+  @media (min-width: 1023px) {
+    padding-right: 80px;
+  }
+`;
+
+export const FooterSpan = styled.div`
+  width: 16px;
+  height: 16px;
 `;

@@ -5,6 +5,14 @@ import SuitePareja from '../assets/rooms/suite-pareja/room.jpg';
 import SuiteCuadruple from '../assets/rooms/suite-cuadruple/room.jpg';
 import SuiteFamiliar from '../assets/rooms/suite-familiar/room.jpg';
 import { ROOM_EQUIPMENTS, RoomEquipment } from './room-equipments';
+import {
+  GALLERY_CUADRUPLE_STANDARD,
+  GALLERY_FAMILIAR_CONNECTING,
+  GALLERY_PAREJA_STANDARD,
+  GALLERY_STANDARD_TWIN,
+  GALLERY_SUITE_JACUZZI,
+  IGallery,
+} from './gallery';
 
 export interface Room {
   title: string;
@@ -16,6 +24,7 @@ export interface Room {
   banner: string;
   equipment: RoomEquipment[];
   hotel: HotelKey;
+  photos: IGallery[];
 }
 
 export interface Hotel {
@@ -38,7 +47,7 @@ export const HOTELS: Hotels = {
   BOURBON: {
     NAME: 'Bourbon',
     DESCRIPTION:
-      'La mezcla del lujo contemporaneo con la inspiración del encanto característico de las haciendas cafeteras. Bourbon está especialmente diseñado y equipado para estadías de placer, negocios y bodas.',
+      'La mezcla del lujo contemporáneo con la inspiración del encanto característico de las haciendas cafeteras. Bourbon está especialmente diseñado y equipado para estadías de placer, negocios y bodas.',
     ROOMS: {
       SUITE_JACUZZI: {
         title: 'SUITE Jacuzzi',
@@ -58,12 +67,13 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
         hotel: 'BOURBON',
+        photos: GALLERY_SUITE_JACUZZI,
       },
       ESTANDAR_TWIN: {
-        title: 'SUITE ESTANDAR TWIN',
+        title: 'ESTÁNDAR TWIN',
         photo: StandardTwin,
         description:
-          'Las habitaciones estandard twin Bourbon cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un refugio perfecto para tu estancia.',
+          'Las habitaciones estándar twin Bourbon cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un refugio perfecto para tu estancia.',
         detailsUrl: '/',
         reserveUrl: '/',
         inverted: false,
@@ -77,19 +87,20 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
         hotel: 'BOURBON',
+        photos: GALLERY_STANDARD_TWIN,
       },
     },
   },
   TIPICA: {
-    NAME: 'Tipica',
+    NAME: 'Typica',
     DESCRIPTION:
-      'Ubicado junto a una finca cafetera tradicional con acceso a los cultivos donde nace nuestro café, nuestro alojamiento tradicional es perfecto para extranjeros y nacionales que desean conocer la cultura cafetera y una estadia tradicional con todo el confort de sus habitaciones y espacios',
+      'Ubicado junto a una finca cafetera tradicional con acceso a los cultivos donde nace nuestro café, nuestro alojamiento tradicional es perfecto para extranjeros y nacionales que desean conocer la cultura cafetera y una estadía tradicional con todo el confort de sus habitaciones y espacios',
     ROOMS: {
-      SUITE_PAREJA_ESTANDAR: {
-        title: 'PAREJA ESTANDAR',
+      PAREJA_ESTANDAR: {
+        title: 'PAREJA ESTÁNDAR',
         photo: SuitePareja,
         description:
-          'Las habitaciones pareja estandard cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un espacio perfecto para tu estancia.',
+          'Las habitaciones pareja estándar cuentan con cama doble. Amplias, acogedoras y llenas de luz natural, estas habitaciones ofrecen un espacio perfecto para tu estancia.',
         detailsUrl: '/',
         reserveUrl: '/',
         inverted: false,
@@ -97,14 +108,18 @@ export const HOTELS: Hotels = {
         equipment: [
           ROOM_EQUIPMENTS.VAULT,
           ROOM_EQUIPMENTS.PARKING,
+          ROOM_EQUIPMENTS.HOTEL_INSURANCE,
+          ROOM_EQUIPMENTS.COFFE_OPEN_BAR,
+          ROOM_EQUIPMENTS.POOL,
           ROOM_EQUIPMENTS.TV,
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
         hotel: 'TIPICA',
+        photos: GALLERY_PAREJA_STANDARD,
       },
-      SUITE_CUADRUPLE_ESTANDAR: {
-        title: 'CUADRUPLE ESTANDAR',
+      CUADRUPLE_ESTANDAR: {
+        title: 'CUÁDRUPLE ESTÁNDAR',
         photo: SuiteCuadruple,
         description:
           'Experimenta la comodidad de la habitación cuádruple con 2 camas dobles. Son espaciosas y rebosan de luz natural, lo que te brindará un ambiente agradable durante tu estancia.',
@@ -115,13 +130,17 @@ export const HOTELS: Hotels = {
         equipment: [
           ROOM_EQUIPMENTS.VAULT,
           ROOM_EQUIPMENTS.PARKING,
+          ROOM_EQUIPMENTS.HOTEL_INSURANCE,
+          ROOM_EQUIPMENTS.COFFE_OPEN_BAR,
+          ROOM_EQUIPMENTS.POOL,
           ROOM_EQUIPMENTS.TV,
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
         hotel: 'TIPICA',
+        photos: GALLERY_CUADRUPLE_STANDARD,
       },
-      SUITE_FAMILIAR_CONNECTING: {
+      FAMILIAR_CONNECTING: {
         title: 'FAMILIAR CONNECTING',
         photo: SuiteFamiliar,
         description:
@@ -133,11 +152,15 @@ export const HOTELS: Hotels = {
         equipment: [
           ROOM_EQUIPMENTS.VAULT,
           ROOM_EQUIPMENTS.PARKING,
+          ROOM_EQUIPMENTS.HOTEL_INSURANCE,
+          ROOM_EQUIPMENTS.COFFE_OPEN_BAR,
+          ROOM_EQUIPMENTS.POOL,
           ROOM_EQUIPMENTS.TV,
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
         hotel: 'TIPICA',
+        photos: GALLERY_FAMILIAR_CONNECTING,
       },
     },
   },

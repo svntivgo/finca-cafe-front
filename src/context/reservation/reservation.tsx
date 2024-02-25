@@ -1,5 +1,6 @@
 import { ReactNode, useState } from 'react';
 import {
+  CoffeeTour,
   Customer,
   Dates,
   Extras,
@@ -25,7 +26,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       name: '',
       hotel: '',
       price: 0,
-      quantity: 0,
+      quantity: 1,
       id: '',
       iva: 0,
     },
@@ -42,9 +43,23 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
     extras: {
       tourCafe: {
         quantity: 0,
-        price: SERVICES.CAFE_TOUR.price,
+        price: SERVICES.CAFE_TOUR.normal,
       },
     },
+    coffeeTour: {
+      name: '',
+      lastName: '',
+      phone: '',
+      email: '',
+      country: '',
+      city: '',
+      isEnglish: false,
+      id: '',
+      idType: '',
+      countCafeTour: 0,
+      date: new Date(),
+    },
+    isLoading: true,
   });
 
   const setOccupancy = (occupancy: Occupancy) => {
@@ -82,6 +97,20 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const setCoffeeTour = (coffeeTour: CoffeeTour) => {
+    setReservation((prevState) => ({
+      ...prevState,
+      coffeeTour,
+    }));
+  };
+
+  const setIsLoading = (isLoading: boolean) => {
+    setReservation((prevState) => ({
+      ...prevState,
+      isLoading,
+    }));
+  };
+
   return (
     <ReservationContext.Provider
       value={{
@@ -91,6 +120,8 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
         setRoom,
         setCustomer,
         setExtras,
+        setCoffeeTour,
+        setIsLoading,
       }}
     >
       {children}

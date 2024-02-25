@@ -9,11 +9,12 @@ import {
   RowLeftStyled,
   RowRightStyled,
 } from '..';
-import { Icon, Text } from '../../atoms';
+import { Button, Icon, Text } from '../../atoms';
 import { GALLERY } from '../../../constants/gallery';
 import rowLeft from '../../../assets/row-left.svg';
 import rowRight from '../../../assets/row-right.svg';
 import { COLORS } from '../../../constants/colors';
+import { Link } from 'react-router-dom';
 
 export const HomeGallery: React.FC = () => {
   const position = useRef(1);
@@ -60,6 +61,17 @@ export const HomeGallery: React.FC = () => {
           weight="200"
           align="justify"
         />
+        <Link to="/celebraciones">
+          <Button
+            colors={COLORS.PEARL_BLACK}
+            text="Celebraciones"
+            font="Poppins"
+            fontSize="0.5rem"
+            padding="0.25rem 1rem"
+            radius="8px"
+            margin="2rem auto 0 auto"
+          />
+        </Link>
       </HomeGalleryDescriptionStyled>
       <HomeGalleryContainerStyled>
         <RowLeftStyled>
@@ -68,9 +80,9 @@ export const HomeGallery: React.FC = () => {
         <HomePhotoGalleryContainerStyled>
           <img src={photo.photo} width="100%" />
           <HomePhotoGalleryTextContainerStyled>
-            <Text text={photo.title} align="center" weight="200" />
+            <Text text={photo.title ?? ''} align="center" weight="200" />
             <Text
-              text={photo.text}
+              text={photo.text ?? ''}
               align="center"
               weight="200"
               size="0.75rem"

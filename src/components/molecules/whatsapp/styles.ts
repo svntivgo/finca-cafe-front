@@ -12,3 +12,8 @@ export const WhatsappContainerStyled = styled.div`
   right: 0;
   top: 20%;
 `;
+
+export const OptionsContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

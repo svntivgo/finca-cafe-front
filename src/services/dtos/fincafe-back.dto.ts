@@ -27,6 +27,24 @@ export interface IReservationTransaction {
   reservationTotal: number;
 }
 
+export interface ICoffeeTourReservation {
+  name: string;
+  lastname: string;
+  docNumber: string;
+  docType: string;
+  phone: string;
+  email: string;
+  country: string;
+  city: string;
+  numberOfPersons: number;
+  isEnglish: boolean;
+  date: Date;
+  transactionReference: string;
+  transactionTotal: number;
+  transactionGateway: string;
+  reservationTotal: number;
+}
+
 export interface IReservationTransactionResponse {
   publicKey: string;
   signatureIntegrity: string;

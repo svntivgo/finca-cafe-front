@@ -5,7 +5,6 @@ import {
   HomeLogoMiradorContainer,
   HomePhotoDescriptionContainer,
   ReviewsContainer,
-  StyledBanner,
   VideoContainer,
 } from './styles';
 import {
@@ -18,8 +17,7 @@ import {
   GastroPhoto,
   HomeSpanStyled,
 } from '../../molecules';
-import { openNewTab } from '../../../shared/helper/open-new-tab';
-import { Icon, Text } from '../../atoms';
+import { Banner, Icon, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import TourCafePhoto from '../../../assets/home/tour-cafe.jpg';
 import MiradorCafePhoto from '../../../assets/home/mirador-cafe.jpg';
@@ -31,11 +29,12 @@ import BarPhoto from '../../../assets/home/bar.jpg';
 import GastronomyPhoto from '../../../assets/home/gastronomia.jpg';
 import LogoMirador from '../../../assets/logo-mirador-cafe.svg';
 import { ContactForm } from '..';
+import BannerPhoto from '../../../assets/hoteles/banner.jpg';
 
 export const Home: React.FC = () => {
   return (
     <HomeContainerStyled>
-      <StyledBanner />
+      <Banner image={BannerPhoto} height="43vw" />
       <ReservationHome />
       <HomeDescription />
       <HomePhotoDescriptionContainer>
@@ -43,22 +42,22 @@ export const Home: React.FC = () => {
           photo={TourCafePhoto}
           width="100%"
           title="TOUR DEL CAFÉ"
-          description="DESCUBRE LA MAGÍA DEL CAFÉ MÁS FAMOSO DEL MUNDO"
-          onClick={() => openNewTab('')}
+          description="DESCUBRE LA MAGIA DEL CAFÉ MÁS FAMOSO DEL MUNDO"
+          goTo="/tour-cafe"
         />
         <PhotoDescription
           photo={MiradorCafePhoto}
           width="100%"
           title="MIRADOR DEL CAFÉ"
           description="RESTAURANTE · BAR · CAFÉ · PIQUETAEDERO · EVENTOS"
-          onClick={() => openNewTab('')}
+          goTo="/mirador-cafe"
         />
         <PhotoDescription
           photo={HotelPhoto}
           width="100%"
-          title="HOTEL"
+          title="HOTELES"
           description="UN DISEÑO VIBRANTE EN EL CORAZÓN DE LAS MONTAÑAS CAFETERAS"
-          onClick={() => openNewTab('')}
+          goTo="/hoteles"
         />
       </HomePhotoDescriptionContainer>
       <ReviewsContainer>

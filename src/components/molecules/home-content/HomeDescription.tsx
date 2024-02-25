@@ -25,10 +25,10 @@ export const HomeDescription: React.FC = () => {
           <Text
             text="Desde hospedajes meticulosamente
         diseñados, amplios recorridos del proceso
-        de cultivo y preparacíon del café en nuestra
+        de cultivo y preparación del café en nuestra
         finca cafetera, experiencias gastronómicas
         y de entretenimiento, hasta escenarios
-        equipados de forma extraordinaría para
+        equipados de forma extraordinaria para
         celebrar momentos especiales o eventos
         empresariales."
             color={COLORS.GREEN}
@@ -37,8 +37,8 @@ export const HomeDescription: React.FC = () => {
           />
           <HomeSpanStyled />
           <Text
-            text="Dile hola al circulo de experiencias Hotel
-        finca del café."
+            text="Dile hola al círculo de experiencias Hotel
+        Finca del Café."
             color={COLORS.GREEN}
             weight="200"
             align="justify"

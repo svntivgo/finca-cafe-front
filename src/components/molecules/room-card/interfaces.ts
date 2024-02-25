@@ -1,3 +1,4 @@
+import { IGallery } from '../../../constants/gallery';
 import { RoomEquipment } from '../../../constants/room-equipments';
 import { Room } from '../../../constants/rooms';
 
@@ -15,5 +16,7 @@ export interface RoomCardProps extends Room {
   banner: string;
   equipment: RoomEquipment[];
   price: number;
+  photos: IGallery[];
+  disableDetail?: boolean;
   reserveAction: () => void;
 }

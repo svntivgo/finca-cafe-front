@@ -4,11 +4,13 @@ import { WingCard } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
 import { Icon, Text } from '../../atoms';
 import {
+  AgencyInfo,
   FooterBoxGroupStyled,
   FooterBoxStyled,
   FooterContainerStyled,
   FooterHeadStyled,
   FooterInfoStyled,
+  FooterSpan,
   NavigationIconsContainerStyled,
   NavigationIconsStyled,
   PartnersIconsContainerStyled,
@@ -16,6 +18,7 @@ import {
 } from '..';
 import { FINCA_CAFE_INFO } from '../../../constants/finca-cafe-info';
 import Logo from '../../../assets/logo-finca.svg';
+import Malamente from '../../../assets/malamente.svg';
 import WazeIcon from '../../../assets/waze.svg';
 import GoogleMapsIcon from '../../../assets/google-maps.svg';
 import ColombiaIcon from '../../../assets/colombia-logo.svg';
@@ -24,6 +27,7 @@ import AsoturismoIcon from '../../../assets/asoturismo.svg';
 import PereiraIcon from '../../../assets/pereira-bouru.svg';
 import CertificadoIcon from '../../../assets/certificado-calidad-turistica.svg';
 import { Link } from 'react-router-dom';
+import { openNewTab } from '../../../shared/helper/open-new-tab';
 
 export const Footer: React.FC = () => {
   const location = useLocation();
@@ -148,6 +152,20 @@ export const Footer: React.FC = () => {
             />
           </FooterBoxStyled>
         </FooterInfoStyled>
+        <AgencyInfo>
+          <Text
+            text="Desarrollador técnologico de este sitio web"
+            weight="200"
+          />
+          <FooterSpan />
+          <Icon
+            src={Malamente}
+            width={'50px'}
+            onClick={() =>
+              openNewTab('https://www.instagram.com/malamente_co/')
+            }
+          />
+        </AgencyInfo>
       </WingCard>
     </FooterContainerStyled>
   );

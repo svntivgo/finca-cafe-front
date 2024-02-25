@@ -52,7 +52,14 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
             <Icon src={LogoSVG} width="140px" />
           </Link>
           <Link to={'/reserva/selecciona'}>
-            <Button text="Reservar" colors={COLORS.GOLD} font={COLORS.WHITE} />
+            <Button
+              text="Reservar"
+              colors={COLORS.GOLD}
+              font={COLORS.WHITE}
+              fontSize="0.7rem"
+              margin="0 1rem 0 0"
+              padding="0.2rem 1.5rem"
+            />
           </Link>
         </NavMenuInfo>
       </NavMenuHeader>

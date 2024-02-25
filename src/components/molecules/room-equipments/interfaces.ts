@@ -8,4 +8,5 @@ export interface RoomEquipmentsProps {
   isCoffeOpenBar: boolean;
   isPool: boolean;
   isJaccuzzi: boolean;
+  isOpticFiber: boolean;
 }

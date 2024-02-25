@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyledBorderedContainer,
   StyledButtonContainer,
@@ -11,17 +11,29 @@ import { COLORS } from '../../../constants/colors';
 import { SERVICES } from '../../../constants/services';
 import { useReservation } from '../../../context';
 
-export const CafeTourService: React.FC = () => {
+export const CafeTourService: React.FC<{
+  isEnglish?: boolean;
+  simpleForm?: boolean;
+}> = (props) => {
   const [count, setCount] = useState(0);
   const { setExtras, reservation } = useReservation();
+
+  useEffect(() => {}, [reservation.extras.tourCafe.quantity]);
 
   return (
     <>
       <StyledBorderedContainer>
-        <Text text="Tour del café" color={COLORS.PEARL_GREY} />
+        <Text
+          text={`Tour del café ${props.isEnglish ? '(English)' : ''}`}
+          color={COLORS.PEARL_GREY}
+        />
         <div>
           <Text
-            text={`$${SERVICES.CAFE_TOUR.price}`}
+            text={`$${
+              props.isEnglish
+                ? SERVICES.CAFE_TOUR.english
+                : SERVICES.CAFE_TOUR.normal
+            }`}
             color={COLORS.PEARL_GREY}
             align="center"
           />
@@ -37,6 +49,11 @@ export const CafeTourService: React.FC = () => {
           <StyledSelectorButton
             onClick={() => {
               count > 0 && setCount(count - 1);
+              count > 0 &&
+                setExtras({
+                  ...reservation.extras,
+                  tourCafe: { ...reservation.extras.tourCafe, quantity: count },
+                });
             }}
           >
             <Text
@@ -54,6 +71,13 @@ export const CafeTourService: React.FC = () => {
           <StyledSelectorButton
             onClick={() => {
               setCount(count + 1);
+              setExtras({
+                ...reservation.extras,
+                tourCafe: {
+                  ...reservation.extras.tourCafe,
+                  quantity: count + 1,
+                },
+              });
             }}
           >
             <Text
@@ -66,24 +90,31 @@ export const CafeTourService: React.FC = () => {
         </StyledSelectorContainer>
       </StyledCafeContainer>
       <Text
-        text={`Total: ${count * SERVICES.CAFE_TOUR.price} COP`}
+        text={`Total: ${
+          count *
+          (props.isEnglish
+            ? SERVICES.CAFE_TOUR.english
+            : SERVICES.CAFE_TOUR.normal)
+        } COP`}
         color={COLORS.PEARL_GREY}
       />
       <Text text="Impuestos incluidos" color={COLORS.PEARL_GREY} />
-      <StyledButtonContainer>
-        <Button
-          text="Añadir a mi reserva"
-          colors={COLORS.PEARL_BLACK}
-          font={COLORS.PEARL_GREY}
-          radius="3rem"
-          onCLick={() =>
-            setExtras({
-              ...reservation.extras,
-              tourCafe: { ...reservation.extras.tourCafe, quantity: count },
-            })
-          }
-        />
-      </StyledButtonContainer>
+      {!props.simpleForm && (
+        <StyledButtonContainer>
+          <Button
+            text="Añadir a mi reserva"
+            colors={COLORS.PEARL_BLACK}
+            font={COLORS.PEARL_GREY}
+            radius="3rem"
+            onCLick={() =>
+              setExtras({
+                ...reservation.extras,
+                tourCafe: { ...reservation.extras.tourCafe, quantity: count },
+              })
+            }
+          />
+        </StyledButtonContainer>
+      )}
     </>
   );
 };

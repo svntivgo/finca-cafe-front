@@ -12,6 +12,8 @@ export const StyledWingCard = styled.div<WingCardProps>`
 `;
 
 export const StyledWingContainer = styled.div<WingCardProps>`
+  display: flex;
+  flex-direction: column;
   background-color: ${(props) => props.background};
   border-radius: ${(props) =>
     props.inverted ? '24px 0 24px 24px' : '0 24px 24px 24px'};

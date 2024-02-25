@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Banner, Button, Text } from '../../atoms';
-import photo from '../../../assets/home/home-banner.jpg';
+import photo from '../../../assets/hoteles/banner.jpg';
 import {
   ReservationHomeCards,
   ReservationOccupancyCard,
@@ -24,6 +24,7 @@ import {
 import { ROOMS_BOURBON, ROOMS_TIPICA, Room } from '../../../constants/rooms';
 import { HotelFive, IHabitaciones } from '../../../services';
 import { hotelFiveDate } from '../../../shared/helper/date-formatter';
+import LoadingScreen from '../loading-screen/LoadingScreen';
 
 export const RoomSelection: React.FC = () => {
   const steps = [
@@ -31,8 +32,14 @@ export const RoomSelection: React.FC = () => {
     'Información del huésped',
     'Confirmación de reserva',
   ];
-  const { setDates, setOccupancy, setRoom, setExtras, reservation } =
-    useReservation();
+  const {
+    setDates,
+    setOccupancy,
+    setRoom,
+    setExtras,
+    setIsLoading,
+    reservation,
+  } = useReservation();
   const [activeStep, setActiveState] = useState(0);
   const [rooms, setRooms] = useState<Room[]>([]);
   const [state, setState] = useState<{
@@ -91,14 +98,15 @@ export const RoomSelection: React.FC = () => {
 
   enum nombres {
     'SUITE' = 'SUITE Jacuzzi',
-    'ESTANDAR TWIN' = 'SUITE ESTANDAR TWIN',
-    'QUEEN ROOM' = 'PAREJA ESTANDAR',
-    'CUADRUPLE' = 'CUADRUPLE ESTANDAR',
+    'ESTANDAR TWIN' = 'ESTÁNDAR TWIN',
+    'QUEEN ROOM' = 'PAREJA ESTÁNDAR',
+    'CUADRUPLE' = 'CUÁDRUPLE ESTÁNDAR',
     'CONNECTING FAMILIAR' = 'FAMILIAR CONNECTING',
   }
 
   const availableRooms = async () => {
     const hotelApi = new HotelFive();
+    // props.setIsLoading(true);
     const { data } = await hotelApi.rooms();
     const { habitaciones } = data;
     const occupancy = reservation.occupancy.adult + reservation.occupancy.minor;
@@ -143,7 +151,7 @@ export const RoomSelection: React.FC = () => {
         acc.push(habitacion);
         const name =
           nombres[habitacion.tipo as keyof typeof nombres]?.toString() ?? '';
-        const foundRoom = allRooms.find((room) => room.title === name ?? '');
+        const foundRoom = allRooms.find((room) => room.title === name);
 
         if (foundRoom) {
           foundRoom.id = habitacion.id;
@@ -165,16 +173,32 @@ export const RoomSelection: React.FC = () => {
       ...reservation.extras,
       tourCafe: { ...reservation.extras.tourCafe, quantity: 0 },
     });
-  }, []);
+  }, [1]);
 
   useEffect(() => {
-    void availableRooms().then((roomsHotelFive) =>
-      roomsReduced(roomsHotelFive),
-    );
+    setIsLoading(true);
+    void availableRooms()
+      .then((roomsHotelFive) => {
+        roomsReduced(roomsHotelFive);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [reservation.dates, reservation.occupancy]);
+
+  function formatMoney(amount: number) {
+    if (isNaN(amount)) {
+      return 'Invalid amount';
+    }
+
+    const roundedAmount = amount.toFixed(2);
+
+    return `$${roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+  }
 
   return (
     <>
+      <LoadingScreen isLoading={reservation.isLoading} />
       <Banner image={photo} height="500px" />
       <StyledReservationInfoContainer>
         <WingCard background={COLORS.PEARL_BLACK}>
@@ -209,12 +233,14 @@ export const RoomSelection: React.FC = () => {
             />
             <Button
               colors={COLORS.GREEN}
-              text={`$${
+              text={`${formatMoney(
                 reservation.room.price * reservation.room.quantity +
-                reservation.extras.tourCafe.price *
-                  reservation.extras.tourCafe.quantity
-              } COP`}
+                  reservation.extras.tourCafe.price *
+                    reservation.extras.tourCafe.quantity,
+              )} COP`}
               font={COLORS.GOLD}
+              padding={window.innerWidth > 1023 ? '6px 16px' : '6px 6px'}
+              fontSize={window.innerWidth > 1023 ? '0.8rem' : '0.6rem'}
             />
           </StyledInfoContainer>
           <Text

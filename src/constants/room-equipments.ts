@@ -6,7 +6,7 @@ import Insurance from '../assets/equipments/insurance.svg';
 import Coffee from '../assets/equipments/coffee.svg';
 import Pool from '../assets/equipments/pool.svg';
 import Jaccuzzi from '../assets/equipments/jacuzzi.svg';
-import OpticFiber from '../assets/equipments/Recurso 31.svg';
+import OpticFiber from '../assets/equipments/Recurso 51.svg';
 
 export interface RoomEquipment {
   NAME: string;

@@ -112,13 +112,13 @@ export const GastroPhotoDescriptionContainerStyled = styled.div`
 
 export const RowLeftStyled = styled.div`
   position: relative;
-  left: 32px;
+  left: 20px;
   margin: auto;
 `;
 
 export const RowRightStyled = styled.div`
   position: relative;
-  right: 32px;
+  right: 20px;
   margin: auto;
 `;
 

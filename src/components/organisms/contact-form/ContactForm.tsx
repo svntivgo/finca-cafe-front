@@ -15,6 +15,7 @@ import { Button, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import axios from 'axios';
 import { CONSTANTS } from '../../../constants/constants';
+import { useLocation } from 'react-router-dom';
 
 const initialValues: contactFormSchema = {
   name: '',
@@ -25,6 +26,8 @@ const initialValues: contactFormSchema = {
 };
 
 export const ContactForm: React.FC = () => {
+  const location = useLocation();
+
   const { FINCA_CAFE } = CONSTANTS;
   const { API } = FINCA_CAFE;
   const formik = useFormik({
@@ -37,7 +40,7 @@ export const ContactForm: React.FC = () => {
   });
 
   return (
-    <StyledContactContainer>
+    <StyledContactContainer location={location.pathname}>
       <Formik
         initialValues={initialValues}
         validationSchema={contactFormValidationSchema}

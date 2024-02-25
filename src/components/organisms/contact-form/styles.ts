@@ -2,9 +2,17 @@ import styled from '@emotion/styled';
 import { COLORS } from '../../../constants/colors';
 import { TextField } from '@mui/material';
 
-export const StyledContactContainer = styled.div`
+interface props {
+  location: string;
+}
+
+export const StyledContactContainer = styled.div<props>`
   width: 100%;
-  background-color: ${COLORS.PEARL_BLACK};
+  background-color: ${(props) =>
+    props.location === '/reserva/selecciona' ||
+    props.location === '/tour-cafe-reservation'
+      ? COLORS.WHITE
+      : COLORS.PEARL_BLACK};
   border-radius: 0 32px 0 0;
   color: ${COLORS.CREAM};
   padding: 3rem 0;

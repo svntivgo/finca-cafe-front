@@ -1,5 +1,5 @@
 import { MenuItemProps } from '../components/molecules';
-// import MiradorSVG from '../assets/navmenu/icono-mirador.svg';
+import MiradorSVG from '../assets/navmenu/icono-mirador.svg';
 import HabitacionesSVG from '../assets/navmenu/icono-habitaciones.svg';
 import RestauranteSVG from '../assets/navmenu/icono-restaurante.svg';
 import TourCafeSVG from '../assets/navmenu/icono-tour-del-cafe.svg';
@@ -9,12 +9,12 @@ import CelebracionesSVG from '../assets/navmenu/icono-celebraciones.svg';
 // import UbicacionSVG from '../assets/navmenu/icono-corporativo.svg';
 
 export const NAV_ITEMS: MenuItemProps[] = [
-  // {
-  //   path: '/mirador-cafe',
-  //   src: MiradorSVG,
-  //   text: 'Mirador del café',
-  //   width: '1.5rem',
-  // },
+  {
+    path: '/mirador-cafe',
+    src: MiradorSVG,
+    text: 'Mirador del café',
+    width: '1.5rem',
+  },
   {
     path: '/habitaciones',
     src: HabitacionesSVG,
@@ -51,12 +51,18 @@ export const NAV_ITEMS: MenuItemProps[] = [
     text: 'Celebraciones',
     width: '1.5rem',
   },
-  // {
-  //   path: '/tour-cafe',
-  //   src: TourCafeSVG,
-  //   text: 'Tour del café',
-  //   width: '1.5rem',
-  // },
+  {
+    path: '/tour-cafe',
+    src: TourCafeSVG,
+    text: 'Tour del café',
+    width: '1.5rem',
+  },
+  {
+    path: '/hoteles',
+    src: HabitacionesSVG,
+    text: 'Hoteles',
+    width: '1.5rem',
+  },
   // {
   //   path: '/corporativo',
   //   src: CorporativoSVG,

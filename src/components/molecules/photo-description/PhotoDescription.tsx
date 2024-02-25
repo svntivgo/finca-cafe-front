@@ -6,6 +6,7 @@ import {
 } from '..';
 import { Button, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
+import { Link } from 'react-router-dom';
 
 export const PhotoDescription: React.FC<PhotoDescriptionProps> = (props) => {
   return (
@@ -20,16 +21,17 @@ export const PhotoDescription: React.FC<PhotoDescriptionProps> = (props) => {
           size="0.7rem"
         />
       </PhotoDescriptionTextContainerStyled>
-      <Button
-        colors={COLORS.PEARL_BLACK}
-        text="Ver más"
-        font="Poppins"
-        fontSize="0.5rem"
-        padding="0.25rem"
-        radius="8px"
-        onCLick={props.onClick}
-        margin="-8px auto 0 auto"
-      />
+      <Link to={props.goTo} style={{ width: 'min-content', margin: '0 auto' }}>
+        <Button
+          colors={COLORS.PEARL_BLACK}
+          text="Ver más"
+          font="Poppins"
+          fontSize="0.5rem"
+          padding="0.25rem 0.5rem"
+          radius="8px"
+          margin="-8px auto 0 auto"
+        />
+      </Link>
     </PhotoDescriptionContainerStyled>
   );
 };

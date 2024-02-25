@@ -1,19 +1,38 @@
 import React from 'react';
-import { StyledHotelDescriptionContainer, StyledRoomContainer } from '..';
+import {
+  StyledHotelDescriptionContainer,
+  StyledRoomContainer,
+  StyledRoomGalleryListContainer,
+} from '..';
 import { Banner, Text } from '../../atoms';
-import { RoomCard, RoomEquipments, WingCard } from '../../molecules';
+import {
+  ImageGalleryList,
+  RoomCard,
+  RoomEquipments,
+  WingCard,
+} from '../../molecules';
 import { COLORS } from '../../../constants/colors';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { HOTELS, Hotel, HotelKey, RoomKey } from '../../../constants/hotels';
+import { GALLERY_BOURBON, GALLERY_TYPICA } from '../../../constants/gallery';
 
 export const Room: React.FC = () => {
   const { hotel, room } = useParams<{ hotel: HotelKey; room: RoomKey }>();
   const hotelName = hotel?.toUpperCase() ?? '';
-  const roomName = room?.toUpperCase().replace(/ /g, '_') ?? '';
+  const removeAccents = (str: string) => {
+    return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  };
+
+  const roomName = removeAccents(room?.toUpperCase().replace(/ /g, '_') ?? '');
 
   const hotelInfo: Hotel = HOTELS[hotelName as HotelKey];
 
   const roomInfo = room && hotelInfo?.ROOMS[roomName];
+
+  const navigate = useNavigate();
+  const changeRoute = () => {
+    navigate('/reserva/selecciona');
+  };
 
   return (
     <StyledRoomContainer>
@@ -23,10 +42,11 @@ export const Room: React.FC = () => {
           <StyledHotelDescriptionContainer>
             <WingCard background={COLORS.GREEN}>
               <Text
-                text={hotelInfo.DESCRIPTION}
-                size="12px"
-                weight="300"
+                text={`Hotel ${hotelInfo.NAME}`}
+                size="3rem"
+                weight="200"
                 align="justify"
+                font="Royale"
               />
             </WingCard>
           </StyledHotelDescriptionContainer>
@@ -40,9 +60,11 @@ export const Room: React.FC = () => {
             reserveUrl={roomInfo.reserveUrl}
             title={roomInfo.title}
             price={0}
-            reserveAction={() => console.log('')}
+            reserveAction={() => changeRoute()}
             id={''}
             iva={0}
+            photos={roomInfo.photos}
+            disableDetail
           />
           <WingCard background={COLORS.PEARL_BLACK} inverted={true}>
             <RoomEquipments
@@ -54,11 +76,19 @@ export const Room: React.FC = () => {
               isCoffeOpenBar={false}
               isHotelInsurance={false}
               isPool={false}
+              isOpticFiber={false}
               title="EQUIPAMENTO"
             />
           </WingCard>
         </>
       )}
+      <StyledRoomGalleryListContainer>
+        <ImageGalleryList
+          photos={
+            hotelInfo.NAME === 'Bourbon' ? GALLERY_BOURBON : GALLERY_TYPICA
+          }
+        />
+      </StyledRoomGalleryListContainer>
     </StyledRoomContainer>
   );
 };

@@ -28,6 +28,7 @@ export const RoomEquipments: React.FC<RoomEquipmentsProps> = (props) => {
   props.isCoffeOpenBar && equipments.push(ROOM_EQUIPMENTS.COFFE_OPEN_BAR);
   props.isPool && equipments.push(ROOM_EQUIPMENTS.POOL);
   props.isJaccuzzi && equipments.push(ROOM_EQUIPMENTS.JACUZZI);
+  props.isOpticFiber && equipments.push(ROOM_EQUIPMENTS.OPTIC_FIBER);
 
   return (
     <>

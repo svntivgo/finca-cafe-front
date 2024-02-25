@@ -18,6 +18,7 @@ import { differenceInDays } from 'date-fns';
 import { customAlphabet } from 'nanoid';
 import { FincafeBack } from '../../../services/fincafe-back';
 import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
+import { useLocation } from 'react-router-dom';
 
 const initialValues: formSchema = {
   name: '',
@@ -33,6 +34,8 @@ const initialValues: formSchema = {
 };
 
 export const ReservationForm: React.FC = () => {
+  const location = useLocation();
+  const actualDate = new Date(Date.now());
   const { setCustomer, reservation } = useReservation();
   const formik = useFormik({
     initialValues,
@@ -64,7 +67,7 @@ export const ReservationForm: React.FC = () => {
 
       const characters =
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-      const stringReference = customAlphabet(characters, 9)();
+      const stringReference = `HR${customAlphabet(characters, 7)()}`;
 
       const reservationData: IReservationTransaction = {
         name,
@@ -101,20 +104,29 @@ export const ReservationForm: React.FC = () => {
         const { data: fincafeBackResponse } =
           await fincafeBack.createReservationTransaction(reservationData);
         const { publicKey, signatureIntegrity } = fincafeBackResponse;
-        const result = wompi.checkout(
+        wompi.checkout(
           publicKey,
           stringReference,
           `${totalReservation}00`,
           signatureIntegrity,
         );
-        console.log(result);
       };
       await reservationCheckout();
     },
   });
 
+  function formatMoney(amount: number) {
+    if (isNaN(amount)) {
+      return 'Invalid amount';
+    }
+
+    const roundedAmount = amount.toFixed(2);
+
+    return `$${roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+  }
+
   return (
-    <StyledContactContainer>
+    <StyledContactContainer location={location.pathname}>
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -266,17 +278,22 @@ export const ReservationForm: React.FC = () => {
               text="Pagar ahora"
               colors={COLORS.GREEN}
               radius="3rem"
-              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              disabled
               type="submit"
             />
             <StyledContactSpan />
             <div>
               <Text
-                text={`Importe de ${
-                  reservation.room.price * reservation.room.quantity
-                } COP debido el 29 de septiembre de 2023.`}
+                text={`Importe de ${formatMoney(
+                  reservation.room.price * reservation.room.quantity +
+                    reservation.extras.tourCafe.price *
+                      reservation.extras.tourCafe.quantity,
+                )} COP debido el ${actualDate.getDate()}/${
+                  actualDate.getMonth() + 1
+                }/${actualDate.getFullYear()}.`}
                 weight="600"
-                size="0.7rem"
+                size="0.5rem"
                 color={COLORS.GREEN}
               />
               <Text

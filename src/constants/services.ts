@@ -1,5 +1,6 @@
 export const SERVICES = {
   CAFE_TOUR: {
-    price: 85000,
+    normal: 90000,
+    english: 130000,
   },
 };

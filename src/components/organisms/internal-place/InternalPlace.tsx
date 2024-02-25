@@ -11,7 +11,6 @@ import {
 } from './styles';
 import { InternalPlaceProps } from './interfaces';
 import { COLORS } from '../../../constants/colors';
-import { Link } from 'react-router-dom';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
 export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
@@ -40,7 +39,7 @@ export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
         />
       </StyledInternalTextContainer>
       <StyledInternalButtonsContainer>
-        <Link to={props.contact}>
+        {props.isBooking && (
           <Button
             colors={COLORS.GOLD}
             font={COLORS.PEARL_BLACK}
@@ -49,8 +48,11 @@ export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
             radius="50px"
             text="Reserva"
             weight={600}
+            onCLick={() =>
+              openNewTab('https://api.whatsapp.com/send?phone=573178000001')
+            }
           />
-        </Link>
+        )}
         <Button
           colors={COLORS.PEARL_BLACK}
           font={COLORS.GOLD}

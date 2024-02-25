@@ -3,5 +3,5 @@ export interface PhotoDescriptionProps {
   width: string;
   title: string;
   description: string;
-  onClick: () => void;
+  goTo: string;
 }

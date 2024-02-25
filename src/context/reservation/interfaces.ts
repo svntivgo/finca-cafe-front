@@ -4,6 +4,8 @@ export interface Reservation {
   room: Room;
   customer: Customer;
   extras: Extras;
+  coffeeTour: CoffeeTour;
+  isLoading: boolean;
 }
 
 export interface Occupancy {
@@ -45,6 +47,20 @@ export interface Extras {
   tourCafe: ExtrasDetail;
 }
 
+export interface CoffeeTour {
+  date: Date;
+  name: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  country: string;
+  city: string;
+  isEnglish: boolean;
+  id: string;
+  idType: string;
+  countCafeTour: number;
+}
+
 export interface ReservationContextType {
   reservation: Reservation;
   setOccupancy: (occupancy: Occupancy) => void;
@@ -52,4 +68,6 @@ export interface ReservationContextType {
   setRoom: (room: Room) => void;
   setCustomer: (customer: Customer) => void;
   setExtras: (extra: Extras) => void;
+  setCoffeeTour: (coffeeTour: CoffeeTour) => void;
+  setIsLoading: (isLoading: boolean) => void;
 }
