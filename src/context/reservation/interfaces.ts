@@ -35,7 +35,7 @@ export interface Customer {
   country: string;
   city: string;
   id: string;
-  idType: string;
+  idType: number;
 }
 
 export interface ExtrasDetail {

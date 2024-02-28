@@ -20,7 +20,7 @@ export interface IReservationHotelFiveResponse {
 }
 
 export interface IDocumentTypesHotelFiveResponse {
-  tipodocuid: string;
+  tipodocuid: number;
   nombre: string;
 }
 

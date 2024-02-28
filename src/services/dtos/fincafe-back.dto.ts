@@ -2,7 +2,7 @@ export interface IReservationTransaction {
   name: string;
   lastname: string;
   docNumber: string;
-  docType: string;
+  docType: number;
   phone: string;
   email: string;
   country: string;

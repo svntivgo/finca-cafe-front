@@ -8,6 +8,7 @@ export const CONSTANTS = {
       GET_ROOMS: '/HotelFive/API/Reservas/Habitaciones',
       POST_RESERVATION: 'hHotelFinca/API/Reservas/Reservacion',
     },
+    EXCLUDE_IVA: ['41', '42'],
   },
   FINCA_CAFE: {
     API: {

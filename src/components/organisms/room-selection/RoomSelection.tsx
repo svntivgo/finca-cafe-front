@@ -114,7 +114,6 @@ export const RoomSelection: React.FC = () => {
     const availableRooms: IHabitaciones[] = [];
     const startDate = hotelFiveDate(reservation.dates.start);
     const endDate = hotelFiveDate(reservation.dates.end);
-    console.log(startDate);
     habitaciones.reduce((acc: IHabitaciones[], habitacion: IHabitaciones) => {
       const found = habitacion.disponibilidad.some(
         (available, index, array) => {

@@ -6,7 +6,7 @@ export interface formSchema {
   country: string;
   city: string;
   id: string;
-  idType: string;
+  idType: number;
   countCafeTour: number;
   termsConditions: boolean;
 }

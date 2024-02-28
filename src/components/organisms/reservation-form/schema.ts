@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 export const validationSchema = Yup.object().shape({
   name: Yup.string().required('Campo obligatorio'),
   lastName: Yup.string().required('Campo obligatorio'),
+  idType: Yup.number().required('Campo obligatorio'),
   id: Yup.number()
     .required('Campo obligatorio')
     .typeError('Se debe ingresar solo números'),

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik, useFormik, Form } from 'formik';
 import {
   CafeTourService,
@@ -10,7 +10,7 @@ import {
   formSchema,
   validationSchema,
 } from '..';
-import { Button, InputField, Text } from '../../atoms';
+import { Button, InputField, SelectInput, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { WompiApi } from '../../../services/wompi-api';
@@ -19,6 +19,8 @@ import { customAlphabet } from 'nanoid';
 import { FincafeBack } from '../../../services/fincafe-back';
 import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
 import { useLocation } from 'react-router-dom';
+import { HotelFive } from '../../../services';
+import { CONSTANTS } from '../../../constants/constants';
 
 const initialValues: formSchema = {
   name: '',
@@ -28,12 +30,14 @@ const initialValues: formSchema = {
   country: '',
   city: '',
   id: '',
-  idType: '',
+  idType: 0,
   countCafeTour: 0,
   termsConditions: false,
 };
 
 export const ReservationForm: React.FC = () => {
+  const initDocumentTypes = { label: 'Seleccione un tipo', value: 0 };
+  const [documentTypes, setDocumentTypes] = useState([initDocumentTypes]);
   const location = useLocation();
   const actualDate = new Date(Date.now());
   const { setCustomer, reservation } = useReservation();
@@ -43,11 +47,16 @@ export const ReservationForm: React.FC = () => {
     onSubmit: async (values) => {
       const { name, lastName, phone, email, country, city, id, idType } =
         values;
+      const isVatPayer = !CONSTANTS.HOTEL.EXCLUDE_IVA.includes(
+        idType.toString(),
+      );
+
       const quantityDays = differenceInDays(
         reservation.dates.end,
         reservation.dates.start,
       );
-      const totalPriceRoom = reservation.room.price * quantityDays;
+      const totalPriceRoom =
+        (reservation.room.price + reservation.room.iva) * quantityDays;
       const totalCafeTour =
         reservation.extras.tourCafe.price *
         reservation.extras.tourCafe.quantity;
@@ -62,7 +71,7 @@ export const ReservationForm: React.FC = () => {
         country,
         city,
         id,
-        idType: 'Cedula de Ciudadania',
+        idType,
       });
 
       const characters =
@@ -77,7 +86,7 @@ export const ReservationForm: React.FC = () => {
         country,
         city,
         docNumber: id,
-        docType: idType || 'Cedula de Ciudadania',
+        docType: idType,
         adults: reservation.occupancy.adult,
         minors: reservation.occupancy.minor,
         startDate: reservation.dates.start,
@@ -86,7 +95,7 @@ export const ReservationForm: React.FC = () => {
         room: reservation.room.id,
         roomName: reservation.room.name,
         roomPrice: reservation.room.price,
-        roomIva: reservation.room.iva,
+        roomIva: isVatPayer ? reservation.room.iva : 0,
         roomTotal: totalPriceRoom,
         extra: '',
         extraIva: 0,
@@ -124,6 +133,20 @@ export const ReservationForm: React.FC = () => {
 
     return `$${roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
   }
+
+  async function getDocumentTypes() {
+    const hotelFive = new HotelFive();
+    const documentTypes = await hotelFive.documentTypes();
+    return documentTypes.data.map((documentType) => {
+      return { label: documentType.nombre, value: documentType.tipodocuid };
+    });
+  }
+
+  useEffect(() => {
+    void getDocumentTypes().then((response) => {
+      setDocumentTypes(response);
+    });
+  }, []);
 
   return (
     <StyledContactContainer location={location.pathname}>
@@ -166,6 +189,19 @@ export const ReservationForm: React.FC = () => {
                   formik.touched.lastName && Boolean(formik.errors.lastName)
                 }
                 helperText={formik.touched.lastName && formik.errors.lastName}
+              />
+            </StyledContactInputContainer>
+            <StyledContactInputContainer>
+              <SelectInput
+                label="Tipo de documento"
+                id="idType"
+                name="idType"
+                options={documentTypes}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.idType}
+                error={formik.touched.idType && Boolean(formik.errors.idType)}
+                helperText={formik.touched.idType && formik.errors.idType}
               />
             </StyledContactInputContainer>
             <StyledContactInputContainer>
@@ -278,8 +314,8 @@ export const ReservationForm: React.FC = () => {
               text="Pagar ahora"
               colors={COLORS.GREEN}
               radius="3rem"
-              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              disabled
+              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              // disabled
               type="submit"
             />
             <StyledContactSpan />
