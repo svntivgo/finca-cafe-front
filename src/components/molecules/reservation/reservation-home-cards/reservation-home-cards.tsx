@@ -37,7 +37,7 @@ export const ReservationHomeCards: React.FC<ReservationHomeCardsProps> = (
     },
     {
       title: 'Ocupación',
-      data: `${props.reservationOccupancy.adult} | ${props.reservationOccupancy.minor}`,
+      data: `${props.reservationOccupancy.adults} | ${props.reservationOccupancy.minors}`,
       adult: '+18',
       minor: '-18',
     },

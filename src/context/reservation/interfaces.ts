@@ -1,5 +1,6 @@
 export interface Reservation {
   occupancy: Occupancy;
+  minorAges: MinorAges[];
   dates: Dates;
   room: Room;
   customer: Customer;
@@ -9,8 +10,18 @@ export interface Reservation {
 }
 
 export interface Occupancy {
-  adult: number;
-  minor: number;
+  adults: number;
+  minors: number;
+}
+
+export interface Minors {
+  children: MinorAges[];
+  youngs: MinorAges[];
+}
+
+export interface MinorAges {
+  index: number;
+  age: number;
 }
 
 export interface Dates {
@@ -64,6 +75,7 @@ export interface CoffeeTour {
 export interface ReservationContextType {
   reservation: Reservation;
   setOccupancy: (occupancy: Occupancy) => void;
+  setMinorAges: (minorAges: MinorAges[]) => void;
   setDates: (dates: Dates) => void;
   setRoom: (room: Room) => void;
   setCustomer: (customer: Customer) => void;

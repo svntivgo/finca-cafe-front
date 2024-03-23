@@ -4,6 +4,7 @@ import {
   Customer,
   Dates,
   Extras,
+  MinorAges,
   Occupancy,
   Reservation,
   ReservationContext,
@@ -19,9 +20,10 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       end: addDays(new Date(), 1),
     },
     occupancy: {
-      adult: 1,
-      minor: 0,
+      adults: 1,
+      minors: 0,
     },
+    minorAges: [],
     room: {
       name: '',
       hotel: '',
@@ -38,7 +40,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       country: '',
       city: '',
       id: '',
-      idType: '',
+      idType: 13,
     },
     extras: {
       tourCafe: {
@@ -66,6 +68,13 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
     setReservation((prevState) => ({
       ...prevState,
       occupancy,
+    }));
+  };
+
+  const setMinorAges = (minorAges: MinorAges[]) => {
+    setReservation((prevState) => ({
+      ...prevState,
+      minorAges,
     }));
   };
 
@@ -116,6 +125,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       value={{
         reservation,
         setOccupancy,
+        setMinorAges,
         setDates,
         setRoom,
         setCustomer,

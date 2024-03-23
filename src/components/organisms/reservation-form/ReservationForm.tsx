@@ -14,13 +14,13 @@ import { Button, InputField, SelectInput, Text } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { WompiApi } from '../../../services/wompi-api';
-import { differenceInDays } from 'date-fns';
 import { customAlphabet } from 'nanoid';
 import { FincafeBack } from '../../../services/fincafe-back';
 import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
 import { useLocation } from 'react-router-dom';
 import { HotelFive } from '../../../services';
 import { CONSTANTS } from '../../../constants/constants';
+import { MinorAgesToMinorsInfo } from '../../../shared/helper/minors-util';
 
 const initialValues: formSchema = {
   name: '',
@@ -51,12 +51,7 @@ export const ReservationForm: React.FC = () => {
         idType.toString(),
       );
 
-      const quantityDays = differenceInDays(
-        reservation.dates.end,
-        reservation.dates.start,
-      );
-      const totalPriceRoom =
-        (reservation.room.price + reservation.room.iva) * quantityDays;
+      const totalPriceRoom = reservation.room.price;
       const totalCafeTour =
         reservation.extras.tourCafe.price *
         reservation.extras.tourCafe.quantity;
@@ -87,8 +82,9 @@ export const ReservationForm: React.FC = () => {
         city,
         docNumber: id,
         docType: idType,
-        adults: reservation.occupancy.adult,
-        minors: reservation.occupancy.minor,
+        adults: reservation.occupancy.adults,
+        minors: reservation.occupancy.minors,
+        minorsInfo: MinorAgesToMinorsInfo(reservation.minorAges),
         startDate: reservation.dates.start,
         endDate: reservation.dates.end,
         hotelName: reservation.room.hotel,
@@ -106,19 +102,19 @@ export const ReservationForm: React.FC = () => {
         transactionGateway: 'Wompi',
         transactionReference: stringReference,
       };
-
+      console.log('🚀 ~ onSubmit: ~ reservationData:', reservationData);
       const reservationCheckout = async () => {
-        const wompi = new WompiApi();
-        const fincafeBack = new FincafeBack();
-        const { data: fincafeBackResponse } =
-          await fincafeBack.createReservationTransaction(reservationData);
-        const { publicKey, signatureIntegrity } = fincafeBackResponse;
-        wompi.checkout(
-          publicKey,
-          stringReference,
-          `${totalReservation}00`,
-          signatureIntegrity,
-        );
+        // const wompi = new WompiApi();
+        // const fincafeBack = new FincafeBack();
+        // const { data: fincafeBackResponse } =
+        //   await fincafeBack.createReservationTransaction(reservationData);
+        // const { publicKey, signatureIntegrity } = fincafeBackResponse;
+        // wompi.checkout(
+        //   publicKey,
+        //   stringReference,
+        //   `${totalReservation}00`,
+        //   signatureIntegrity,
+        // );
       };
       await reservationCheckout();
     },

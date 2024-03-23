@@ -5,6 +5,7 @@ import {
   IRoomsHotelFiveResponse,
   IDocumentTypesHotelFiveResponse,
   IReservationHotelFiveResponse,
+  IHotelFiveRoomsParams,
 } from '.';
 
 export class HotelFive {
@@ -20,9 +21,16 @@ export class HotelFive {
     );
   }
 
-  async rooms() {
+  async rooms({
+    cantAdultos,
+    cantJovenes,
+    cantMenores,
+    fechaIni,
+    fechaFin,
+  }: IHotelFiveRoomsParams) {
+    const queries = `?cantAdultos=${cantAdultos}&cantJovenes=${cantJovenes}&cantMenores=${cantMenores}&fechaIni=${fechaIni}&fechaFin=${fechaFin}`;
     return await this.httpAdapter.get<IRoomsHotelFiveResponse>(
-      `${this.baseUrl}${this.roomsEndpoint}`,
+      `${this.baseUrl}${this.roomsEndpoint}${queries}`,
     );
   }
 

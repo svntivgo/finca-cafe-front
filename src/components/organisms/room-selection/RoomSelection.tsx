@@ -23,9 +23,10 @@ import {
 } from '..';
 import { ROOMS_BOURBON, ROOMS_TIPICA, Room } from '../../../constants/rooms';
 import { HotelFive, IHabitaciones } from '../../../services';
-import { hotelFiveDate } from '../../../shared/helper/date-formatter';
+import { formatHotelFiveQuery } from '../../../shared/helper/date-formatter';
 import LoadingScreen from '../loading-screen/LoadingScreen';
 import { DEVICE_SCREEN } from '../../../shared/helper/screen';
+import { MinorAgesToMinorsUtil } from '../../../shared/helper/minors-util';
 
 export const RoomSelection: React.FC = () => {
   const steps = [
@@ -47,7 +48,7 @@ export const RoomSelection: React.FC = () => {
     backdropCalendar: boolean;
     backdropOccupancy: boolean;
     calendar: Range[];
-    occupancy: { adult: number; minor: number };
+    occupancy: { adults: number; minors: number };
   }>({
     backdropCalendar: false,
     backdropOccupancy: false,
@@ -59,29 +60,29 @@ export const RoomSelection: React.FC = () => {
       },
     ],
     occupancy: {
-      adult: reservation.occupancy?.adult ?? 0,
-      minor: reservation.occupancy?.minor ?? 0,
+      adults: reservation.occupancy?.adults ?? 0,
+      minors: reservation.occupancy?.minors ?? 0,
     },
   });
 
-  const setAdult = (adding: number) => {
-    state.occupancy.adult + adding >= 0 &&
+  const setAdults = (adding: number) => {
+    state.occupancy.adults + adding >= 0 &&
       setState((prevState) => ({
         ...prevState,
         occupancy: {
           ...state.occupancy,
-          adult: state.occupancy.adult + adding,
+          adults: state.occupancy.adults + adding,
         },
       }));
   };
 
-  const setMinor = (adding: number) => {
-    state.occupancy.minor + adding >= 0 &&
+  const setMinors = (adding: number) => {
+    state.occupancy.minors + adding >= 0 &&
       setState((prevState) => ({
         ...prevState,
         occupancy: {
           ...state.occupancy,
-          minor: state.occupancy.minor + adding,
+          minors: state.occupancy.minors + adding,
         },
       }));
   };
@@ -108,38 +109,20 @@ export const RoomSelection: React.FC = () => {
   const availableRooms = async () => {
     const hotelApi = new HotelFive();
     // props.setIsLoading(true);
-    const { data } = await hotelApi.rooms();
-    const { habitaciones } = data;
-    const occupancy = reservation.occupancy.adult + reservation.occupancy.minor;
-    const availableRooms: IHabitaciones[] = [];
-    const startDate = hotelFiveDate(reservation.dates.start);
-    const endDate = hotelFiveDate(reservation.dates.end);
-    habitaciones.reduce((acc: IHabitaciones[], habitacion: IHabitaciones) => {
-      const found = habitacion.disponibilidad.some(
-        (available, index, array) => {
-          if (
-            available.fechaInicio <= startDate &&
-            available.fechaFin >= endDate
-          ) {
-            return true;
-          }
-          if (
-            available.fechaInicio <= startDate &&
-            available.fechaFin === null &&
-            index === array.length - 1
-          ) {
-            return true;
-          }
-          return false;
-        },
-      );
+    const { occupancy, dates, minorAges } = reservation;
+    const { adults: adult } = occupancy;
+    const { start, end } = dates;
+    const { children, youngs } = MinorAgesToMinorsUtil(minorAges);
 
-      if (found && habitacion.capacidadMax >= occupancy) {
-        availableRooms.push(habitacion);
-      }
-      return acc;
-    }, []);
-    return availableRooms;
+    const { data } = await hotelApi.rooms({
+      cantAdultos: adult,
+      cantJovenes: youngs,
+      cantMenores: children,
+      fechaIni: formatHotelFiveQuery(start),
+      fechaFin: formatHotelFiveQuery(end),
+    });
+
+    return data.habitaciones;
   };
 
   const roomsReduced = (roomsHotelFive: IHabitaciones[]) => {
@@ -155,8 +138,8 @@ export const RoomSelection: React.FC = () => {
 
         if (foundRoom) {
           foundRoom.id = habitacion.id;
-          foundRoom.price = habitacion.precioMin;
-          foundRoom.iva = habitacion.ivaPrecioMin;
+          foundRoom.price = habitacion.totalReserva;
+          foundRoom.iva = habitacion.ivaId;
           availableRooms.push(foundRoom);
         }
       }
@@ -227,8 +210,8 @@ export const RoomSelection: React.FC = () => {
                 checkout: state.calendar[0].endDate,
               }}
               reservationOccupancy={{
-                adult: state.occupancy.adult,
-                minor: state.occupancy.minor,
+                adults: state.occupancy.adults,
+                minors: state.occupancy.minors,
               }}
             />
             <Button
@@ -289,10 +272,10 @@ export const RoomSelection: React.FC = () => {
               open={state.backdropOccupancy}
             >
               <ReservationOccupancyCard
-                adult={state.occupancy.adult.toString()}
-                minor={state.occupancy.minor.toString()}
-                setAdult={setAdult}
-                setMinor={setMinor}
+                adults={state.occupancy.adults.toString()}
+                minors={state.occupancy.minors.toString()}
+                setAdults={setAdults}
+                setMinors={setMinors}
                 close={() => {
                   setState((prevState) => ({
                     ...prevState,

@@ -1,8 +1,8 @@
 export interface ReservationHomeCardsProps {
   reservationDates: { checkin: Date | undefined; checkout: Date | undefined };
   reservationOccupancy: {
-    adult: number;
-    minor: number;
+    adults: number;
+    minors: number;
   };
   onClickDate: () => void;
   onClickOccupancy: () => void;

@@ -7,6 +7,7 @@ export interface IReservationTransaction {
   email: string;
   country: string;
   city: string;
+  minorsInfo: IMinorInfo;
   minors: number;
   adults: number;
   hotelName: string;
@@ -25,6 +26,15 @@ export interface IReservationTransaction {
   transactionTotal: number;
   transactionGateway: string;
   reservationTotal: number;
+}
+
+export interface IMinorInfo {
+  children: IMinor[];
+  youngs: IMinor[];
+}
+
+export interface IMinor {
+  age: number;
 }
 
 export interface ICoffeeTourReservation {

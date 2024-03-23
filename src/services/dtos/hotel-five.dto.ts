@@ -22,6 +22,7 @@ export interface IReservationHotelFiveResponse {
 export interface IDocumentTypesHotelFiveResponse {
   tipodocuid: number;
   nombre: string;
+  NoLiquidarIVA: string;
 }
 
 interface IDisponibilidad {
@@ -49,6 +50,8 @@ export interface IHabitaciones {
   ivaPrecioMax: number;
   fechaInicio: number;
   fechaFin: number;
+  totalReserva: number;
+  totalReservaSinIva: number;
   disponibilidad: IDisponibilidad[];
   caracteristicas: ICaracteristicas[];
 }
@@ -62,4 +65,12 @@ interface ITemporadas {
 export interface IRoomsHotelFiveResponse {
   habitaciones: IHabitaciones[];
   temporadas: ITemporadas[];
+}
+
+export interface IHotelFiveRoomsParams {
+  cantAdultos: number;
+  cantJovenes: number;
+  cantMenores: number;
+  fechaIni: string;
+  fechaFin: string;
 }

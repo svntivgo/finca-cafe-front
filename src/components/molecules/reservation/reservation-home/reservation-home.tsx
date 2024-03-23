@@ -24,7 +24,7 @@ export const ReservationHome: React.FC = () => {
     backdropCalendar: boolean;
     backdropOccupancy: boolean;
     calendar: Range[];
-    occupancy: { adult: number; minor: number };
+    occupancy: { adults: number; minors: number };
   }>({
     backdropCalendar: false,
     backdropOccupancy: false,
@@ -36,29 +36,29 @@ export const ReservationHome: React.FC = () => {
       },
     ],
     occupancy: {
-      adult: reservation.occupancy?.adult ?? 0,
-      minor: reservation.occupancy?.minor ?? 0,
+      adults: reservation.occupancy?.adults ?? 0,
+      minors: reservation.occupancy?.minors ?? 0,
     },
   });
 
   const setAdult = (adding: number) => {
-    state.occupancy.adult + adding >= 0 &&
+    state.occupancy.adults + adding >= 0 &&
       setState((prevState) => ({
         ...prevState,
         occupancy: {
           ...state.occupancy,
-          adult: state.occupancy.adult + adding,
+          adults: state.occupancy.adults + adding,
         },
       }));
   };
 
   const setMinor = (adding: number) => {
-    state.occupancy.minor + adding >= 0 &&
+    state.occupancy.minors + adding >= 0 &&
       setState((prevState) => ({
         ...prevState,
         occupancy: {
           ...state.occupancy,
-          minor: state.occupancy.minor + adding,
+          minors: state.occupancy.minors + adding,
         },
       }));
   };
@@ -101,8 +101,8 @@ export const ReservationHome: React.FC = () => {
                 checkout: state.calendar[0].endDate,
               }}
               reservationOccupancy={{
-                adult: state.occupancy.adult,
-                minor: state.occupancy.minor,
+                adults: state.occupancy.adults,
+                minors: state.occupancy.minors,
               }}
             />
             <Link to={'/reserva/selecciona'}>
@@ -144,14 +144,18 @@ export const ReservationHome: React.FC = () => {
               />
             </Backdrop>
             <Backdrop
-              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              sx={{
+                color: '#fff',
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+                width: '100vw',
+              }}
               open={state.backdropOccupancy}
             >
               <ReservationOccupancyCard
-                adult={state.occupancy.adult.toString()}
-                minor={state.occupancy.minor.toString()}
-                setAdult={setAdult}
-                setMinor={setMinor}
+                adults={state.occupancy.adults.toString()}
+                minors={state.occupancy.minors.toString()}
+                setAdults={setAdult}
+                setMinors={setMinor}
                 close={() => {
                   setState((prevState) => ({
                     ...prevState,
