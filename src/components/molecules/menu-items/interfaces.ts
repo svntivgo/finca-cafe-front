@@ -1,5 +1,5 @@
-import { TextProps, IconProps } from '../../atoms';
+import { ParagraphProps, IconProps } from '../../atoms';
 
-export interface MenuItemProps extends IconProps, TextProps {
+export interface MenuItemProps extends IconProps, ParagraphProps {
   path: string;
 }

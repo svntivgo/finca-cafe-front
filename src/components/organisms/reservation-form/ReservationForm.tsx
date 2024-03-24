@@ -10,7 +10,14 @@ import {
   formSchema,
   validationSchema,
 } from '..';
-import { Button, InputField, SelectInput, Text } from '../../atoms';
+import {
+  Button,
+  GREEN_BUTTON,
+  InputField,
+  SelectInput,
+  Paragraph,
+  FORM_LABEL_FONT_STYLE,
+} from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { WompiApi } from '../../../services/wompi-api';
@@ -153,10 +160,9 @@ export const ReservationForm: React.FC = () => {
       >
         <Form onSubmit={formik.handleSubmit} style={{ placeContent: 'center' }}>
           <StyledContactFormContainer>
-            <Text
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
               text="Información de contacto"
-              color={COLORS.PEARL_GREY}
-              size="2rem"
             />
             <StyledContactSpan />
             <StyledContactInputContainer>
@@ -241,7 +247,7 @@ export const ReservationForm: React.FC = () => {
             </StyledContactInputContainer>
           </StyledContactFormContainer>
           <StyledContactFormContainer>
-            <Text text="Dirección" color={COLORS.PEARL_GREY} size="2rem" />
+            <Paragraph style={FORM_LABEL_FONT_STYLE} text="Dirección" />
             <StyledContactSpan />
             <StyledContactInputContainer>
               <InputField
@@ -270,22 +276,20 @@ export const ReservationForm: React.FC = () => {
             </StyledContactInputContainer>
           </StyledContactFormContainer>
           <StyledContactFormContainer>
-            <Text
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
               text="Servicios adicionales"
-              color={COLORS.PEARL_GREY}
-              size="2rem"
             />
-            <Text text="(Opcional)" color={COLORS.PEARL_GREY} size="1rem" />
+            <Paragraph style={FORM_LABEL_FONT_STYLE} text="(Opcional)" />
             <StyledContactSpan />
             <CafeTourService />
           </StyledContactFormContainer>
           <StyledContactFormContainer>
-            <Text text="Consentimiento" color={COLORS.PEARL_GREY} size="2rem" />
+            <Paragraph style={FORM_LABEL_FONT_STYLE} text="Consentimiento" />
             <StyledContactSpan />
-            <Text
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
               text="Al completar esta reserva, acepto terminos y condiciones de la reserva."
-              color={COLORS.PEARL_GREY}
-              size="1rem"
             />
             <div>
               <input
@@ -306,17 +310,22 @@ export const ReservationForm: React.FC = () => {
           </StyledContactFormContainer>
           <PaymentButtonContainerStyled>
             <Button
-              font={COLORS.WHITE}
-              text="Pagar ahora"
-              colors={COLORS.GREEN}
-              radius="3rem"
               disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              // disabled
+              style={{
+                ...GREEN_BUTTON,
+                borderRadius: '3rem',
+              }}
+              text="Pagar ahora"
               type="submit"
             />
             <StyledContactSpan />
             <div>
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GREEN}`,
+                  fontSize: '0.5rem',
+                  fontWeight: '600',
+                }}
                 text={`Importe de ${formatMoney(
                   reservation.room.price * reservation.room.quantity +
                     reservation.extras.tourCafe.price *
@@ -324,15 +333,13 @@ export const ReservationForm: React.FC = () => {
                 )} COP debido el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
                 }/${actualDate.getFullYear()}.`}
-                weight="600"
-                size="0.5rem"
-                color={COLORS.GREEN}
               />
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GREEN}`,
+                }}
                 text={`Proporcione un
                 método de pago válido.`}
-                size="0.7rem"
-                color={COLORS.GREEN}
               />
             </div>
           </PaymentButtonContainerStyled>

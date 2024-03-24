@@ -4,7 +4,7 @@ import {
   StyledRoomContainer,
   StyledRoomGalleryListContainer,
 } from '..';
-import { Banner, Text } from '../../atoms';
+import { Banner, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import {
   ImageGalleryList,
   RoomCard,
@@ -38,15 +38,21 @@ export const Room: React.FC = () => {
     <StyledRoomContainer>
       {hotelInfo && roomInfo && (
         <>
-          <Banner image={roomInfo.banner} height="200px" />
+          <Banner
+            desktopImage={roomInfo.banner}
+            mobileImage={roomInfo.banner}
+            height="200px"
+          />
           <StyledHotelDescriptionContainer>
             <WingCard background={COLORS.GREEN}>
-              <Text
+              <Paragraph
+                style={{
+                  ...LIGHT_FONT_STYLE,
+                  fontFamily: 'Royale',
+                  fontSize: '3rem',
+                  textAlign: 'justify',
+                }}
                 text={`Hotel ${hotelInfo.NAME}`}
-                size="3rem"
-                weight="200"
-                align="justify"
-                font="Royale"
               />
             </WingCard>
           </StyledHotelDescriptionContainer>

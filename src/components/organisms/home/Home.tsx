@@ -17,7 +17,7 @@ import {
   GastroPhoto,
   HomeSpanStyled,
 } from '../../molecules';
-import { Banner, Icon, Text } from '../../atoms';
+import { BOLD_FONT_STYLE, Banner, Icon, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import TourCafePhoto from '../../../assets/home/tour-cafe.jpg';
 import MiradorCafePhoto from '../../../assets/home/mirador-cafe.jpg';
@@ -31,13 +31,11 @@ import LogoMirador from '../../../assets/logo-mirador-cafe.svg';
 import { ContactForm } from '..';
 import BannerPhoto from '../../../assets/hoteles/banner.jpg';
 import BannerPhotoMobile from '../../../assets/hoteles/banner-mobile.jpg';
-import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Home: React.FC = () => {
-  const { isDesktop } = DEVICE_SCREEN;
   return (
     <HomeContainerStyled>
-      <Banner image={isDesktop ? BannerPhoto : BannerPhotoMobile} />
+      <Banner desktopImage={BannerPhoto} mobileImage={BannerPhotoMobile} />
       <ReservationHome />
       <HomeDescription />
       <HomePhotoDescriptionContainer>
@@ -80,13 +78,14 @@ export const Home: React.FC = () => {
       </HomeLogoMiradorContainer>
       <HomeSpanStyled />
       <HomeSpanStyled />
-      <Text
+      <Paragraph
+        style={{
+          ...BOLD_FONT_STYLE,
+          fontFamily: 'Royale',
+          fontSize: '2rem',
+          textAlign: 'center',
+        }}
         text="GASTRONOMÍA"
-        align="center"
-        font="Royale"
-        color={COLORS.PEARL_BLACK}
-        size="2rem"
-        weight="800"
       />
       <HomeSpanStyled />
       <HomeSpanStyled />
@@ -111,13 +110,14 @@ export const Home: React.FC = () => {
         />
         <GastroPhoto photo={BarPhoto} width="100%" title="BAR" onClick="/bar" />
       </HomePhotoDescriptionContainer>
-      <Text
+      <Paragraph
+        style={{
+          ...BOLD_FONT_STYLE,
+          fontFamily: 'Royale',
+          fontSize: '2rem',
+          textAlign: 'center',
+        }}
         text="CONOCE MÁS"
-        align="center"
-        font="Royale"
-        color={COLORS.PEARL_BLACK}
-        size="2rem"
-        weight="800"
       />
       <VideoContainer>
         <iframe

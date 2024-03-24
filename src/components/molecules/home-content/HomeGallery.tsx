@@ -9,7 +9,13 @@ import {
   RowLeftStyled,
   RowRightStyled,
 } from '..';
-import { Button, Icon, Text } from '../../atoms';
+import {
+  BLACK_BUTTON,
+  Button,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import { GALLERY } from '../../../constants/gallery';
 import rowLeft from '../../../assets/row-left.svg';
 import rowRight from '../../../assets/row-right.svg';
@@ -44,32 +50,30 @@ export const HomeGallery: React.FC = () => {
   return (
     <HomeGallerySectionStyled>
       <HomeGalleryDescriptionStyled>
-        <Text
+        <Paragraph
+          style={{
+            fontFamily: 'Royale',
+            fontSize: '1.5rem',
+          }}
           text="LA BODA PERFECTA SI EXISTE"
-          font="Royale"
-          color={COLORS.PEARL_BLACK}
-          size="1.5rem"
         />
         <HomeSpanStyled />
-        <Text
+        <Paragraph
           text="Ofrecemos la misma atención al detalle, sin importar cuán grande o
           pequeña sea tú fiesta, y podemos organizar cada evento sin
           problemas, agregando tecnología audiovisual sofisticada y
           transformando la atmósfera con mantelería y arreglos florales que
           superan las expectativas de tus sueños."
-          color={COLORS.GREEN}
-          weight="200"
-          align="justify"
+          style={{
+            ...LIGHT_FONT_STYLE,
+            color: `${COLORS.GREEN}`,
+            textAlign: 'justify',
+          }}
         />
         <Link to="/celebraciones">
           <Button
-            colors={COLORS.PEARL_BLACK}
+            style={{ ...BLACK_BUTTON, margin: '2rem auto 0 auto' }}
             text="Celebraciones"
-            font="Poppins"
-            fontSize="1rem"
-            padding="0.5rem 2rem"
-            radius="8px"
-            margin="2rem auto 0 auto"
           />
         </Link>
       </HomeGalleryDescriptionStyled>
@@ -80,12 +84,13 @@ export const HomeGallery: React.FC = () => {
         <HomePhotoGalleryContainerStyled>
           <img src={photo.photo} width="100%" />
           <HomePhotoGalleryTextContainerStyled>
-            <Text text={photo.title ?? ''} align="center" weight="200" />
-            <Text
+            <Paragraph
+              text={photo.title ?? ''}
+              style={{ ...LIGHT_FONT_STYLE, textAlign: 'center' }}
+            />
+            <Paragraph
               text={photo.text ?? ''}
-              align="center"
-              weight="200"
-              size="0.75rem"
+              style={{ ...LIGHT_FONT_STYLE, textAlign: 'center' }}
             />
           </HomePhotoGalleryTextContainerStyled>
         </HomePhotoGalleryContainerStyled>

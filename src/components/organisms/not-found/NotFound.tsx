@@ -1,6 +1,6 @@
 import React from 'react';
 import { NotFoundContainer, NotFoundSpan } from '..';
-import { Icon, Text } from '../../atoms';
+import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import ColombiaLogo from '../../../assets/colombia-logo.svg';
 import LogoFincaCirculo from '../../../assets/logo-finca-circulo.svg';
 import Instagram from '../../../assets/instagram.svg';
@@ -18,29 +18,33 @@ export const NotFound: React.FC = () => {
       <NotFoundSpan />
       <Icon src={TazaCafe} width="140px" />
       <NotFoundSpan />
-      <Text
+      <Paragraph
+        style={{
+          color: `${COLORS.GREEN}`,
+          fontSize: '1rem',
+          textAlign: 'center',
+        }}
         text="¡Uy! nos sorprendíste"
-        align="center"
-        color={COLORS.GREEN}
-        size="16px"
       />
       <NotFoundSpan />
-      <Text
+      <Paragraph
+        style={{
+          ...LIGHT_FONT_STYLE,
+          fontSize: '1rem',
+          textAlign: 'center',
+        }}
         text="Estamos preparando una mejor experiencia en nuestra página web."
-        align="center"
-        color={COLORS.PEARL_BLACK}
-        size="16px"
-        weight="200"
       />
       <NotFoundSpan />
       <NotFoundSpan />
       <NotFoundSpan />
-      <Text
+      <Paragraph
+        style={{
+          ...LIGHT_FONT_STYLE,
+          fontSize: '1rem',
+          textAlign: 'center',
+        }}
         text="Qué tal si nos visitas en Instagram"
-        align="center"
-        color={COLORS.PEARL_BLACK}
-        size="16px"
-        weight="200"
       />
       <NotFoundSpan />
       <Icon

@@ -1,5 +1,13 @@
 import React from 'react';
-import { Banner, Button, Icon, Text } from '../../atoms';
+import {
+  BOLD_FONT_STYLE,
+  Banner,
+  Button,
+  CREAM_BUTTON,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import {
   TourCafeCardsContainerStyled,
   TourCafeDescriptionSpanStyled,
@@ -27,10 +35,8 @@ import { CelebracionesCard } from '../../molecules/celebraciones-card/Celebracio
 import { CelebracionesContact, Gallery, WingCard } from '../../molecules';
 import { GALLERY_TOUR_CAFE } from '../../../constants/gallery';
 import { useNavigate } from 'react-router-dom';
-import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const TourCafe: React.FC = () => {
-  const { isDesktop } = DEVICE_SCREEN;
   const navigate = useNavigate();
   const changeRoute = () => {
     navigate('/tour-cafe-reservation');
@@ -38,29 +44,32 @@ export const TourCafe: React.FC = () => {
 
   return (
     <>
-      <Banner image={isDesktop ? PhotoBanner : PhotoBannerMobile} />
+      <Banner desktopImage={PhotoBanner} mobileImage={PhotoBannerMobile} />
       <StyledTourCafeContainer>
         <TourCafeLogoContainerStyled>
           <Icon src={LogoTourCafe} width="10rem" />
         </TourCafeLogoContainerStyled>
         <TourCafeSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            ...BOLD_FONT_STYLE,
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '2rem',
+            textAlign: 'center',
+          }}
           text="AMANTES DE UNA CULTURA MÁGICA"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <TourCafeSpanStyled />
         <TourCafeDescriptionSpanStyled>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              textAlign: 'justify',
+            }}
             text="Nuestro Tour del café conserva la experiencia de una tradición que te conecta con las
             raíces de la cultura cafetera, en un recorrido que te llevará a preparar con tus propias
             manos la taza del mejor café del mundo tal y como lo hacían nuestros ancestros."
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            align="justify"
           />
         </TourCafeDescriptionSpanStyled>
         <TourCafeSpanStyled />
@@ -130,43 +139,68 @@ export const TourCafe: React.FC = () => {
           <TourCafeInfoWingStyled>
             <WingCard background={COLORS.PEARL_BLACK}>
               <TourCafeInfoBoxStyled>
-                <Text text="Duración" />
-                <Text text="2 a 3 horas." weight="200" />
-                <TourCafeSpanStyled />
-                <Text text="VALOR" weight="200" />
-                <Text text="$90.000 COP + IVA por persona o" weight="200" />
-                <Text
-                  text="$130.000 COP + IVA si requieres guía en inglés."
-                  weight="200"
+                <Paragraph text="Duración" />
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                  }}
+                  text="2 a 3 horas."
                 />
-                <Text text="*(Mínimo dos personas)." weight="200" />
+                <TourCafeSpanStyled />
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                  }}
+                  text="VALOR"
+                />
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                  }}
+                  text="$90.000 COP + IVA por persona o"
+                />
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                  }}
+                  text="$130.000 COP + IVA si requieres guía en inglés."
+                />
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                  }}
+                  text="*(Mínimo dos personas)."
+                />
                 <TourCafeSpanStyled />
                 <Button
-                  colors={COLORS.CREAM}
-                  font={COLORS.PEARL_BLACK}
-                  padding="4px 12px"
-                  radius="4px"
+                  style={{
+                    ...CREAM_BUTTON,
+                    borderRadius: '4px',
+                    fontWeight: `${600}`,
+                    padding: '4px 12px',
+                  }}
                   text="Reservar"
-                  weight={600}
-                  onCLick={() => changeRoute()}
+                  onClick={() => changeRoute()}
                 />
               </TourCafeInfoBoxStyled>
             </WingCard>
           </TourCafeInfoWingStyled>
           <TourCafeLogosStyled>
-            <Icon src={ColombiaIcon} width="100px" />
+            <Icon src={ColombiaIcon} style={{ width: '100px' }} />
             <TourCafeSpanStyled />
             <Icon src={PaisajeIcon} width="140px" />
           </TourCafeLogosStyled>
         </TourCafeInfoContainerStyled>
         <TourCafeSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            ...BOLD_FONT_STYLE,
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '2rem',
+            textAlign: 'center',
+          }}
           text="GALERÍA"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <TourCafeGalleryContainerStyled>
           <Gallery gallery={GALLERY_TOUR_CAFE} />

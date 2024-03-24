@@ -1,7 +1,14 @@
 import React from 'react';
 import { ContactForm } from '..';
 import LogoMirador from '../../../assets/logo-mirador-cafe.svg';
-import { Button, Icon, Text } from '../../atoms';
+import {
+  BOLD_FONT_STYLE,
+  Button,
+  GOLD_BUTTON,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import {
   StyledInternalBanner,
   StyledInternalButtonsContainer,
@@ -20,48 +27,41 @@ export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
       <Icon src={LogoMirador} width="8rem" />
       <StyledInternalSpan />
       <StyledInternalTextContainer>
-        <Text
+        <Paragraph
+          style={{
+            ...BOLD_FONT_STYLE,
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '2.5rem',
+            textAlign: 'center',
+          }}
           text={props.title}
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2.5rem"
-          weight="800"
         />
         <StyledInternalSpan />
         <StyledInternalSpan />
-        <Text
+        <Paragraph
+          style={{
+            ...LIGHT_FONT_STYLE,
+            fontSize: '1.2rem',
+            textAlign: 'justify',
+          }}
           text={props.description}
-          size="1.2rem"
-          weight="300"
-          align="justify"
-          color={COLORS.PEARL_BLACK}
         />
       </StyledInternalTextContainer>
       <StyledInternalButtonsContainer>
         {props.isBooking && (
           <Button
-            colors={COLORS.GOLD}
-            font={COLORS.PEARL_BLACK}
-            margin="0 16px"
-            padding="8px 24px"
-            radius="50px"
+            style={GOLD_BUTTON}
             text="Reserva"
-            weight={600}
-            onCLick={() =>
+            onClick={() =>
               openNewTab('https://api.whatsapp.com/send?phone=573178000001')
             }
           />
         )}
         <Button
-          colors={COLORS.PEARL_BLACK}
-          font={COLORS.GOLD}
-          margin="0 16px"
-          padding="8px 24px"
-          radius="50px"
+          style={GOLD_BUTTON}
           text="Carta"
-          weight={600}
-          onCLick={() => openNewTab(props.menu)}
+          onClick={() => openNewTab(props.menu)}
         />
       </StyledInternalButtonsContainer>
       <ContactForm />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '../../atoms';
+import { LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import {
   ContainerHomeStyled,
@@ -15,14 +15,20 @@ export const HomeDescription: React.FC = () => {
     <ContainerHomeStyled>
       <DescriptionContainerStyled>
         <DescriptionTextContainerStyled>
-          <Text
+          <Paragraph
+            style={{
+              fontFamily: 'Royale',
+              fontSize: '1.5rem',
+            }}
             text="VIVE UNA EXPERIENCIA ÚNICA EN EL CORAZÓN DEL PAISAJE CULTURAL CAFETERO"
-            font="Royale"
-            color={COLORS.PEARL_BLACK}
-            size="1.5rem"
           />
           <HomeSpanStyled />
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              color: `${COLORS.GREEN}`,
+              textAlign: 'justify',
+            }}
             text="Desde hospedajes meticulosamente
         diseñados, amplios recorridos del proceso
         de cultivo y preparación del café en nuestra
@@ -31,17 +37,16 @@ export const HomeDescription: React.FC = () => {
         equipados de forma extraordinaria para
         celebrar momentos especiales o eventos
         empresariales."
-            color={COLORS.GREEN}
-            weight="200"
-            align="justify"
           />
           <HomeSpanStyled />
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              color: `${COLORS.GREEN}`,
+              textAlign: 'justify',
+            }}
             text="Dile hola al círculo de experiencias Hotel
         Finca del Café."
-            color={COLORS.GREEN}
-            weight="200"
-            align="justify"
           />
         </DescriptionTextContainerStyled>
         <DescriptionPhotoContainerStyled>

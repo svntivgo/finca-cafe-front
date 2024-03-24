@@ -5,14 +5,10 @@ interface StyledBannerProps {
   width?: string;
 }
 
+const linearGradient = `rgba(0, 0, 0, 0.4), transparent, transparent, rgba(0, 0, 0, 0.4)`;
+
 export const StyledBanner = styled.div<StyledBannerProps>`
-  background: linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      transparent,
-      transparent,
-      rgba(0, 0, 0, 0.4)
-    ),
-    url(${(props) => props.image});
+  background: linear-gradient(${linearGradient}), url(${(props) => props.image});
   background-size: cover;
   background-position: center;
   height: ${(props) => props.height};

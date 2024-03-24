@@ -6,7 +6,7 @@ import {
   StyledSelectorButton,
   StyledSelectorContainer,
 } from '..';
-import { Button, Text } from '../../atoms';
+import { Button, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { SERVICES } from '../../../constants/services';
 import { useReservation } from '../../../context';
@@ -23,27 +23,29 @@ export const CafeTourService: React.FC<{
   return (
     <>
       <StyledBorderedContainer>
-        <Text
+        <Paragraph
           text={`Tour del café ${props.isEnglish ? '(English)' : ''}`}
           color={COLORS.PEARL_GREY}
         />
         <div>
-          <Text
+          <Paragraph
+            style={{ color: `${COLORS.PEARL_GREY}`, textAlign: 'center' }}
             text={`$${
               props.isEnglish
                 ? SERVICES.CAFE_TOUR.english
                 : SERVICES.CAFE_TOUR.normal
             }`}
-            color={COLORS.PEARL_GREY}
-            align="center"
           />
-          <Text text="por persona" color={COLORS.PEARL_GREY} align="center" />
+          <Paragraph
+            style={{ color: `${COLORS.PEARL_GREY}`, textAlign: 'center' }}
+            text="por persona"
+          />
         </div>
       </StyledBorderedContainer>
       <StyledCafeContainer>
-        <Text
+        <Paragraph
+          style={{ color: `${COLORS.PEARL_GREY}` }}
           text="Seleccione cantidad de huéspedes"
-          color={COLORS.PEARL_GREY}
         />
         <StyledSelectorContainer>
           <StyledSelectorButton
@@ -56,17 +58,21 @@ export const CafeTourService: React.FC<{
                 });
             }}
           >
-            <Text
+            <Paragraph
+              style={{
+                color: `${COLORS.PEARL_GREY}`,
+                textAlign: 'center',
+                fontSize: '3.5rem',
+              }}
               text="-"
-              color={COLORS.PEARL_GREY}
-              align="center"
-              size="3.5rem"
             />
           </StyledSelectorButton>
-          <Text
+          <Paragraph
+            style={{
+              color: `${COLORS.PEARL_GREY}`,
+              fontSize: '3.5rem',
+            }}
             text={count.toString()}
-            color={COLORS.PEARL_GREY}
-            size="3.5rem"
           />
           <StyledSelectorButton
             onClick={() => {
@@ -80,16 +86,18 @@ export const CafeTourService: React.FC<{
               });
             }}
           >
-            <Text
+            <Paragraph
+              style={{
+                color: `${COLORS.PEARL_GREY}`,
+                fontSize: '3.5rem',
+                textAlign: 'center',
+              }}
               text="+"
-              color={COLORS.PEARL_GREY}
-              align="center"
-              size="3.5rem"
             />
           </StyledSelectorButton>
         </StyledSelectorContainer>
       </StyledCafeContainer>
-      <Text
+      <Paragraph
         text={`Total: ${
           count *
           (props.isEnglish
@@ -98,15 +106,20 @@ export const CafeTourService: React.FC<{
         } COP`}
         color={COLORS.PEARL_GREY}
       />
-      <Text text="Impuestos incluidos" color={COLORS.PEARL_GREY} />
+      <Paragraph
+        style={{ color: `${COLORS.PEARL_GREY}` }}
+        text="Impuestos incluidos"
+      />
       {!props.simpleForm && (
         <StyledButtonContainer>
           <Button
+            style={{
+              backgroundColor: `${COLORS.PEARL_BLACK}`,
+              borderRadius: '3rem',
+              color: `${COLORS.PEARL_GREY}`,
+            }}
             text="Añadir a mi reserva"
-            colors={COLORS.PEARL_BLACK}
-            font={COLORS.PEARL_GREY}
-            radius="3rem"
-            onCLick={() =>
+            onClick={() =>
               setExtras({
                 ...reservation.extras,
                 tourCafe: { ...reservation.extras.tourCafe, quantity: count },

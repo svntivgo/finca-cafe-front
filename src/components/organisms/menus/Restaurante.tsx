@@ -4,7 +4,7 @@ import ColombiaLogo from '../../../assets/colombia-logo.svg';
 import LogoFincaCirculo from '../../../assets/logo-finca-circulo.svg';
 import Restaurante_PDF_ES from '../../../assets/menus/pdf/restaurante-menu-mirador-del-cafe.pdf';
 import Restaurante_PDF_EN from '../../../assets/menus/pdf/restaurant-menu-mirador-del-cafe.pdf';
-import { Button, Icon } from '../../atoms';
+import { BLACK_BUTTON, Button, Icon } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
@@ -14,18 +14,16 @@ export const Restaurante: React.FC = () => {
       <Icon src={LogoFincaCirculo} width="160px" />
       <MenusSpan />
       <Button
-        colors={COLORS.PEARL_BLACK}
-        font="Poppins"
+        style={BLACK_BUTTON}
         text="Ver Carta"
-        onCLick={() => openNewTab(Restaurante_PDF_ES)}
+        onClick={() => openNewTab(Restaurante_PDF_ES)}
       />
       <MenusSpan />
 
       <Button
-        colors={COLORS.PEARL_BLACK}
-        font="Poppins"
+        style={BLACK_BUTTON}
         text="See menu"
-        onCLick={() => openNewTab(Restaurante_PDF_EN)}
+        onClick={() => openNewTab(Restaurante_PDF_EN)}
       />
       <MenusSpan />
       <Icon src={ColombiaLogo} width="80px" />

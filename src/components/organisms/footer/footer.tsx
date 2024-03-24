@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { WingCard } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
-import { Icon, Text } from '../../atoms';
+import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import {
   AgencyInfo,
   FooterBoxGroupStyled,
@@ -36,56 +36,47 @@ export const Footer: React.FC = () => {
       <WingCard background={COLORS.GREEN}>
         <FooterHeadStyled>
           <Icon src={Logo} width="180px" />
-          <Text
+          <Paragraph
+            style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
             text="Círculo de experiencias"
-            color={COLORS.WHITE}
-            weight="200"
           />
-          <Text
+          <Paragraph
+            style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.GOLD}` }}
             text="Garantizamos la mejor tarifa en tu reserva por nuestra página web"
-            color={COLORS.GOLD}
-            weight="200"
           />
         </FooterHeadStyled>
         <FooterInfoStyled>
           <FooterBoxGroupStyled>
             <FooterBoxStyled>
-              <Text
+              <Paragraph
+                style={{ color: `${COLORS.GOLD}` }}
                 text="Reservas de alojamiento y tour del café"
-                color={COLORS.GOLD}
-                weight="400"
               />
-              <Text
+              <Paragraph
+                style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                 text={`Comunícate al ${FINCA_CAFE_INFO.HOTEL_TEL}`}
-                weight="200"
-                color={COLORS.WHITE}
               />
-              <Text
-                text={`${FINCA_CAFE_INFO.HOTEL_MAIL}`}
-                weight="200"
+              <Paragraph
                 color={COLORS.WHITE}
+                text={`${FINCA_CAFE_INFO.HOTEL_MAIL}`}
               />
             </FooterBoxStyled>
             <FooterBoxStyled>
-              <Text
+              <Paragraph
+                style={{ color: `${COLORS.GOLD}` }}
                 text="Contacto para reservas de Mirador del café"
-                color={COLORS.GOLD}
-                weight="400"
               />
-              <Text
+              <Paragraph
+                style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                 text="Restaurante / Piqueteadero / Bodas / Eventos Corporativos"
-                weight="200"
-                color={COLORS.WHITE}
               />
-              <Text
+              <Paragraph
+                style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                 text={`Comunícate al ${FINCA_CAFE_INFO.RESTAURANT_TEL}`}
-                weight="200"
-                color={COLORS.WHITE}
               />
-              <Text
+              <Paragraph
+                style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                 text={`${FINCA_CAFE_INFO.MARKETING_MAIL}`}
-                weight="200"
-                color={COLORS.WHITE}
               />
             </FooterBoxStyled>
           </FooterBoxGroupStyled>
@@ -94,29 +85,24 @@ export const Footer: React.FC = () => {
               <NavigationIconsContainerStyled>
                 <NavigationIconsStyled>
                   <Icon src={WazeIcon} width="80px" />
-                  <Text
+                  <Paragraph
+                    style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                     text="Llegar con Waze"
-                    weight="200"
-                    size="12px"
-                    color={COLORS.WHITE}
                   />
                 </NavigationIconsStyled>
                 <NavigationIconsStyled>
                   <Link to={'https://maps.app.goo.gl/d365gPoYEe4npFfr7'}>
                     <Icon src={GoogleMapsIcon} width="50px" />
-                    <Text
+                    <Paragraph
+                      style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                       text="Llegar con Google Maps"
-                      weight="200"
-                      size="12px"
-                      color={COLORS.WHITE}
                     />
                   </Link>
                 </NavigationIconsStyled>
               </NavigationIconsContainerStyled>
-              <Text
+              <Paragraph
+                style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                 text={`Dirección; ${FINCA_CAFE_INFO.ADDRESS}`}
-                weight="200"
-                color={COLORS.WHITE}
               />
             </FooterBoxStyled>
           </FooterBoxGroupStyled>
@@ -144,18 +130,16 @@ export const Footer: React.FC = () => {
         </FooterInfoStyled>
         <FooterInfoStyled>
           <FooterBoxStyled>
-            <Text
+            <Paragraph
+              style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
               text={`${FINCA_CAFE_INFO.LEGAL_INFO}`}
-              size="12px"
-              weight="200"
-              color={COLORS.WHITE}
             />
           </FooterBoxStyled>
         </FooterInfoStyled>
         <AgencyInfo>
-          <Text
+          <Paragraph
+            style={{ ...LIGHT_FONT_STYLE }}
             text="Desarrollador técnologico de este sitio web"
-            weight="200"
           />
           <FooterSpan />
           <Icon

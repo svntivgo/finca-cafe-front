@@ -14,7 +14,7 @@ import {
   RoomEquipment,
   ROOM_EQUIPMENTS,
 } from '../../../constants/room-equipments';
-import { Icon, Text } from '../../atoms';
+import { Icon, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 
 export const RoomEquipments: React.FC<RoomEquipmentsProps> = (props) => {
@@ -32,23 +32,27 @@ export const RoomEquipments: React.FC<RoomEquipmentsProps> = (props) => {
 
   return (
     <>
-      <Text
+      <Paragraph
+        style={{
+          textAlign: 'center',
+          color: `${COLORS.GOLD}`,
+          fontFamily: 'Royale',
+        }}
         text={props.title}
-        font="Royale"
-        align="center"
-        color={COLORS.GOLD}
       />
       <StyledEquipmentContainer>
         {equipments.map((equipment, index) => (
           <StyledEquipmentItem key={`${props.title}-equipment-${index}`}>
             <Icon src={equipment.ICON} width="24px" />
             <StyledSpan />
-            <Text
+            <Paragraph
+              style={{
+                textAlign: 'center',
+                color: `${COLORS.SMOKE_GREY},`,
+                fontSize: '8px',
+                fontWeight: '300',
+              }}
               text={equipment.NAME}
-              align="center"
-              color={COLORS.SMOKE_GREY}
-              size="8px"
-              weight="300"
             />
           </StyledEquipmentItem>
         ))}

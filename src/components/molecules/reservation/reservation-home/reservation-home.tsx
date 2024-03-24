@@ -5,8 +5,7 @@ import {
   StyledInfoContainer,
   StyledTextHomeContainer,
 } from './styles';
-import { Button, Text } from '../../../atoms';
-import { COLORS } from '../../../../constants/colors';
+import { Button, GREEN_BUTTON, Paragraph } from '../../../atoms';
 import { ReservationHomeCards } from '../..';
 import { DateRange, Range } from 'react-date-range';
 import { addDays, differenceInDays } from 'date-fns';
@@ -73,11 +72,11 @@ export const ReservationHome: React.FC = () => {
   return (
     <>
       <StyledTextHomeContainer>
-        <Text
+        <Paragraph
+          style={{
+            textAlign: 'center',
+          }}
           text="RESERVA TU MOMENTO DE PLACER LEJOS DEL RUIDO DE LA CIUDAD"
-          align="center"
-          color={COLORS.PEARL_BLACK}
-          size="0.7rem"
         />
       </StyledTextHomeContainer>
       <StyledContainer>
@@ -106,11 +105,7 @@ export const ReservationHome: React.FC = () => {
               }}
             />
             <Link to={'/reserva/selecciona'}>
-              <Button
-                colors={COLORS.GREEN}
-                text="Reservar"
-                font={COLORS.WHITE}
-              />
+              <Button style={GREEN_BUTTON} text="Reservar" />
             </Link>
             <Backdrop
               sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

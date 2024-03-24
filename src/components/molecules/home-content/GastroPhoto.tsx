@@ -3,7 +3,7 @@ import {
   GastroPhotoContainerStyled,
   GastroPhotoDescriptionContainerStyled,
 } from '..';
-import { Button, Text } from '../../atoms';
+import { Button, Paragraph, WHITE_BUTTON } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { GastroPhotoProps } from './interfaces';
 import { Link } from 'react-router-dom';
@@ -13,21 +13,23 @@ export const GastroPhoto: React.FC<GastroPhotoProps> = (props) => {
     <GastroPhotoContainerStyled>
       <img src={props.photo} width={props.width} />
       <GastroPhotoDescriptionContainerStyled>
-        <Text
+        <Paragraph
+          style={{
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '1.5rem',
+            textAlign: 'center',
+          }}
           text={props.title}
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="1.5rem"
         />
         <Link to={props.onClick}>
           <Button
+            style={{
+              ...WHITE_BUTTON,
+              fontSize: '0.5rem',
+              margin: '16px 0 0 0',
+            }}
             text="Ver carta"
-            colors={COLORS.WHITE}
-            font={COLORS.PEARL_BLACK}
-            fontSize="0.5rem"
-            margin="16px 0 0 0"
-            radius="8px"
           />
         </Link>
       </GastroPhotoDescriptionContainerStyled>

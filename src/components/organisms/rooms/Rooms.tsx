@@ -16,7 +16,7 @@ import {
 } from '..';
 
 //Shared & Components
-import { Banner, StyledImg, Text } from '../../atoms';
+import { Banner, Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { HOTELS } from '../../../constants/hotels';
 import Head from '../../../assets/habitaciones/head-habitaciones.jpg';
@@ -38,16 +38,17 @@ export const Rooms: React.FC = () => {
   };
   return (
     <>
-      <Banner image={isDesktop ? BannerPhoto : BannerPhotoMobile} />
+      <Banner desktopImage={BannerPhoto} mobileImage={BannerPhotoMobile} />
       <StyledMenuContainer>
         <MenuRooms />
         <StyledTextContainer>
-          <Text
+          <Paragraph
+            style={{
+              fontFamily: 'Royale',
+              fontSize: `${isDesktop ? '2rem' : '1rem'}`,
+              textAlign: 'center',
+            }}
             text="EXPERIMENTE EL DISEÑO CONFORTABLE DE NUESTRAS HABITACIONES, EQUIPADAS PARA QUE PUEDA DESCANSAR, CONOCER EL EJE CAFETERO, SU CULTURA Y SUS MONTAÑAS CULTIVADAS CON EL MEJOR CAFÉ DEL MUNDO MIENTRAS VIVE EL PLACER DE LOS SABORES DE NUESTRO MIRADOR DEL CAFÉ."
-            align="center"
-            font="Royale"
-            color={COLORS.PEARL_BLACK}
-            size={DEVICE_SCREEN.isDesktop ? '2rem' : '1rem'}
           />
         </StyledTextContainer>
         <StyledHotelDescription id={'bourbon-description'}>
@@ -55,22 +56,21 @@ export const Rooms: React.FC = () => {
             <StyledImage src={Head} />
           </StyledImageContainer>
           <StyledHotelDescriptionText>
-            <WingCard
-              background={COLORS.GREEN}
-              inverted={DEVICE_SCREEN.isDesktop}
-            >
+            <WingCard background={COLORS.GREEN} inverted={isDesktop}>
               <StyledRoomsSeparator />
               <StyledTextRooms>
-                <StyledImg
+                <Icon
                   src={LogoBourbon}
                   width="150px"
                   style={{ margin: '16px auto' }}
                 />
-                <Text
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                    color: `${COLORS.WHITE}`,
+                    textAlign: 'justify',
+                  }}
                   text={HOTELS.BOURBON.DESCRIPTION}
-                  align="justify"
-                  weight="300"
-                  color={COLORS.WHITE}
                 />
               </StyledTextRooms>
               <StyledRoomsSeparator />
@@ -119,20 +119,19 @@ export const Rooms: React.FC = () => {
             <StyledImage src={TypicaPiscinas} />
           </StyledImageContainer>
           <StyledHotelDescriptionText>
-            <WingCard
-              background={COLORS.GREEN}
-              inverted={DEVICE_SCREEN.isDesktop}
-            >
-              <StyledImg
+            <WingCard background={COLORS.GREEN} inverted={isDesktop}>
+              <img
                 src={LogoTypica}
                 width="150px"
                 style={{ margin: '16px auto' }}
               />
-              <Text
+              <Paragraph
+                style={{
+                  ...LIGHT_FONT_STYLE,
+                  color: `${COLORS.WHITE}`,
+                  textAlign: 'justify',
+                }}
                 text={HOTELS.TIPICA.DESCRIPTION}
-                align="justify"
-                weight="300"
-                color={COLORS.WHITE}
               />
             </WingCard>
           </StyledHotelDescriptionText>

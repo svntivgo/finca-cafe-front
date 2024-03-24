@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, SelectInput } from '../../../atoms';
+import { Button, GREEN_BUTTON_ALT, SelectInput } from '../../../atoms';
 import { COLORS } from '../../../../constants/colors';
-import { Text } from '../../../atoms';
+import { Paragraph } from '../../../atoms';
 import { ReservationOccupancyCardProps } from './interfaces';
 import { MINOR_AGES } from '../../../../constants/minor-ages';
 import { useReservation } from '../../../../context';
@@ -43,44 +43,46 @@ export const ReservationOccupancyCard: React.FC<
   return (
     <div>
       <div>
-        <Text text="Adultos" />
-        <Text text={props.adults} />
+        <Paragraph text="Adultos" />
+        <Paragraph text={props.adults} />
         <Button
-          colors={COLORS.GREEN}
-          font={COLORS.GOLD}
+          style={{
+            ...GREEN_BUTTON_ALT,
+            margin: '0 1rem 0 0',
+          }}
           text="+"
-          onCLick={() => props.setAdults(+1)}
-          margin="0 1rem 0 0"
+          onClick={() => props.setAdults(+1)}
         />
         <Button
-          colors={COLORS.GREEN}
-          font={COLORS.GOLD}
+          style={GREEN_BUTTON_ALT}
           text="-"
-          onCLick={() => props.setAdults(-1)}
+          onClick={() => props.setAdults(-1)}
         />
       </div>
       <div>
-        <Text text="Niños" />
-        <Text text={props.minors} />
+        <Paragraph text="Niños" />
+        <Paragraph text={props.minors} />
         <Button
-          colors={COLORS.GREEN}
-          font={COLORS.GOLD}
+          style={{
+            ...GREEN_BUTTON_ALT,
+            margin: '0 1rem 0 0',
+          }}
           text="+"
-          onCLick={() => {
+          onClick={() => {
             addMinor();
             props.setMinors(+1);
           }}
-          margin="0 1rem 0 0"
         />
         <Button
-          colors={COLORS.GREEN}
-          font={COLORS.GOLD}
+          style={{
+            ...GREEN_BUTTON_ALT,
+            margin: '0 1rem 0 0',
+          }}
           text="-"
-          onCLick={() => {
+          onClick={() => {
             removeMinor();
             props.setMinors(-1);
           }}
-          margin="0 1rem 0 0"
         />
       </div>
       <div
@@ -114,13 +116,11 @@ export const ReservationOccupancyCard: React.FC<
         })}
       </div>
       <Button
-        colors={COLORS.GREEN}
-        font={COLORS.GOLD}
+        style={GREEN_BUTTON_ALT}
         text="Aceptar"
-        onCLick={() => {
+        onClick={() => {
           props.close();
         }}
-        margin="1rem 0"
       />
     </div>
   );

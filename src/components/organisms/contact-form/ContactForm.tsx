@@ -11,7 +11,7 @@ import {
   contactFormSchema,
   contactFormValidationSchema,
 } from '..';
-import { Button, Text } from '../../atoms';
+import { Button, CREAM_BUTTON, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import axios from 'axios';
 import { CONSTANTS } from '../../../constants/constants';
@@ -48,12 +48,14 @@ export const ContactForm: React.FC = () => {
       >
         <Form onSubmit={formik.handleSubmit}>
           <StyledContactFormContainer>
-            <Text
+            <Paragraph
+              style={{
+                color: `${COLORS.CREAM}`,
+                fontFamily: 'Royale',
+                fontSize: '1.5rem',
+                textAlign: 'center',
+              }}
               text="RECIBE MÁS INFORMACIÓN"
-              color={COLORS.CREAM}
-              size="1.5rem"
-              font="Royale"
-              align="center"
             />
             <StyledContactSpan />
             <StyledContactInputContainer>
@@ -135,17 +137,18 @@ export const ContactForm: React.FC = () => {
             </StyledContactInputContainer>
             <ContactButtonContainerStyled>
               <Button
-                font={COLORS.PEARL_BLACK}
+                style={{
+                  ...CREAM_BUTTON,
+                  borderRadius: '0.2rem',
+                  margin: '0 auto',
+                  padding: '0 auto',
+                  width: '100%',
+                }}
                 text="Enviar"
-                colors={COLORS.CREAM}
-                radius="0.2rem"
+                type="submit"
                 disabled={
                   formik.isSubmitting || !formik.isValid || !formik.dirty
                 }
-                type="submit"
-                padding="0 auto"
-                margin="0 auto"
-                width="100%"
               />
             </ContactButtonContainerStyled>
           </StyledContactFormContainer>

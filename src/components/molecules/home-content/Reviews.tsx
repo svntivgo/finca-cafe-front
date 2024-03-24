@@ -10,7 +10,7 @@ import {
   HomeSpanStyled,
 } from '..';
 import { COLORS } from '../../../constants/colors';
-import { Icon, Text } from '../../atoms';
+import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import { REVIEWS } from '../../../constants/reviews';
 import rowLeft from '../../../assets/row-left.svg';
 import rowRight from '../../../assets/row-right.svg';
@@ -45,12 +45,12 @@ export const Reviews: React.FC = () => {
     <ReviewBoxContainerStyled>
       <WingCard background={COLORS.PEARL_BLACK}>
         <HomeSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+          }}
           text="NUESTROS VIAJEROS DAN SU OPINIÓN"
-          color={COLORS.GOLD}
-          font="Royale"
-          align="center"
-          size="0.75rem"
         />
         <HomeSpanStyled />
         <HomeSpanStyled />
@@ -59,24 +59,26 @@ export const Reviews: React.FC = () => {
             <Icon src={review.flag} width="32px" />
           </ReviewerFlagContainerStyled>
           <ReviewerNameContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...LIGHT_FONT_STYLE,
+                color: `${COLORS.WHITE}`,
+                lineHeight: '0.75rem',
+              }}
               text={review.user}
-              color={COLORS.WHITE}
-              weight="200"
-              size="0.75rem"
-              lineHeight="0.75rem"
             />
           </ReviewerNameContainerStyled>
         </ReviewerInfoContainerStyled>
         <ReviewContainerStyled>
           <Icon src={rowLeft} width="12px" onClick={prevReview} />
           <ReviewTextContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...LIGHT_FONT_STYLE,
+                color: `${COLORS.WHITE}`,
+                textAlign: 'justify',
+              }}
               text={review.review}
-              color={COLORS.WHITE}
-              weight="200"
-              align="justify"
-              size="0.75rem"
             />
           </ReviewTextContainerStyled>
           <Icon src={rowRight} width="12px" onClick={nextReview} />

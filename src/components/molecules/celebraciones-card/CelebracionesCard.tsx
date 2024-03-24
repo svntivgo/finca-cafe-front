@@ -5,8 +5,7 @@ import {
   StyledCelebrationsCardContainer,
   StyledTextCelebrationsCard,
 } from '..';
-import { Button, Text } from '../../atoms';
-import { COLORS } from '../../../constants/colors';
+import { BLACK_BUTTON, Button, Paragraph } from '../../atoms';
 
 export const CelebracionesCard: React.FC<CelebracionesCardProps> = (props) => {
   return (
@@ -32,31 +31,23 @@ export const CelebracionesCard: React.FC<CelebracionesCardProps> = (props) => {
         width={props.width}
         extended={props.extended}
       >
-        <Text
+        <Paragraph
+          style={{
+            fontSize: `${props.extended ? '2rem' : '1.5rem'}`,
+          }}
           text={props.title}
-          align="left"
-          font="Poppins"
-          color={COLORS.PEARL_BLACK}
-          size={props.extended ? '2rem' : '1.5rem'}
         />
-        <Text
+        <Paragraph
+          style={{
+            fontWeight: 200,
+          }}
           text={props.text}
-          align="left"
-          font="Poppins"
-          color={COLORS.PEARL_BLACK}
-          size="1rem"
-          weight="200"
         />
         {props.button && (
           <Button
-            colors={COLORS.PEARL_BLACK}
+            onClick={props.onClick ? props.onClick : () => ({})}
+            style={BLACK_BUTTON}
             text="Reservar"
-            font="Poppins"
-            fontSize="1rem"
-            padding="0.5rem 2rem"
-            radius="8px"
-            margin="2rem 0"
-            onCLick={props.onClick ? props.onClick : () => ({})}
           />
         )}
       </StyledTextCelebrationsCard>

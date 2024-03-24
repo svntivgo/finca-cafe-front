@@ -1,5 +1,13 @@
 import React from 'react';
-import { Banner, Button, Icon, Text } from '../../atoms';
+import {
+  BLACK_BUTTON,
+  BOLD_FONT_STYLE,
+  Banner,
+  Button,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import {
   HotelsCardsContainerStyled,
   HotelsDescriptionSpanStyled,
@@ -27,36 +35,37 @@ import { GALLERY_BOURBON, GALLERY_TYPICA } from '../../../constants/gallery';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 import { Link } from 'react-router-dom';
 import { HOTELS } from '../../../constants/hotels';
-import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Hotels: React.FC = () => {
-  const { isDesktop } = DEVICE_SCREEN;
   return (
     <>
-      <Banner image={isDesktop ? PhotoBanner : PhotoBannerMobile} />
+      <Banner desktopImage={PhotoBanner} mobileImage={PhotoBannerMobile} />
       <StyledHotelsContainer>
         <HotelsLogoContainerStyled>
           <Icon src={LogoHotels} width="10rem" />
         </HotelsLogoContainerStyled>
         <HotelsSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            ...BOLD_FONT_STYLE,
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '2rem',
+            textAlign: 'center',
+          }}
           text="DOS HOTELES, MUCHAS EXPERIENCIAS"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <HotelsSpanStyled />
         <HotelsDescriptionSpanStyled>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              textAlign: 'justify',
+            }}
             text="Nuestros hoteles te garantizan una estadía con todas las experiencias del hub
             gastronómico y de entretenimiento de nuestro Mirador del café y acceso a los
             espacios de ambos hoteles. Todos ubicados a 200 mts de distancia
             entre sí"
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            align="justify"
           />
         </HotelsDescriptionSpanStyled>
         <HotelsSpanStyled />
@@ -64,29 +73,34 @@ export const Hotels: React.FC = () => {
           <HotelsPhotoDescriptionContainerStyled>
             <img src={BourbonPhoto} width={'100%'} />
             <HotelsPhotoDescriptionTextContainerStyled>
-              <Text
+              <Paragraph
+                style={{
+                  fontFamily: 'Royale',
+                  fontSize: '1.5rem',
+                  textAlign: 'center',
+                }}
                 text={`HOTEL ${HOTELS.BOURBON.NAME.toLocaleUpperCase()}`}
-                align="center"
-                font="Royale"
-                size="1.5rem"
               />
-              <Text
+              <Paragraph
+                style={{
+                  ...LIGHT_FONT_STYLE,
+                  fontFamily: 'Royale',
+                  fontSize: '1.5rem',
+                  textAlign: 'center',
+                }}
                 text={
                   'UN DISEÑO VIBRANTE EN EL CORAZÓN DE LAS MONTAÑAS CAFETERAS'
                 }
-                align="center"
-                weight="200"
-                size="0.7rem"
               />
             </HotelsPhotoDescriptionTextContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...LIGHT_FONT_STYLE,
+                textAlign: 'justify',
+              }}
               text={
                 'La mezcla del lujo contemporáneo con la inspiración del encanto característico de las haciendas cafeteras. Las habitaciones y espacios del hotel Bourbon están especialmente diseñados y equipados para estadías de placer, negocios y bodas. Disfruta de nuestros jacuzzi y el aire puro de nuestras montañas.'
               }
-              align="justify"
-              weight="200"
-              size="0.7rem"
-              color={COLORS.PEARL_BLACK}
             />
             <HotelsSpanStyled />
             <Link
@@ -94,13 +108,11 @@ export const Hotels: React.FC = () => {
               style={{ width: 'max-content', margin: '0 auto' }}
             >
               <Button
-                colors={COLORS.PEARL_BLACK}
+                style={{
+                  ...BLACK_BUTTON,
+                  margin: '-8px auto 0 auto',
+                }}
                 text="Ver habitaciones"
-                font="Poppins"
-                fontSize="1rem"
-                padding="0.5rem 2rem"
-                radius="8px"
-                margin="-8px auto 0 auto"
               />
             </Link>
           </HotelsPhotoDescriptionContainerStyled>
@@ -108,29 +120,33 @@ export const Hotels: React.FC = () => {
           <HotelsPhotoDescriptionContainerStyled>
             <img src={TypicaPhoto} width={'100%'} />
             <HotelsPhotoDescriptionTextContainerStyled>
-              <Text
+              <Paragraph
+                style={{
+                  ...LIGHT_FONT_STYLE,
+                  fontFamily: 'Royale',
+                  fontSize: '1.5rem',
+                  textAlign: 'center',
+                }}
                 text={`HOTEL ${HOTELS.TIPICA.NAME.toLocaleUpperCase()}`}
-                align="center"
-                font="Royale"
-                size="1.5rem"
               />
-              <Text
+              <Paragraph
+                style={{
+                  ...LIGHT_FONT_STYLE,
+                  textAlign: 'center',
+                }}
                 text={
                   'UN HOSPEDAJE QUE TE CONECTA CON LA MAGÍA DEL CAFÉ PAISAJE CULTURAL CAFETERO'
                 }
-                align="center"
-                weight="200"
-                size="0.7rem"
               />
             </HotelsPhotoDescriptionTextContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...LIGHT_FONT_STYLE,
+                textAlign: 'justify',
+              }}
               text={
                 'Ubicado junto a una finca cafetera tradicional con acceso a los cultivos donde nace nuestro café, nuestro alojamiento tradicional es perfecto para extranjeros y nacionales que desean conocer la cultura cafetera y una estadía tradicional con todo el confort de sus habitaciones y espacios.'
               }
-              align="justify"
-              weight="200"
-              size="0.7rem"
-              color={COLORS.PEARL_BLACK}
             />
             <HotelsSpanStyled />
             <Link
@@ -138,13 +154,11 @@ export const Hotels: React.FC = () => {
               style={{ width: 'max-content', margin: '0 auto' }}
             >
               <Button
-                colors={COLORS.PEARL_BLACK}
+                style={{
+                  ...BLACK_BUTTON,
+                  margin: '-8px auto 0 auto',
+                }}
                 text="Ver habitaciones"
-                font="Poppins"
-                fontSize="1rem"
-                padding="0.5rem 2rem"
-                radius="8px"
-                margin="-8px auto 0 auto"
               />
             </Link>
           </HotelsPhotoDescriptionContainerStyled>
@@ -192,24 +206,28 @@ export const Hotels: React.FC = () => {
         <HotelsSpanStyled />
         <HotelsGalleriesStyled>
           <HotelsGalleryContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...BOLD_FONT_STYLE,
+                color: `${COLORS.GOLD}`,
+                fontFamily: 'Royale',
+                fontSize: '2rem',
+                textAlign: 'center',
+              }}
               text="GALERÍA BOURBON"
-              align="center"
-              font="Royale"
-              color={COLORS.GOLD}
-              size="2rem"
-              weight="800"
             />
             <Gallery gallery={GALLERY_BOURBON} />
           </HotelsGalleryContainerStyled>
           <HotelsGalleryContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...BOLD_FONT_STYLE,
+                color: `${COLORS.GOLD}`,
+                fontFamily: 'Royale',
+                fontSize: '2rem',
+                textAlign: 'center',
+              }}
               text="GALERÍA TYPICA"
-              align="center"
-              font="Royale"
-              color={COLORS.GOLD}
-              size="2rem"
-              weight="800"
             />
             <Gallery gallery={GALLERY_TYPICA} />
           </HotelsGalleryContainerStyled>

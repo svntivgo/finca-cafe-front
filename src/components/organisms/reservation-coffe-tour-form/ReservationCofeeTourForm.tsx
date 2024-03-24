@@ -10,7 +10,13 @@ import {
   StyledContactSpan,
   validationSchemaCoffeTour,
 } from '..';
-import { Button, InputField, Text } from '../../atoms';
+import {
+  Button,
+  FORM_LABEL_FONT_STYLE,
+  GREEN_BUTTON,
+  InputField,
+  Paragraph,
+} from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { WompiApi } from '../../../services/wompi-api';
@@ -137,7 +143,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
       >
         <Form onSubmit={formik.handleSubmit} style={{ placeContent: 'center' }}>
           <StyledContactFormContainer>
-            <Text text="Fecha deseada" color={COLORS.PEARL_GREY} size="2rem" />
+            <Paragraph style={FORM_LABEL_FONT_STYLE} text="Fecha deseada" />
             <StyledContactSpan />
             <StyledCalendarTourCafeContainer>
               <Calendar
@@ -150,10 +156,9 @@ export const ReservationCoffeeTourForm: React.FC = () => {
               />
             </StyledCalendarTourCafeContainer>
             <StyledContactSpan />
-            <Text
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
               text="Información de contacto"
-              color={COLORS.PEARL_GREY}
-              size="2rem"
             />
             <StyledContactSpan />
             <StyledContactInputContainer>
@@ -225,7 +230,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
             </StyledContactInputContainer>
           </StyledContactFormContainer>
           <StyledContactFormContainer>
-            <Text text="Dirección" color={COLORS.PEARL_GREY} size="2rem" />
+            <Paragraph style={FORM_LABEL_FONT_STYLE} text="Dirección" />
             <StyledContactSpan />
             <StyledContactInputContainer>
               <InputField
@@ -255,10 +260,9 @@ export const ReservationCoffeeTourForm: React.FC = () => {
           </StyledContactFormContainer>
           <StyledContactFormContainer>
             <StyledContactSpan />
-            <Text
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
               text="Idioma de preferencia."
-              color={COLORS.PEARL_GREY}
-              size="1rem"
             />
             <div style={{ color: '#9A9A9A' }}>
               <input
@@ -280,12 +284,11 @@ export const ReservationCoffeeTourForm: React.FC = () => {
             <CafeTourService isEnglish={formik.values.isEnglish} simpleForm />
           </StyledContactFormContainer>
           <StyledContactFormContainer>
-            <Text text="Consentimiento" color={COLORS.PEARL_GREY} size="2rem" />
+            <Paragraph style={FORM_LABEL_FONT_STYLE} text="Consentimiento" />
             <StyledContactSpan />
-            <Text
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
               text="Al completar esta reserva, acepto terminos y condiciones de la reserva."
-              color={COLORS.PEARL_GREY}
-              size="1rem"
             />
             <div>
               <input
@@ -306,32 +309,35 @@ export const ReservationCoffeeTourForm: React.FC = () => {
           </StyledContactFormContainer>
           <PaymentButtonContainerStyled>
             <Button
-              font={COLORS.WHITE}
-              text="Pagar ahora"
-              colors={COLORS.GREEN}
-              radius="3rem"
               disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              // disabled
+              style={{
+                ...GREEN_BUTTON,
+                borderRadius: '3rem',
+              }}
+              text="Pagar ahora"
               type="submit"
             />
             <StyledContactSpan />
             <div>
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GREEN}`,
+                  fontSize: '0.5rem',
+                  fontWeight: '600',
+                }}
                 text={`Importe de ${formatMoney(
                   (formik.values.isEnglish ? 130000 : 90000) *
                     reservation.extras.tourCafe.quantity,
                 )} COP debido el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
                 }/${actualDate.getFullYear()}.`}
-                weight="600"
-                size="0.5rem"
-                color={COLORS.GREEN}
               />
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GREEN}`,
+                }}
                 text={`Proporcione un
                 método de pago válido.`}
-                size="0.7rem"
-                color={COLORS.GREEN}
               />
             </div>
           </PaymentButtonContainerStyled>

@@ -1,5 +1,6 @@
 export interface BannerProps {
+  desktopImage: string;
+  mobileImage: string;
   height?: string;
-  image: string;
   width?: string;
 }

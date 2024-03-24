@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Banner, Button, Text } from '../../atoms';
+import {
+  Banner,
+  Button,
+  GREEN_BUTTON_ALT,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import photo from '../../../assets/hoteles/banner.jpg';
 import {
   ReservationHomeCards,
@@ -182,14 +188,16 @@ export const RoomSelection: React.FC = () => {
   return (
     <>
       <LoadingScreen isLoading={reservation.isLoading} />
-      <Banner image={photo} height="500px" />
+      <Banner desktopImage={photo} mobileImage={photo} height="500px" />
       <StyledReservationInfoContainer>
         <WingCard background={COLORS.PEARL_BLACK}>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              color: `${COLORS.GOLD}`,
+              fontSize: '1.5rem',
+            }}
             text={'Su estancia'}
-            color={COLORS.GOLD}
-            weight="200"
-            size="1.5rem"
           />
           <StyledInfoContainer>
             <ReservationHomeCards
@@ -215,22 +223,25 @@ export const RoomSelection: React.FC = () => {
               }}
             />
             <Button
-              colors={COLORS.GREEN}
+              style={{
+                ...GREEN_BUTTON_ALT,
+                fontSize: `${DEVICE_SCREEN.isDesktop ? '0.8rem' : '0.6rem'}`,
+                padding: `${DEVICE_SCREEN.isDesktop ? '6px 16px' : '6px 6px'}`,
+              }}
               text={`${formatMoney(
                 reservation.room.price * reservation.room.quantity +
                   reservation.extras.tourCafe.price *
                     reservation.extras.tourCafe.quantity,
               )} COP`}
-              font={COLORS.GOLD}
-              padding={DEVICE_SCREEN.isDesktop ? '6px 16px' : '6px 6px'}
-              fontSize={DEVICE_SCREEN.isDesktop ? '0.8rem' : '0.6rem'}
             />
           </StyledInfoContainer>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              color: `${COLORS.GOLD}`,
+              fontSize: '1.5rem',
+            }}
             text={steps[activeStep]}
-            color={COLORS.GOLD}
-            weight="200"
-            size="1.5rem"
           />
           <Stepper steps={steps} activeStep={activeStep} />
         </WingCard>

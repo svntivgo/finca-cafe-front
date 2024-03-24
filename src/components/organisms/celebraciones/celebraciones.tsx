@@ -1,5 +1,12 @@
 import React from 'react';
-import { Banner, Button, Icon, Text } from '../../atoms';
+import {
+  Banner,
+  Button,
+  CREAM_BUTTON,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import {
   CelebrationsCardsContainerStyled,
   CelebrationsDescriptionSpanStyled,
@@ -31,54 +38,61 @@ import { CelebracionesCard } from '../../molecules/celebraciones-card/Celebracio
 import { CelebracionesContact, Gallery } from '../../molecules';
 import { GALLERY_CELEBRATIONS } from '../../../constants/gallery';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
-import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const Celebraciones: React.FC = () => {
-  const { isDesktop } = DEVICE_SCREEN;
   return (
     <>
-      <Banner image={isDesktop ? HallBanner : HallBannerMobile} />
+      <Banner desktopImage={HallBanner} mobileImage={HallBannerMobile} />
       <StyledCelebrationsContainer>
         <CelebrationsLogoContainerStyled>
           <Icon src={LogoBlack} width="10rem" />
         </CelebrationsLogoContainerStyled>
         <CelebrationsSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '1.5rem',
+            fontWeight: '800',
+            textAlign: 'center',
+          }}
           text="CELEBRA A LO GRANDE"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="1.5rem"
-          weight="800"
         />
         <CelebrationsSpanStyled />
         <CelebrationsDescriptionSpanStyled>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              textAlign: 'justify',
+            }}
             text="Nos especializamos en planificar, crear y
             ejecutar experiencias únicas y memorables
             para que el evento de tus sueños se convierta
             en una extraordinaria realidad. La Finca del
             Café ofrece el entorno más acogedor para tu
             ocasión especial."
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            align="justify"
           />
         </CelebrationsDescriptionSpanStyled>
         <CelebrationsSpanStyled />
         <CelebrationsEventsContainerStyled>
           <CelebrationsPhotoContainerStyled>
             <CelebrationsPhotoDescriptionContainerStyled>
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GOLD}`,
+                  fontFamily: 'Poppins',
+                  fontSize: '2.5rem',
+                  fontWeight: '300',
+                  textAlign: 'left',
+                }}
                 text="Eventos"
-                align="left"
-                font="Poppins"
-                color={COLORS.GOLD}
-                size="2.5rem"
-                weight="300"
               />
               <CelebrationsSpanStyled />
-              <Text
+              <Paragraph
+                style={{
+                  ...LIGHT_FONT_STYLE,
+                  color: `${COLORS.WHITE}`,
+                }}
                 text="Contamos con una increíble selección de
               lugares que se ajustan a tus
               necesidades, como nuestro restaurante,
@@ -88,22 +102,17 @@ export const Celebraciones: React.FC = () => {
               privada para eventos como lanzamientos
               de productos, cenas privadas, eventos
               corporativos o bodas."
-                align="left"
-                font="Poppins"
-                color={COLORS.WHITE}
-                size="0.7rem"
-                weight="200"
               />
               <CelebrationsSpanStyled />
               <Button
+                style={{
+                  ...CREAM_BUTTON,
+                  fontSize: '0.7rem',
+                  fontWeight: `${600}`,
+                  margin: '16px 0 0 0',
+                }}
                 text="Solicitar propuesta"
-                colors={COLORS.CREAM}
-                font={COLORS.PEARL_BLACK}
-                weight={600}
-                fontSize="0.7rem"
-                margin="16px 0 0 0"
-                radius="8px"
-                onCLick={() =>
+                onClick={() =>
                   openNewTab('https://api.whatsapp.com/send?phone=573178000001')
                 }
               />
@@ -111,13 +120,15 @@ export const Celebraciones: React.FC = () => {
           </CelebrationsPhotoContainerStyled>
         </CelebrationsEventsContainerStyled>
         <CelebrationsSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '1.5rem',
+            fontWeight: '800',
+            textAlign: 'center',
+          }}
           text="PLANIFICACIÓN PERFECTA"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <CelebrationsSpanStyled />
         <CelebrationsCardsContainerStyled>
@@ -175,62 +186,71 @@ export const Celebraciones: React.FC = () => {
           esforzaremos en proporcionártelo."
           />
         </CelebrationsCardsContainerStyled>
-        <Text
+        <Paragraph
+          style={{
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '1.5rem',
+            fontWeight: '800',
+            textAlign: 'center',
+          }}
           text="LUGARES DE CELEBRACIÓN"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <CelebrationsPlacesContainerStyled>
           <CelebrationsPlaceBoxStyled>
             <img src={Restaurante} width="100%" />
             <CelebrationsPlaceTextStyled>
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GOLD}`,
+                  fontFamily: 'Royale',
+                  fontSize: '1.5rem',
+                  fontWeight: '800',
+                  textAlign: 'center',
+                }}
                 text="RESTAURANTE"
-                align="center"
-                font="Royale"
-                color={COLORS.GOLD}
-                size="1.5rem"
-                weight="800"
               />
             </CelebrationsPlaceTextStyled>
           </CelebrationsPlaceBoxStyled>
           <CelebrationsPlaceBoxStyled>
             <img src={Piqueteadero} width="100%" />
             <CelebrationsPlaceTextStyled>
-              <Text
+              <Paragraph
+                style={{
+                  color: `${COLORS.GOLD}`,
+                  fontFamily: 'Royale',
+                  fontSize: '1.5rem',
+                  fontWeight: '800',
+                  textAlign: 'center',
+                }}
                 text="PIQUETEADERO"
-                align="center"
-                font="Royale"
-                color={COLORS.GOLD}
-                size="1.5rem"
-                weight="800"
               />
             </CelebrationsPlaceTextStyled>
           </CelebrationsPlaceBoxStyled>
         </CelebrationsPlacesContainerStyled>
         <CelebrationsPlaceSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '1.5rem',
+            fontWeight: '800',
+            textAlign: 'center',
+          }}
           text="GALERÍA"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <CelebrationsGalleryContainerStyled>
           <Gallery gallery={GALLERY_CELEBRATIONS} />
         </CelebrationsGalleryContainerStyled>
         <CelebracionesContact />
         <CreditsContainerStyled>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              fontSize: '0.5rem',
+              textAlign: 'right',
+            }}
             text="Créditos de material fotográfico : @danielarcilafoto / @malamente_co"
-            align="right"
-            size="0.5rem"
-            weight="200"
-            color={COLORS.PEARL_BLACK}
           />
         </CreditsContainerStyled>
         <ContactForm />

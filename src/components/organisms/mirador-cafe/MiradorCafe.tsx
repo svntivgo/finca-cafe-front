@@ -1,5 +1,13 @@
 import React from 'react';
-import { Banner, Button, Icon, Text } from '../../atoms';
+import {
+  BOLD_FONT_STYLE,
+  Banner,
+  Button,
+  CREAM_BUTTON,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import {
   MiradorCafeDescriptionSpanStyled,
   MiradorCafeLogoContainerStyled,
@@ -25,50 +33,55 @@ import LogoFincaCafe from '../../../assets/logo-finca-circulo-negro.svg';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 import { Link } from 'react-router-dom';
 import { CelebracionesContact } from '../../molecules';
-import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 
 export const MiradorCafe: React.FC = () => {
-  const { isDesktop } = DEVICE_SCREEN;
   return (
     <>
-      <Banner image={isDesktop ? PhotoBanner : PhotoBannerMobile} />
+      <Banner desktopImage={PhotoBanner} mobileImage={PhotoBannerMobile} />
       <StyledMiradorCafeContainer>
         <MiradorCafeLogoContainerStyled>
           <Icon src={LogoFincaCafe} width="10rem" />
         </MiradorCafeLogoContainerStyled>
         <MiradorCafeSpanStyled />
-        <Text
+        <Paragraph
+          style={{
+            ...BOLD_FONT_STYLE,
+            color: `${COLORS.GOLD}`,
+            fontFamily: 'Royale',
+            fontSize: '2rem',
+            textAlign: 'center',
+          }}
           text="EXPERIENCIAS GASTRONÓMICAS Y ENTRETENIMIENTO"
-          align="center"
-          font="Royale"
-          color={COLORS.GOLD}
-          size="2rem"
-          weight="800"
         />
         <MiradorCafeSpanStyled />
         <MiradorCafeDescriptionSpanStyled>
-          <Text
+          <Paragraph
+            style={{
+              ...LIGHT_FONT_STYLE,
+              textAlign: 'justify',
+            }}
             text="Disfruta días de sol, aire puro y la mejor energía en nuestro Mirador del Café junto a
             tu familia y amigos. Poseemos 4 espacios dónde podrás disfrutar nuestra
             grastronomía, música en vivo o realizar tus celebraciones familiares o corporativas."
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            align="justify"
           />
         </MiradorCafeDescriptionSpanStyled>
         <MiradorCafeSpanStyled />
         <MiradorCafeEventsContainerStyled>
           <MiradorCafePhotoTextDescriptionContainerStyled>
-            <Text
+            <Paragraph
+              style={{
+                ...LIGHT_FONT_STYLE,
+                color: `${COLORS.GOLD}`,
+                fontSize: '2.5rem',
+              }}
               text="Eventos & Celebraciones"
-              align="left"
-              font="Poppins"
-              color={COLORS.GOLD}
-              size="2.5rem"
-              weight="300"
             />
             <MiradorCafeSpanStyled />
-            <Text
+            <Paragraph
+              style={{
+                ...LIGHT_FONT_STYLE,
+                color: `${COLORS.WHITE}`,
+              }}
               text="Contamos con una increíble selección de lugares que se
                 ajustan a tus necesidades, como nuestro restaurante,
                 piquetadero, lobbie, habitaciones y suites, todos los
@@ -76,22 +89,17 @@ export const MiradorCafe: React.FC = () => {
                 privada para eventos como lanzamientos de productos,
                 cenas privadas, eventos corporativos, bodas y
                 celebraciones familiares."
-              align="left"
-              font="Poppins"
-              color={COLORS.WHITE}
-              size="0.7rem"
-              weight="200"
             />
             <MiradorCafeSpanStyled />
             <Button
+              style={{
+                ...CREAM_BUTTON,
+                fontSize: '0.7rem',
+                fontWeight: `${600}`,
+                margin: '16px 0 0 0',
+              }}
               text="Solicitar propuesta"
-              colors={COLORS.CREAM}
-              font={COLORS.PEARL_BLACK}
-              weight={600}
-              fontSize="0.7rem"
-              margin="16px 0 0 0"
-              radius="8px"
-              onCLick={() =>
+              onClick={() =>
                 openNewTab('https://api.whatsapp.com/send?phone=573178000001')
               }
             />
@@ -106,17 +114,20 @@ export const MiradorCafe: React.FC = () => {
             <Link to={'/restaurante'} style={{ width: '100%' }}>
               <img src={ResturantPhoto} width={'100%'} />
               <MiradorCafePhotoDescriptionTextContainerStyled>
-                <Text
+                <Paragraph
+                  style={{
+                    fontFamily: 'Royale',
+                    fontSize: '1.5rem',
+                    textAlign: 'center',
+                  }}
                   text={`RESTAURANTE`}
-                  align="center"
-                  font="Royale"
-                  size="1.5rem"
                 />
-                <Text
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                    textAlign: 'center',
+                  }}
                   text={'GASTRONOMÍA CREATIVA EN EL PAISAJE CAFETERO'}
-                  align="center"
-                  weight="200"
-                  size="0.7rem"
                 />
               </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
@@ -125,17 +136,20 @@ export const MiradorCafe: React.FC = () => {
             <Link to={'/cafe'} style={{ width: '100%' }}>
               <img src={CafePhoto} width={'100%'} />
               <MiradorCafePhotoDescriptionTextContainerStyled>
-                <Text
+                <Paragraph
+                  style={{
+                    fontFamily: 'Royale',
+                    fontSize: '1.5rem',
+                    textAlign: 'center',
+                  }}
                   text={`CAFÉ`}
-                  align="center"
-                  font="Royale"
-                  size="1.5rem"
                 />
-                <Text
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                    textAlign: 'center',
+                  }}
                   text={'DE NUESTRAS MONTAÑAS A TU MESA'}
-                  align="center"
-                  weight="200"
-                  size="0.7rem"
                 />
               </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
@@ -144,12 +158,20 @@ export const MiradorCafe: React.FC = () => {
             <Link to={'/bar'} style={{ width: '100%' }}>
               <img src={BarPhoto} width={'100%'} />
               <MiradorCafePhotoDescriptionTextContainerStyled>
-                <Text text={`BAR`} align="center" font="Royale" size="1.5rem" />
-                <Text
+                <Paragraph
+                  style={{
+                    fontFamily: 'Royale',
+                    fontSize: '1.5rem',
+                    textAlign: 'center',
+                  }}
+                  text={`BAR`}
+                />
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                    textAlign: 'center',
+                  }}
                   text={'SUMÉRGETE EN LA ATMÓSFERA VIBRANTE DE NUESTRO BAR'}
-                  align="center"
-                  weight="200"
-                  size="0.7rem"
                 />
               </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>
@@ -158,17 +180,20 @@ export const MiradorCafe: React.FC = () => {
             <Link to={'/piqueteadero'} style={{ width: '100%' }}>
               <img src={PiqueteaderoPhoto} width={'100%'} />
               <MiradorCafePhotoDescriptionTextContainerStyled>
-                <Text
+                <Paragraph
+                  style={{
+                    fontFamily: 'Royale',
+                    fontSize: '1.5rem',
+                    textAlign: 'center',
+                  }}
                   text={`PIQUETEADERO`}
-                  align="center"
-                  font="Royale"
-                  size="1.5rem"
                 />
-                <Text
+                <Paragraph
+                  style={{
+                    ...LIGHT_FONT_STYLE,
+                    textAlign: 'center',
+                  }}
                   text={'MÚSICA EN VIVO Y LAS MEJORES PICADAS'}
-                  align="center"
-                  weight="200"
-                  size="0.7rem"
                 />
               </MiradorCafePhotoDescriptionTextContainerStyled>
             </Link>

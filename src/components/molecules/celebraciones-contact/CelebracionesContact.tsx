@@ -4,61 +4,27 @@ import {
   CelebrationsTextContainerStyled,
   CelebrationsTextInfoStyled,
 } from '..';
-import { Icon, Text } from '../../atoms';
-import { COLORS } from '../../../constants/colors';
+import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 
 export const CelebracionesContact: React.FC = () => {
   return (
     <CelebrationsContainerStyled>
       <CelebrationsTextContainerStyled>
-        <Text text="Contáctanos:" color={COLORS.PEARL_BLACK} weight="400" />
+        <Paragraph text="Contáctanos:" />
         <CelebrationsTextInfoStyled>
-          <Text
-            align="left"
-            text="Ventas: "
-            color={COLORS.PEARL_BLACK}
-            weight="400"
-            size="0.7rem"
-          />
-          <Text
-            align="left"
-            text=" +57 317 8000001"
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            size="0.7rem"
-          />
+          <Paragraph text="Ventas: " />
+          <Paragraph text=" +57 317 8000001" style={LIGHT_FONT_STYLE} />
         </CelebrationsTextInfoStyled>
         <CelebrationsTextInfoStyled>
-          <Text
-            align="left"
-            text="Información eventos: "
-            color={COLORS.PEARL_BLACK}
-            weight="400"
-            size="0.7rem"
-          />
-          <Text
-            align="left"
+          <Paragraph text="Información eventos: " />
+          <Paragraph
             text=" mercadeo@fincadelcafe.com"
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            size="0.7rem"
+            style={LIGHT_FONT_STYLE}
           />
         </CelebrationsTextInfoStyled>
         <CelebrationsTextInfoStyled>
-          <Text
-            align="left"
-            text="Información hospedaje: "
-            color={COLORS.PEARL_BLACK}
-            weight="400"
-            size="0.7rem"
-          />
-          <Text
-            align="left"
-            text=" info@fincadelcafe.com"
-            color={COLORS.PEARL_BLACK}
-            weight="200"
-            size="0.7rem"
-          />
+          <Paragraph text="Información hospedaje: " />
+          <Paragraph text=" info@fincadelcafe.com" style={LIGHT_FONT_STYLE} />
         </CelebrationsTextInfoStyled>
       </CelebrationsTextContainerStyled>
       <Icon src="" width="" />

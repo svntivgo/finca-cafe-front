@@ -44,7 +44,7 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
       <NavMenuHeader isMenuItems={isMenuItems} isScrolled={isScrolled}>
         <Icon
           src={isMenuItems ? CerrarSVG : MenuSVG}
-          width="1.5rem"
+          style={{ width: '1.5rem' }}
           onClick={() => setIsMenuItems(!isMenuItems)}
         />
         <NavMenuInfo>
@@ -53,12 +53,14 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
           </Link>
           <Link to={'/reserva/selecciona'}>
             <Button
+              style={{
+                backgroundColor: `${COLORS.GOLD}`,
+                color: `${COLORS.WHITE}`,
+                fontSize: '0.7rem',
+                margin: '0 1rem 0 0',
+                padding: '0.2rem 1.5rem',
+              }}
               text="Reservar"
-              colors={COLORS.GOLD}
-              font={COLORS.WHITE}
-              fontSize="0.7rem"
-              margin="0 1rem 0 0"
-              padding="0.2rem 1.5rem"
             />
           </Link>
         </NavMenuInfo>
@@ -72,7 +74,6 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
               src={item.src}
               width={item.width}
               text={item.text}
-              weight="300"
               onClick={() => setIsMenuItems(!isMenuItems)}
             />
           ))}

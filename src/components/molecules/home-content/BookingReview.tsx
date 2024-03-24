@@ -7,8 +7,12 @@ import {
   BookingTitleContainerStyled,
   ContainerHomeStyled,
 } from '..';
-import { Icon, Text } from '../../atoms';
-import { COLORS } from '../../../constants/colors';
+import {
+  BOLD_FONT_STYLE,
+  Icon,
+  LIGHT_FONT_STYLE,
+  Paragraph,
+} from '../../atoms';
 import Booking from '../../../assets/booking.svg';
 
 export const BookingReview: React.FC = () => {
@@ -17,19 +21,17 @@ export const BookingReview: React.FC = () => {
       <BookingReviewBoxContainerStyled>
         <BookingContainterStyled>
           <BookingTitleContainerStyled>
-            <Text
-              text="Traveller review 2023"
-              color={COLORS.PEARL_BLACK}
-              size="0.75rem"
-              weight="200"
-            />
+            <Paragraph text="Traveller review 2023" style={LIGHT_FONT_STYLE} />
           </BookingTitleContainerStyled>
           <BookingReviewContainerStyled>
             <Icon src={Booking} width="100px" />
             <BookingQualyContainerStyled>
-              <Text text="9,5" weight="800" />
+              <Paragraph text="9,5" style={BOLD_FONT_STYLE} />
             </BookingQualyContainerStyled>
-            <Text text="Excepcional" weight="800" color="#283b7d" />
+            <Paragraph
+              text="Excepcional"
+              style={{ ...BOLD_FONT_STYLE, color: '#283b7d' }}
+            />
           </BookingReviewContainerStyled>
         </BookingContainterStyled>
       </BookingReviewBoxContainerStyled>
