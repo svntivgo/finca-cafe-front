@@ -1,6 +1,6 @@
 import React from 'react';
 import { NotFoundContainer, NotFoundSpan } from '..';
-import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
+import { Image, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import ColombiaLogo from '../../../assets/colombia-logo.svg';
 import LogoFincaCirculo from '../../../assets/logo-finca-circulo.svg';
 import Instagram from '../../../assets/instagram.svg';
@@ -12,11 +12,11 @@ import { openNewTab } from '../../../shared/helper/open-new-tab';
 export const NotFound: React.FC = () => {
   return (
     <NotFoundContainer>
-      <Icon src={LogoFincaCirculo} width="160px" />
+      <Image src={LogoFincaCirculo} width="160px" />
       <NotFoundSpan />
       <NotFoundSpan />
       <NotFoundSpan />
-      <Icon src={TazaCafe} width="140px" />
+      <Image src={TazaCafe} width="140px" />
       <NotFoundSpan />
       <Paragraph
         style={{
@@ -47,7 +47,7 @@ export const NotFound: React.FC = () => {
         text="Qué tal si nos visitas en Instagram"
       />
       <NotFoundSpan />
-      <Icon
+      <Image
         src={Instagram}
         width="80px"
         onClick={() => openNewTab(FINCA_CAFE_INFO.INSTAGRAM)}
@@ -57,7 +57,7 @@ export const NotFound: React.FC = () => {
       <NotFoundSpan />
       <NotFoundSpan />
       <NotFoundSpan />
-      <Icon src={ColombiaLogo} width="80px" />
+      <Image src={ColombiaLogo} width="80px" />
     </NotFoundContainer>
   );
 };

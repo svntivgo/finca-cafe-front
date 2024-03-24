@@ -3,14 +3,14 @@ import { MenusContainer, MenusSpan } from '..';
 import ColombiaLogo from '../../../assets/colombia-logo.svg';
 import LogoFincaCirculo from '../../../assets/logo-finca-circulo.svg';
 import Piqueteadero_PDF_ES from '../../../assets/menus/pdf/piqueteadero-menu-mirador-del-cafe.pdf';
-import { BLACK_BUTTON, Button, Icon } from '../../atoms';
+import { BLACK_BUTTON, Button, Image } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
 export const Piqueteadero: React.FC = () => {
   return (
     <MenusContainer>
-      <Icon src={LogoFincaCirculo} width="160px" />
+      <Image src={LogoFincaCirculo} width="160px" />
       <MenusSpan />
       <Button
         style={BLACK_BUTTON}
@@ -18,7 +18,7 @@ export const Piqueteadero: React.FC = () => {
         onClick={() => openNewTab(Piqueteadero_PDF_ES)}
       />
       <MenusSpan />
-      <Icon src={ColombiaLogo} width="80px" />
+      <Image src={ColombiaLogo} width="80px" />
     </MenusContainer>
   );
 };

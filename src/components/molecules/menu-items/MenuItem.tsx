@@ -5,14 +5,14 @@ import React from 'react';
 import { COLORS } from '../../../constants/colors';
 
 //Interfaces & Styled Components
-import { Paragraph, Icon } from '../../atoms';
+import { Paragraph, Image } from '../../atoms';
 import { MenuItemProps, StyledLink, Separator } from '..';
 
 export const MenuItem: React.FC<MenuItemProps> = (props) => {
   return (
     <StyledLink to={props.path} onClick={props.onClick}>
       <Separator />
-      <Icon src={props.src} width={props.width} />
+      <Image src={props.src} width={props.width} />
       <Separator />
       <Separator />
       <Paragraph

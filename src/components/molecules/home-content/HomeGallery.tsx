@@ -12,7 +12,7 @@ import {
 import {
   BLACK_BUTTON,
   Button,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -79,7 +79,7 @@ export const HomeGallery: React.FC = () => {
       </HomeGalleryDescriptionStyled>
       <HomeGalleryContainerStyled>
         <RowLeftStyled>
-          <Icon src={rowLeft} width="20px" onClick={prevReview} />
+          <Image src={rowLeft} width="20px" onClick={prevReview} />
         </RowLeftStyled>
         <HomePhotoGalleryContainerStyled>
           <img src={photo.photo} width="100%" />
@@ -95,7 +95,7 @@ export const HomeGallery: React.FC = () => {
           </HomePhotoGalleryTextContainerStyled>
         </HomePhotoGalleryContainerStyled>
         <RowRightStyled>
-          <Icon src={rowRight} width="20px" onClick={nextReview} />
+          <Image src={rowRight} width="20px" onClick={nextReview} />
         </RowRightStyled>
       </HomeGalleryContainerStyled>
     </HomeGallerySectionStyled>

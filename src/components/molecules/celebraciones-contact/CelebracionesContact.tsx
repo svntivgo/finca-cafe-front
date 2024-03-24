@@ -4,7 +4,7 @@ import {
   CelebrationsTextContainerStyled,
   CelebrationsTextInfoStyled,
 } from '..';
-import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
+import { Image, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 
 export const CelebracionesContact: React.FC = () => {
   return (
@@ -27,7 +27,7 @@ export const CelebracionesContact: React.FC = () => {
           <Paragraph text=" info@fincadelcafe.com" style={LIGHT_FONT_STYLE} />
         </CelebrationsTextInfoStyled>
       </CelebrationsTextContainerStyled>
-      <Icon src="" width="" />
+      <Image src="" width="" />
     </CelebrationsContainerStyled>
   );
 };

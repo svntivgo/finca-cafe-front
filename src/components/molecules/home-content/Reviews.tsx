@@ -10,7 +10,7 @@ import {
   HomeSpanStyled,
 } from '..';
 import { COLORS } from '../../../constants/colors';
-import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
+import { Image, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import { REVIEWS } from '../../../constants/reviews';
 import rowLeft from '../../../assets/row-left.svg';
 import rowRight from '../../../assets/row-right.svg';
@@ -56,7 +56,7 @@ export const Reviews: React.FC = () => {
         <HomeSpanStyled />
         <ReviewerInfoContainerStyled>
           <ReviewerFlagContainerStyled>
-            <Icon src={review.flag} width="32px" />
+            <Image src={review.flag} width="32px" />
           </ReviewerFlagContainerStyled>
           <ReviewerNameContainerStyled>
             <Paragraph
@@ -70,7 +70,7 @@ export const Reviews: React.FC = () => {
           </ReviewerNameContainerStyled>
         </ReviewerInfoContainerStyled>
         <ReviewContainerStyled>
-          <Icon src={rowLeft} width="12px" onClick={prevReview} />
+          <Image src={rowLeft} width="12px" onClick={prevReview} />
           <ReviewTextContainerStyled>
             <Paragraph
               style={{
@@ -81,7 +81,7 @@ export const Reviews: React.FC = () => {
               text={review.review}
             />
           </ReviewTextContainerStyled>
-          <Icon src={rowRight} width="12px" onClick={nextReview} />
+          <Image src={rowRight} width="12px" onClick={nextReview} />
         </ReviewContainerStyled>
       </WingCard>
     </ReviewBoxContainerStyled>

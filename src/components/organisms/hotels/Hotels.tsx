@@ -4,7 +4,7 @@ import {
   BOLD_FONT_STYLE,
   Banner,
   Button,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -42,7 +42,7 @@ export const Hotels: React.FC = () => {
       <Banner desktopImage={PhotoBanner} mobileImage={PhotoBannerMobile} />
       <StyledHotelsContainer>
         <HotelsLogoContainerStyled>
-          <Icon src={LogoHotels} width="10rem" />
+          <Image src={LogoHotels} width="10rem" />
         </HotelsLogoContainerStyled>
         <HotelsSpanStyled />
         <Paragraph

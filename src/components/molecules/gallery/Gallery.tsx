@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { RowLeftStyled, RowRightStyled } from '..';
-import { Icon } from '../../atoms';
+import { Image } from '../../atoms';
 import rowLeft from '../../../assets/row-left.svg';
 import rowRight from '../../../assets/row-right.svg';
 import { GalleryProps } from './interfaces';
@@ -40,7 +40,7 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
     <GallerySectionStyled>
       <GalleryContainerStyled>
         <RowLeftStyled>
-          <Icon src={rowLeft} width="20px" onClick={prevReview} />
+          <Image src={rowLeft} width="20px" onClick={prevReview} />
         </RowLeftStyled>
         <PhotoGalleryContainerStyled>
           <img
@@ -52,7 +52,7 @@ export const Gallery: React.FC<GalleryProps> = (props) => {
           />
         </PhotoGalleryContainerStyled>
         <RowRightStyled>
-          <Icon src={rowRight} width="20px" onClick={nextReview} />
+          <Image src={rowRight} width="20px" onClick={nextReview} />
         </RowRightStyled>
       </GalleryContainerStyled>
     </GallerySectionStyled>

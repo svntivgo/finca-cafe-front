@@ -4,7 +4,7 @@ import {
   Banner,
   Button,
   CREAM_BUTTON,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -40,7 +40,7 @@ export const MiradorCafe: React.FC = () => {
       <Banner desktopImage={PhotoBanner} mobileImage={PhotoBannerMobile} />
       <StyledMiradorCafeContainer>
         <MiradorCafeLogoContainerStyled>
-          <Icon src={LogoFincaCafe} width="10rem" />
+          <Image src={LogoFincaCafe} width="10rem" />
         </MiradorCafeLogoContainerStyled>
         <MiradorCafeSpanStyled />
         <Paragraph

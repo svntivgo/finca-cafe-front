@@ -5,7 +5,7 @@ import {
   BOLD_FONT_STYLE,
   Button,
   GOLD_BUTTON,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -24,7 +24,7 @@ export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
   return (
     <StyledInternalContainer>
       <StyledInternalBanner {...props} />
-      <Icon src={LogoMirador} width="8rem" />
+      <Image src={LogoMirador} width="8rem" />
       <StyledInternalSpan />
       <StyledInternalTextContainer>
         <Paragraph

@@ -14,7 +14,7 @@ import {
   RoomEquipment,
   ROOM_EQUIPMENTS,
 } from '../../../constants/room-equipments';
-import { Icon, Paragraph } from '../../atoms';
+import { Image, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 
 export const RoomEquipments: React.FC<RoomEquipmentsProps> = (props) => {
@@ -43,7 +43,7 @@ export const RoomEquipments: React.FC<RoomEquipmentsProps> = (props) => {
       <StyledEquipmentContainer>
         {equipments.map((equipment, index) => (
           <StyledEquipmentItem key={`${props.title}-equipment-${index}`}>
-            <Icon src={equipment.ICON} width="24px" />
+            <Image src={equipment.ICON} width="24px" />
             <StyledSpan />
             <Paragraph
               style={{

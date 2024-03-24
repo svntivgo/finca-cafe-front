@@ -3,7 +3,7 @@ import {
   Banner,
   Button,
   CREAM_BUTTON,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -45,7 +45,7 @@ export const Celebraciones: React.FC = () => {
       <Banner desktopImage={HallBanner} mobileImage={HallBannerMobile} />
       <StyledCelebrationsContainer>
         <CelebrationsLogoContainerStyled>
-          <Icon src={LogoBlack} width="10rem" />
+          <Image src={LogoBlack} width="10rem" />
         </CelebrationsLogoContainerStyled>
         <CelebrationsSpanStyled />
         <Paragraph

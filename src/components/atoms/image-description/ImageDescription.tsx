@@ -1,20 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
+  Image,
+  LIGHT_FONT_STYLE,
+  Paragraph,
   PhotoDescriptionContainerStyled,
   PhotoDescriptionProps,
   PhotoDescriptionTextContainerStyled,
 } from '..';
-import { LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
-import { Link } from 'react-router-dom';
+import { COLORS } from '../../../constants/colors';
 
-export const PhotoDescription: React.FC<PhotoDescriptionProps> = (props) => {
+export const ImageDescription: React.FC<PhotoDescriptionProps> = (props) => {
   return (
     <PhotoDescriptionContainerStyled>
       <Link to={props.goTo} style={{ width: props.width, margin: '0 auto' }}>
-        <img src={props.photo} width={props.width} />
+        <Image src={props.photo} width={props.width} />
         <PhotoDescriptionTextContainerStyled>
           <Paragraph
             style={{
+              color: `${COLORS.WHITE}`,
               fontFamily: 'Royale',
               fontSize: '1.5rem',
               textAlign: 'center',
@@ -22,7 +26,11 @@ export const PhotoDescription: React.FC<PhotoDescriptionProps> = (props) => {
             text={props.title}
           />
           <Paragraph
-            style={{ ...LIGHT_FONT_STYLE, textAlign: 'center' }}
+            style={{
+              ...LIGHT_FONT_STYLE,
+              color: `${COLORS.WHITE}`,
+              textAlign: 'center',
+            }}
             text={props.description}
           />
         </PhotoDescriptionTextContainerStyled>

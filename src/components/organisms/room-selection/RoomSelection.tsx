@@ -229,7 +229,7 @@ export const RoomSelection: React.FC = () => {
                 padding: `${DEVICE_SCREEN.isDesktop ? '6px 16px' : '6px 6px'}`,
               }}
               text={`${formatMoney(
-                reservation.room.price * reservation.room.quantity +
+                reservation.room.price +
                   reservation.extras.tourCafe.price *
                     reservation.extras.tourCafe.quantity,
               )} COP`}

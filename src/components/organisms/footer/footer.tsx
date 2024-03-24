@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { WingCard } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
-import { Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
+import { Image, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import {
   AgencyInfo,
   FooterBoxGroupStyled,
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
     <FooterContainerStyled location={location.pathname}>
       <WingCard background={COLORS.GREEN}>
         <FooterHeadStyled>
-          <Icon src={Logo} width="180px" />
+          <Image src={Logo} width="180px" />
           <Paragraph
             style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
             text="Círculo de experiencias"
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
             <FooterBoxStyled>
               <NavigationIconsContainerStyled>
                 <NavigationIconsStyled>
-                  <Icon src={WazeIcon} width="80px" />
+                  <Image src={WazeIcon} width="80px" />
                   <Paragraph
                     style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                     text="Llegar con Waze"
@@ -92,7 +92,7 @@ export const Footer: React.FC = () => {
                 </NavigationIconsStyled>
                 <NavigationIconsStyled>
                   <Link to={'https://maps.app.goo.gl/d365gPoYEe4npFfr7'}>
-                    <Icon src={GoogleMapsIcon} width="50px" />
+                    <Image src={GoogleMapsIcon} width="50px" />
                     <Paragraph
                       style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                       text="Llegar con Google Maps"
@@ -110,19 +110,19 @@ export const Footer: React.FC = () => {
             <FooterBoxStyled>
               <PartnersIconsContainerStyled>
                 <PartnersIconsStyled>
-                  <Icon src={ColombiaIcon} width="60px" />
+                  <Image src={ColombiaIcon} width="60px" />
                 </PartnersIconsStyled>
                 <PartnersIconsStyled>
-                  <Icon src={PereiraIcon} width="100px" />
+                  <Image src={PereiraIcon} width="100px" />
                 </PartnersIconsStyled>
                 <PartnersIconsStyled>
-                  <Icon src={PaisajeIcon} width="80px" />
+                  <Image src={PaisajeIcon} width="80px" />
                 </PartnersIconsStyled>
                 <PartnersIconsStyled>
-                  <Icon src={AsoturismoIcon} width="100px" />
+                  <Image src={AsoturismoIcon} width="100px" />
                 </PartnersIconsStyled>
                 <PartnersIconsStyled>
-                  <Icon src={CertificadoIcon} width="80px" />
+                  <Image src={CertificadoIcon} width="80px" />
                 </PartnersIconsStyled>
               </PartnersIconsContainerStyled>
             </FooterBoxStyled>
@@ -142,7 +142,7 @@ export const Footer: React.FC = () => {
             text="Desarrollador técnologico de este sitio web"
           />
           <FooterSpan />
-          <Icon
+          <Image
             src={Malamente}
             width={'50px'}
             onClick={() =>

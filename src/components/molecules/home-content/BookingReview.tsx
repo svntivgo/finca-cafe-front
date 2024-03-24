@@ -9,7 +9,7 @@ import {
 } from '..';
 import {
   BOLD_FONT_STYLE,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -24,7 +24,7 @@ export const BookingReview: React.FC = () => {
             <Paragraph text="Traveller review 2023" style={LIGHT_FONT_STYLE} />
           </BookingTitleContainerStyled>
           <BookingReviewContainerStyled>
-            <Icon src={Booking} width="100px" />
+            <Image src={Booking} width="100px" />
             <BookingQualyContainerStyled>
               <Paragraph text="9,5" style={BOLD_FONT_STYLE} />
             </BookingQualyContainerStyled>

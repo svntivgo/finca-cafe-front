@@ -16,6 +16,7 @@ import 'react-date-range/dist/theme/default.css';
 import { ReservationOccupancyCard } from '../reservation-occupancy-card/reservation-occupancy-card';
 import { useReservation } from '../../../../context';
 import { Link } from 'react-router-dom';
+import { COLORS } from '../../../../constants/colors';
 
 export const ReservationHome: React.FC = () => {
   const { setDates, setOccupancy, setRoom, reservation } = useReservation();
@@ -143,6 +144,7 @@ export const ReservationHome: React.FC = () => {
                 color: '#fff',
                 zIndex: (theme) => theme.zIndex.drawer + 1,
                 width: '100vw',
+                backgroundColor: `${COLORS.CREAM}`,
               }}
               open={state.backdropOccupancy}
             >

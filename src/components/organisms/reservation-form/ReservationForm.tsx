@@ -327,7 +327,7 @@ export const ReservationForm: React.FC = () => {
                   fontWeight: '600',
                 }}
                 text={`Importe de ${formatMoney(
-                  reservation.room.price * reservation.room.quantity +
+                  reservation.room.price +
                     reservation.extras.tourCafe.price *
                       reservation.extras.tourCafe.quantity,
                 )} COP debido el ${actualDate.getDate()}/${

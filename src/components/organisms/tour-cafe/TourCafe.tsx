@@ -4,7 +4,7 @@ import {
   Banner,
   Button,
   CREAM_BUTTON,
-  Icon,
+  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
@@ -47,7 +47,7 @@ export const TourCafe: React.FC = () => {
       <Banner desktopImage={PhotoBanner} mobileImage={PhotoBannerMobile} />
       <StyledTourCafeContainer>
         <TourCafeLogoContainerStyled>
-          <Icon src={LogoTourCafe} width="10rem" />
+          <Image src={LogoTourCafe} width="10rem" />
         </TourCafeLogoContainerStyled>
         <TourCafeSpanStyled />
         <Paragraph
@@ -186,9 +186,9 @@ export const TourCafe: React.FC = () => {
             </WingCard>
           </TourCafeInfoWingStyled>
           <TourCafeLogosStyled>
-            <Icon src={ColombiaIcon} style={{ width: '100px' }} />
+            <Image src={ColombiaIcon} style={{ width: '100px' }} />
             <TourCafeSpanStyled />
-            <Icon src={PaisajeIcon} width="140px" />
+            <Image src={PaisajeIcon} width="140px" />
           </TourCafeLogosStyled>
         </TourCafeInfoContainerStyled>
         <TourCafeSpanStyled />

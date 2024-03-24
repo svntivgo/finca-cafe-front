@@ -2,16 +2,18 @@ import React from 'react';
 import {
   GastroPhotoContainerStyled,
   GastroPhotoDescriptionContainerStyled,
-} from '..';
-import { Button, Paragraph, WHITE_BUTTON } from '../../atoms';
+} from '../../molecules';
+import { Button, Image, Paragraph, WHITE_BUTTON } from '..';
 import { COLORS } from '../../../constants/colors';
-import { GastroPhotoProps } from './interfaces';
 import { Link } from 'react-router-dom';
+import { ImageDescriptionButtonProps } from '.';
 
-export const GastroPhoto: React.FC<GastroPhotoProps> = (props) => {
+export const ImageDescriptionButton: React.FC<ImageDescriptionButtonProps> = (
+  props,
+) => {
   return (
     <GastroPhotoContainerStyled>
-      <img src={props.photo} width={props.width} />
+      <Image src={props.photo} width={props.width} />
       <GastroPhotoDescriptionContainerStyled>
         <Paragraph
           style={{

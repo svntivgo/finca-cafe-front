@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Icon, WHATSAPP_BUTTON } from '../../atoms';
+import { Button, Image, WHATSAPP_BUTTON } from '../../atoms';
 import LogoWhatsapp from '../../../assets/whatsapp.png';
 import { OptionsContainerStyled, WhatsappContainerStyled } from '..';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
@@ -8,7 +8,7 @@ export const Whatsapp: React.FC = () => {
   const [show, setShow] = useState(false);
   return (
     <WhatsappContainerStyled>
-      <Icon src={LogoWhatsapp} width="24px" onClick={() => setShow(!show)} />
+      <Image src={LogoWhatsapp} width="24px" onClick={() => setShow(!show)} />
       {show && (
         <OptionsContainerStyled>
           <Button

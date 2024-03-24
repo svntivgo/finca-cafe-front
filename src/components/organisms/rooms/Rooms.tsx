@@ -16,7 +16,7 @@ import {
 } from '..';
 
 //Shared & Components
-import { Banner, Icon, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
+import { Banner, Image, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { HOTELS } from '../../../constants/hotels';
 import Head from '../../../assets/habitaciones/head-habitaciones.jpg';
@@ -59,7 +59,7 @@ export const Rooms: React.FC = () => {
             <WingCard background={COLORS.GREEN} inverted={isDesktop}>
               <StyledRoomsSeparator />
               <StyledTextRooms>
-                <Icon
+                <Image
                   src={LogoBourbon}
                   width="150px"
                   style={{ margin: '16px auto' }}

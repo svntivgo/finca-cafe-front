@@ -12,7 +12,7 @@ import {
 } from '..';
 
 //Shared & Components
-import { Icon, Button } from '../../atoms';
+import { Image, Button } from '../../atoms';
 import { Disclaimer, MenuItem } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
 import LogoSVG from '../../../assets/logo-finca.svg';
@@ -42,14 +42,14 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
     <NavMenuContainer isMenuItems={isMenuItems}>
       <Disclaimer></Disclaimer>
       <NavMenuHeader isMenuItems={isMenuItems} isScrolled={isScrolled}>
-        <Icon
+        <Image
           src={isMenuItems ? CerrarSVG : MenuSVG}
           style={{ width: '1.5rem' }}
           onClick={() => setIsMenuItems(!isMenuItems)}
         />
         <NavMenuInfo>
           <Link to={'/'}>
-            <Icon src={LogoSVG} width="140px" />
+            <Image src={LogoSVG} width="140px" />
           </Link>
           <Link to={'/reserva/selecciona'}>
             <Button
