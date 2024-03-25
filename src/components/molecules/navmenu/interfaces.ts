@@ -1,4 +1,4 @@
-import { MenuItemProps } from '../../molecules';
+import { MenuItemProps } from '..';
 
 export interface MenuProps {
   items: MenuItemProps[];

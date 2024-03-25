@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import { COLORS } from '../../../constants/colors';
 
 const spin = keyframes`
   0% { transform: rotate(0deg); }
@@ -8,6 +9,7 @@ const spin = keyframes`
 `;
 
 const LoadingScreenWrapper = styled.div`
+  background-color: ${COLORS.PEARL_BLACK};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,8 +18,8 @@ const LoadingScreenWrapper = styled.div`
 `;
 
 const Loader = styled.div`
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
+  border: 8px solid ${COLORS.WHITE};
+  border-top: 8px solid ${COLORS.GOLD};
   border-radius: 50%;
   width: 50px;
   height: 50px;

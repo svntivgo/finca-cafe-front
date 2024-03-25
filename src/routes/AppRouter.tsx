@@ -7,7 +7,6 @@ import {
   Home,
   Room,
   Rooms,
-  NavMenu,
   RoomSelection,
   NotFound,
   Piqueteadero,
@@ -25,7 +24,7 @@ import {
 //Shared
 import { ReservationProvider } from '../context';
 import { NAV_ITEMS } from '../constants/nav-items';
-import { Footer, Whatsapp } from '../components/molecules';
+import { Footer, NavMenu, Whatsapp } from '../components/molecules';
 import { INTERNAL_PLACE } from '../constants/internal-place';
 import ScrollToTop from './scroll-top/ScrollTop';
 

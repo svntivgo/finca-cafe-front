@@ -30,7 +30,7 @@ import {
 import { ROOMS_BOURBON, ROOMS_TIPICA, Room } from '../../../constants/rooms';
 import { HotelFive, IHabitaciones } from '../../../services';
 import { formatHotelFiveQuery } from '../../../shared/helper/date-formatter';
-import LoadingScreen from '../loading-screen/LoadingScreen';
+import LoadingScreen from '../../atoms/loading-screen/LoadingScreen';
 import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 import { MinorAgesToMinorsUtil } from '../../../shared/helper/minors-util';
 

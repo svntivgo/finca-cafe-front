@@ -9,11 +9,11 @@ import {
   NavMenuHeader,
   NavMenuContainer,
   NavMenuItemsContainer,
-} from '..';
+} from '.';
 
 //Shared & Components
-import { Image, Button } from '../../atoms';
-import { Disclaimer, MenuItem } from '../../molecules';
+import { Image, Button, MenuItem } from '../../atoms';
+import { Disclaimer } from '..';
 import { COLORS } from '../../../constants/colors';
 import LogoSVG from '../../../assets/logo-finca.svg';
 import MenuSVG from '../../../assets/navmenu/menu-head-home.svg';

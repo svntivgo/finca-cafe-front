@@ -1,4 +1,4 @@
-import { ParagraphProps, IconProps } from '../../atoms';
+import { ParagraphProps, IconProps } from '..';
 
 export interface MenuItemProps extends IconProps, ParagraphProps {
   path: string;

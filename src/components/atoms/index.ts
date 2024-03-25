@@ -4,4 +4,6 @@ export * from './image';
 export * from './image-description';
 export * from './image-description-button';
 export * from './inputs';
+export * from './loading-screen';
+export * from './menu-items';
 export * from './paragraph';

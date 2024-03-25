@@ -5,8 +5,8 @@ import React from 'react';
 import { COLORS } from '../../../constants/colors';
 
 //Interfaces & Styled Components
-import { Paragraph, Image } from '../../atoms';
-import { MenuItemProps, StyledLink, Separator } from '..';
+import { Paragraph, Image } from '..';
+import { MenuItemProps, StyledLink, Separator } from '.';
 
 export const MenuItem: React.FC<MenuItemProps> = (props) => {
   return (
@@ -19,6 +19,7 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
         style={{
           color: `${COLORS.WHITE}`,
           fontSize: '1.5rem',
+          fontWeight: '200',
         }}
         text={props.text}
       />
