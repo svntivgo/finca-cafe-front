@@ -47,10 +47,6 @@ export const CelebrationsPhotoDescriptionContainerStyled = styled.div`
   }
 `;
 
-export const CelebrationsLogoContainerStyled = styled.div`
-  margin-top: -5rem;
-`;
-
 export const CelebrationsSpanStyled = styled.div`
   margin: 1.5rem;
 `;
