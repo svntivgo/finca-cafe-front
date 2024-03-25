@@ -24,6 +24,7 @@ export const MENU_ROOM_FONT_STYLE: React.CSSProperties = {
 
 export const DATE_CARD_FONT_STYLE: React.CSSProperties = {
   color: `${COLORS.GOLD}`,
+  fontSize: '0.6rem',
   fontWeight: '200',
   textAlign: 'center',
 };

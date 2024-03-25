@@ -62,8 +62,9 @@ export const HomeGastroServices: React.FC = () => {
           ...BOLD_FONT_STYLE,
           fontFamily: 'Royale',
           fontSize: '2rem',
-          marginTop: '32px',
+          margin: '32px 0',
           textAlign: 'center',
+          width: '100%',
         }}
         text="GASTRONOMÍA"
       />

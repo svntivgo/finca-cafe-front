@@ -10,5 +10,5 @@ export const PhotoDescriptionContainerStyled = styled.div`
 `;
 
 export const PhotoDescriptionTextContainerStyled = styled.div`
-  margin: -80px 24px 46px 24px;
+  margin: -120px 24px 46px 24px;
 `;

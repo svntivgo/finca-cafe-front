@@ -13,7 +13,7 @@ export const NAV_ITEMS: MenuItemProps[] = [
     path: '/mirador-cafe',
     src: MiradorSVG,
     text: 'Mirador del café',
-    width: '1.5rem',
+    width: '24px',
   },
   {
     path: '/habitaciones',

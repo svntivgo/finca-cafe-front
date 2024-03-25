@@ -40,7 +40,7 @@ export const NavMenu: React.FC<MenuProps> = (props) => {
   };
   return (
     <NavMenuContainer isMenuItems={isMenuItems}>
-      <Disclaimer></Disclaimer>
+      <Disclaimer />
       <NavMenuHeader isMenuItems={isMenuItems} isScrolled={isScrolled}>
         <Image
           src={isMenuItems ? CerrarSVG : MenuSVG}

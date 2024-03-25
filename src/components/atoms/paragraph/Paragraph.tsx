@@ -20,7 +20,7 @@ const configStyles = (props: ParagraphProps): React.CSSProperties => {
   return {
     color: COLORS.PEARL_BLACK,
     fontFamily: 'Poppins',
-    fontSize: '0.7rem',
+    fontSize: '1rem',
     margin: 'unset',
     textAlign: 'left',
     fontWeight: 400,

@@ -14,6 +14,7 @@ import {
   Paragraph,
 } from '../../atoms';
 import Booking from '../../../assets/booking.svg';
+import { COLORS } from '../../../constants/colors';
 
 export const BookingReview: React.FC = () => {
   return (
@@ -21,12 +22,18 @@ export const BookingReview: React.FC = () => {
       <BookingReviewBoxContainerStyled>
         <BookingContainterStyled>
           <BookingTitleContainerStyled>
-            <Paragraph text="Traveller review 2023" style={LIGHT_FONT_STYLE} />
+            <Paragraph
+              text="Traveller review 2023"
+              style={{ ...LIGHT_FONT_STYLE, textAlign: 'center' }}
+            />
           </BookingTitleContainerStyled>
           <BookingReviewContainerStyled>
             <Image src={Booking} width="100px" />
             <BookingQualyContainerStyled>
-              <Paragraph text="9,5" style={BOLD_FONT_STYLE} />
+              <Paragraph
+                text="9,5"
+                style={{ ...BOLD_FONT_STYLE, color: `${COLORS.WHITE}` }}
+              />
             </BookingQualyContainerStyled>
             <Paragraph
               text="Excepcional"

@@ -57,7 +57,7 @@ export const Footer: React.FC = () => {
                 text={`Comunícate al ${FINCA_CAFE_INFO.HOTEL_TEL}`}
               />
               <Paragraph
-                color={COLORS.WHITE}
+                style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
                 text={`${FINCA_CAFE_INFO.HOTEL_MAIL}`}
               />
             </FooterBoxStyled>
@@ -138,7 +138,7 @@ export const Footer: React.FC = () => {
         </FooterInfoStyled>
         <AgencyInfo>
           <Paragraph
-            style={{ ...LIGHT_FONT_STYLE }}
+            style={{ ...LIGHT_FONT_STYLE, color: `${COLORS.WHITE}` }}
             text="Desarrollador técnologico de este sitio web"
           />
           <FooterSpan />

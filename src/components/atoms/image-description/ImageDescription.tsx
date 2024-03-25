@@ -29,6 +29,7 @@ export const ImageDescription: React.FC<PhotoDescriptionProps> = (props) => {
             style={{
               ...LIGHT_FONT_STYLE,
               color: `${COLORS.WHITE}`,
+              fontSize: '0.8rem',
               textAlign: 'center',
             }}
             text={props.description}

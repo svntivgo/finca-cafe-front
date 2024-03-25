@@ -49,6 +49,7 @@ export const Reviews: React.FC = () => {
           style={{
             color: `${COLORS.GOLD}`,
             fontFamily: 'Royale',
+            textAlign: 'center',
           }}
           text="NUESTROS VIAJEROS DAN SU OPINIÓN"
         />

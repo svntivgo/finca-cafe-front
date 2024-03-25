@@ -12,7 +12,7 @@ export const MenuItem: React.FC<MenuItemProps> = (props) => {
   return (
     <StyledLink to={props.path} onClick={props.onClick}>
       <Separator />
-      <Image src={props.src} width={props.width} />
+      <Image src={props.src} style={{ width: `${props.width}` }} />
       <Separator />
       <Separator />
       <Paragraph
