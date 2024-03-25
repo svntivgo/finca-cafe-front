@@ -13,10 +13,6 @@ export const HotelsLogoContainerStyled = styled.div`
   margin-top: -5rem;
 `;
 
-export const HotelsSpanStyled = styled.div`
-  margin: 1.5rem;
-`;
-
 export const HotelsDescriptionSpanStyled = styled.div`
   width: 75%;
 `;

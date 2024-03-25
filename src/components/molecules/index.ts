@@ -1,6 +1,7 @@
 export * from './celebraciones-card';
 export * from './celebraciones-contact';
 export * from './disclaimer';
+export * from './footer';
 export * from './gallery';
 export * from './home-content';
 export * from './hotels-content';

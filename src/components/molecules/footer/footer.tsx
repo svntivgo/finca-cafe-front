@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { WingCard } from '../../molecules';
+import { WingCard } from '..';
 import { COLORS } from '../../../constants/colors';
 import { Image, LIGHT_FONT_STYLE, Paragraph } from '../../atoms';
 import {
@@ -15,7 +15,7 @@ import {
   NavigationIconsStyled,
   PartnersIconsContainerStyled,
   PartnersIconsStyled,
-} from '..';
+} from '.';
 import { FINCA_CAFE_INFO } from '../../../constants/finca-cafe-info';
 import Logo from '../../../assets/logo-finca.svg';
 import Malamente from '../../../assets/malamente.svg';

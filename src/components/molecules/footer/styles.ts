@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { COLORS } from '../../../constants/colors';
-import { FooterProps } from '..';
+import { FooterProps } from '.';
 
 export const FooterContainerStyled = styled.div<FooterProps>`
   background-color: ${(props) =>
