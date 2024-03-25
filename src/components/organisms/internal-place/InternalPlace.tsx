@@ -1,53 +1,32 @@
 import React from 'react';
 import { ContactForm } from '..';
-import LogoMirador from '../../../assets/logo-mirador-cafe.svg';
+import { StyledInternalButtonsContainer, StyledInternalContainer } from '.';
 import {
-  BOLD_FONT_STYLE,
+  Banner,
   Button,
   GOLD_BUTTON,
-  Image,
   LIGHT_FONT_STYLE,
   Paragraph,
 } from '../../atoms';
-import {
-  StyledInternalBanner,
-  StyledInternalButtonsContainer,
-  StyledInternalContainer,
-  StyledInternalSpan,
-  StyledInternalTextContainer,
-} from './styles';
+import { SectionLogoTitle } from '../../molecules';
 import { InternalPlaceProps } from './interfaces';
-import { COLORS } from '../../../constants/colors';
+import LogoMirador from '../../../assets/logo-mirador-cafe.svg';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
 export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
   return (
     <StyledInternalContainer>
-      <StyledInternalBanner {...props} />
-      <Image src={LogoMirador} width="8rem" />
-      <StyledInternalSpan />
-      <StyledInternalTextContainer>
-        <Paragraph
-          style={{
-            ...BOLD_FONT_STYLE,
-            color: `${COLORS.GOLD}`,
-            fontFamily: 'Royale',
-            fontSize: '2.5rem',
-            textAlign: 'center',
-          }}
-          text={props.title}
-        />
-        <StyledInternalSpan />
-        <StyledInternalSpan />
-        <Paragraph
-          style={{
-            ...LIGHT_FONT_STYLE,
-            fontSize: '1.2rem',
-            textAlign: 'justify',
-          }}
-          text={props.description}
-        />
-      </StyledInternalTextContainer>
+      <Banner desktopImage={props.photo} mobileImage={props.photo} />
+      <SectionLogoTitle logo={LogoMirador} title={props.title} />
+      <Paragraph
+        style={{
+          ...LIGHT_FONT_STYLE,
+          fontSize: '1.2rem',
+          textAlign: 'justify',
+          width: '75%',
+        }}
+        text={props.description}
+      />
       <StyledInternalButtonsContainer>
         {props.isBooking && (
           <Button
