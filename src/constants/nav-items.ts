@@ -1,4 +1,4 @@
-import { MenuItemProps } from '../components/molecules';
+import { MenuItemProps } from '../components/atoms';
 import MiradorSVG from '../assets/navmenu/icono-mirador.svg';
 import HabitacionesSVG from '../assets/navmenu/icono-habitaciones.svg';
 import RestauranteSVG from '../assets/navmenu/icono-restaurante.svg';

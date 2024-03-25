@@ -4,7 +4,6 @@ import ColombiaLogo from '../../../assets/colombia-logo.svg';
 import LogoFincaCirculo from '../../../assets/logo-finca-circulo.svg';
 import Piqueteadero_PDF_ES from '../../../assets/menus/pdf/piqueteadero-menu-mirador-del-cafe.pdf';
 import { BLACK_BUTTON, Button, Image } from '../../atoms';
-import { COLORS } from '../../../constants/colors';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
 export const Piqueteadero: React.FC = () => {

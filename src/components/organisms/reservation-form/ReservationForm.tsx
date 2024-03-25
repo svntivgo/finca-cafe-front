@@ -111,17 +111,17 @@ export const ReservationForm: React.FC = () => {
       };
       console.log('🚀 ~ onSubmit: ~ reservationData:', reservationData);
       const reservationCheckout = async () => {
-        // const wompi = new WompiApi();
-        // const fincafeBack = new FincafeBack();
-        // const { data: fincafeBackResponse } =
-        //   await fincafeBack.createReservationTransaction(reservationData);
-        // const { publicKey, signatureIntegrity } = fincafeBackResponse;
-        // wompi.checkout(
-        //   publicKey,
-        //   stringReference,
-        //   `${totalReservation}00`,
-        //   signatureIntegrity,
-        // );
+        const wompi = new WompiApi();
+        const fincafeBack = new FincafeBack();
+        const { data: fincafeBackResponse } =
+          await fincafeBack.createReservationTransaction(reservationData);
+        const { publicKey, signatureIntegrity } = fincafeBackResponse;
+        wompi.checkout(
+          publicKey,
+          stringReference,
+          `${totalReservation}00`,
+          signatureIntegrity,
+        );
       };
       await reservationCheckout();
     },

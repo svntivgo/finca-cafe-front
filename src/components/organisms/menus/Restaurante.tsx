@@ -5,7 +5,6 @@ import LogoFincaCirculo from '../../../assets/logo-finca-circulo.svg';
 import Restaurante_PDF_ES from '../../../assets/menus/pdf/restaurante-menu-mirador-del-cafe.pdf';
 import Restaurante_PDF_EN from '../../../assets/menus/pdf/restaurant-menu-mirador-del-cafe.pdf';
 import { BLACK_BUTTON, Button, Image } from '../../atoms';
-import { COLORS } from '../../../constants/colors';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
 export const Restaurante: React.FC = () => {

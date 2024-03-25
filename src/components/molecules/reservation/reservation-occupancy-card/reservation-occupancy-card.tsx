@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, GREEN_BUTTON_ALT, SelectInput } from '../../../atoms';
-import { COLORS } from '../../../../constants/colors';
 import { Paragraph } from '../../../atoms';
 import { ReservationOccupancyCardProps } from './interfaces';
 import { MINOR_AGES } from '../../../../constants/minor-ages';
