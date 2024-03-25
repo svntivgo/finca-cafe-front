@@ -287,7 +287,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
             <Paragraph style={FORM_LABEL_FONT_STYLE} text="Consentimiento" />
             <StyledContactSpan />
             <Paragraph
-              style={FORM_LABEL_FONT_STYLE}
+              style={{ ...FORM_LABEL_FONT_STYLE, fontSize: '1rem' }}
               text="Al completar esta reserva, acepto terminos y condiciones de la reserva."
             />
             <div>

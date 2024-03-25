@@ -47,3 +47,11 @@ export const GOLD_BUTTON = {
   fontWeight: `${600}`,
   margin: '0 16px',
 };
+
+export const BLACK_GOLD_BUTTON = {
+  backgroundColor: `${COLORS.PEARL_BLACK}`,
+  borderRadius: '50px',
+  color: `${COLORS.GOLD}`,
+  fontWeight: `${600}`,
+  margin: '0 16px',
+};

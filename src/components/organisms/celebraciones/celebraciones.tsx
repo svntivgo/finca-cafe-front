@@ -6,6 +6,7 @@ import {
   Image,
   LIGHT_FONT_STYLE,
   Paragraph,
+  SECTION_TITLE_FONT_STYLE,
 } from '../../atoms';
 import {
   CelebrationsCardsContainerStyled,
@@ -35,7 +36,11 @@ import Piqueteadero from '../../../assets/celebraciones/piqueteadero.jpg';
 import Restaurante from '../../../assets/celebraciones/restaurante.jpg';
 import LogoBlack from '../../../assets/logo-finca-circulo-negro.svg';
 import { CelebracionesCard } from '../../molecules/celebraciones-card/CelebracionesCard';
-import { CelebracionesContact, Gallery } from '../../molecules';
+import {
+  CelebracionesContact,
+  Gallery,
+  SectionLogoTitle,
+} from '../../molecules';
 import { GALLERY_CELEBRATIONS } from '../../../constants/gallery';
 import { openNewTab } from '../../../shared/helper/open-new-tab';
 
@@ -44,21 +49,7 @@ export const Celebraciones: React.FC = () => {
     <>
       <Banner desktopImage={HallBanner} mobileImage={HallBannerMobile} />
       <StyledCelebrationsContainer>
-        <CelebrationsLogoContainerStyled>
-          <Image src={LogoBlack} width="10rem" />
-        </CelebrationsLogoContainerStyled>
-        <CelebrationsSpanStyled />
-        <Paragraph
-          style={{
-            color: `${COLORS.GOLD}`,
-            fontFamily: 'Royale',
-            fontSize: '1.5rem',
-            fontWeight: '800',
-            textAlign: 'center',
-          }}
-          text="CELEBRA A LO GRANDE"
-        />
-        <CelebrationsSpanStyled />
+        <SectionLogoTitle logo={LogoBlack} title="CELEBRA A LO GRANDE" />
         <CelebrationsDescriptionSpanStyled>
           <Paragraph
             style={{
@@ -121,13 +112,7 @@ export const Celebraciones: React.FC = () => {
         </CelebrationsEventsContainerStyled>
         <CelebrationsSpanStyled />
         <Paragraph
-          style={{
-            color: `${COLORS.GOLD}`,
-            fontFamily: 'Royale',
-            fontSize: '1.5rem',
-            fontWeight: '800',
-            textAlign: 'center',
-          }}
+          style={SECTION_TITLE_FONT_STYLE}
           text="PLANIFICACIÓN PERFECTA"
         />
         <CelebrationsSpanStyled />
@@ -187,13 +172,7 @@ export const Celebraciones: React.FC = () => {
           />
         </CelebrationsCardsContainerStyled>
         <Paragraph
-          style={{
-            color: `${COLORS.GOLD}`,
-            fontFamily: 'Royale',
-            fontSize: '1.5rem',
-            fontWeight: '800',
-            textAlign: 'center',
-          }}
+          style={SECTION_TITLE_FONT_STYLE}
           text="LUGARES DE CELEBRACIÓN"
         />
         <CelebrationsPlacesContainerStyled>
@@ -229,16 +208,7 @@ export const Celebraciones: React.FC = () => {
           </CelebrationsPlaceBoxStyled>
         </CelebrationsPlacesContainerStyled>
         <CelebrationsPlaceSpanStyled />
-        <Paragraph
-          style={{
-            color: `${COLORS.GOLD}`,
-            fontFamily: 'Royale',
-            fontSize: '1.5rem',
-            fontWeight: '800',
-            textAlign: 'center',
-          }}
-          text="GALERÍA"
-        />
+        <Paragraph style={SECTION_TITLE_FONT_STYLE} text="GALERÍA" />
         <CelebrationsGalleryContainerStyled>
           <Gallery gallery={GALLERY_CELEBRATIONS} />
         </CelebrationsGalleryContainerStyled>

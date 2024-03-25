@@ -2,6 +2,7 @@ import React from 'react';
 import { ContactForm } from '..';
 import { StyledInternalButtonsContainer, StyledInternalContainer } from '.';
 import {
+  BLACK_GOLD_BUTTON,
   Banner,
   Button,
   GOLD_BUTTON,
@@ -38,7 +39,7 @@ export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
           />
         )}
         <Button
-          style={GOLD_BUTTON}
+          style={BLACK_GOLD_BUTTON}
           text="Carta"
           onClick={() => openNewTab(props.menu)}
         />

@@ -75,6 +75,7 @@ export const ReservationHome: React.FC = () => {
       <StyledTextHomeContainer>
         <Paragraph
           style={{
+            fontSize: '0.8rem',
             textAlign: 'center',
           }}
           text="RESERVA TU MOMENTO DE PLACER LEJOS DEL RUIDO DE LA CIUDAD"

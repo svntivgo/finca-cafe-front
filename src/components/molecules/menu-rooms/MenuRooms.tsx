@@ -37,7 +37,7 @@ export const MenuRooms: React.FC = () => {
             >
               <StyledMenuItem>
                 <Paragraph
-                  style={MENU_ROOM_FONT_STYLE}
+                  style={{ ...MENU_ROOM_FONT_STYLE, fontFamily: 'Poppins' }}
                   text={`Hotel ${HOTELS.BOURBON.NAME}`}
                 />
               </StyledMenuItem>
@@ -48,7 +48,7 @@ export const MenuRooms: React.FC = () => {
             >
               <StyledMenuItem>
                 <Paragraph
-                  style={MENU_ROOM_FONT_STYLE}
+                  style={{ ...MENU_ROOM_FONT_STYLE, fontFamily: 'Poppins' }}
                   text={`Hotel ${HOTELS.TIPICA.NAME}`}
                 />
               </StyledMenuItem>
@@ -68,7 +68,7 @@ export const MenuRooms: React.FC = () => {
                 >
                   <StyledMenuItem key={`menu-rooms-bourbon-${index}`}>
                     <Paragraph
-                      style={MENU_ROOM_FONT_STYLE}
+                      style={{ ...MENU_ROOM_FONT_STYLE, fontFamily: 'Poppins' }}
                       text={room.title.toLowerCase()}
                     />
                   </StyledMenuItem>
@@ -85,7 +85,7 @@ export const MenuRooms: React.FC = () => {
                 >
                   <StyledMenuItem key={`menu-rooms-tipica-${index}`}>
                     <Paragraph
-                      style={MENU_ROOM_FONT_STYLE}
+                      style={{ ...MENU_ROOM_FONT_STYLE, fontFamily: 'Poppins' }}
                       text={room.title.toLowerCase()}
                     />
                   </StyledMenuItem>
