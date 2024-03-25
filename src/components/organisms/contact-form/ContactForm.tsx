@@ -40,7 +40,10 @@ export const ContactForm: React.FC = () => {
   });
 
   return (
-    <StyledContactContainer location={location.pathname}>
+    <StyledContactContainer
+      location={location.pathname}
+      style={{ marginTop: '32px' }}
+    >
       <Formik
         initialValues={initialValues}
         validationSchema={contactFormValidationSchema}

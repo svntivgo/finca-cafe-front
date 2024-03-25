@@ -3,6 +3,7 @@ export * from './celebraciones-contact';
 export * from './disclaimer';
 export * from './gallery';
 export * from './home-content';
+export * from './hotels-content';
 export * from './image-gallery-list';
 export * from './menu-items';
 export * from './menu-rooms';
