@@ -8,7 +8,7 @@ import {
   ImageDescriptionButton,
   Image,
   Paragraph,
-  BOLD_FONT_STYLE,
+  SECTION_TITLE_FONT_STYLE,
 } from '../../atoms';
 import RestaurantePhoto from '../../../assets/home/restaurante.jpg';
 import PiqueteaderoPhoto from '../../../assets/home/piqueteadero.jpg';
@@ -59,11 +59,7 @@ export const HomeGastroServices: React.FC = () => {
       </HomeLogoMiradorContainer>
       <Paragraph
         style={{
-          ...BOLD_FONT_STYLE,
-          fontFamily: 'Royale',
-          fontSize: '2rem',
-          margin: '32px 0',
-          textAlign: 'center',
+          ...SECTION_TITLE_FONT_STYLE,
           width: '100%',
         }}
         text="GASTRONOMÍA"

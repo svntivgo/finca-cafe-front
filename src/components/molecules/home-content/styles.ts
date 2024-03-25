@@ -93,7 +93,7 @@ export const HomePhotoGalleryTextContainerStyled = styled.div`
 export const GastroPhotoContainerStyled = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 8px 200px 8px;
+  margin: 0 8px 8rem 8px;
   @media (min-width: 1023px) {
     width: 37.5%;
   }

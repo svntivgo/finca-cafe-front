@@ -1,16 +1,13 @@
 import React from 'react';
 import { VideoContainer } from '.';
-import { BOLD_FONT_STYLE, Paragraph } from '../../atoms';
+import { SECTION_TITLE_FONT_STYLE, Paragraph } from '../../atoms';
 
 export const LearnMore: React.FC = () => {
   return (
     <>
       <Paragraph
         style={{
-          ...BOLD_FONT_STYLE,
-          fontFamily: 'Royale',
-          fontSize: '2rem',
-          textAlign: 'center',
+          ...SECTION_TITLE_FONT_STYLE,
         }}
         text="CONOCE MÁS"
       />

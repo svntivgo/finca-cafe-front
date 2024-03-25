@@ -33,3 +33,12 @@ export const FORM_LABEL_FONT_STYLE = {
   color: `${COLORS.PEARL_GREY}`,
   fontSize: '2rem',
 };
+
+export const SECTION_TITLE_FONT_STYLE: React.CSSProperties = {
+  ...BOLD_FONT_STYLE,
+  color: `${COLORS.GOLD}`,
+  fontFamily: 'Royale',
+  fontSize: '2rem',
+  margin: '5rem 0',
+  textAlign: 'center',
+};

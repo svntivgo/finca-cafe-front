@@ -9,5 +9,7 @@ export * from './menu-rooms';
 export * from './reservation';
 export * from './room-card';
 export * from './room-equipments';
+export * from './section-logo-title';
+export * from './tour-cafe-content';
 export * from './whatsapp';
 export * from './wing-card';
