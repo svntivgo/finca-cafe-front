@@ -103,6 +103,7 @@ export const RoomSelection: React.FC = () => {
 
   const setNextStep = () => {
     setActiveState(activeStep + 1);
+    window.scrollTo(0, 0);
   };
 
   enum nombres {
@@ -158,7 +159,7 @@ export const RoomSelection: React.FC = () => {
 
   useEffect(() => {
     setActiveState(0);
-    setRoom({ ...reservation.room, hotel: '', name: '', price: 0 });
+    setRoom({ ...reservation.room, hotel: '', name: '', price: 0, iva: 0 });
     setExtras({
       ...reservation.extras,
       tourCafe: { ...reservation.extras.tourCafe, quantity: 0 },
@@ -258,7 +259,10 @@ export const RoomSelection: React.FC = () => {
         {activeStep === 0 && (
           <>
             <Backdrop
-              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              sx={{
+                color: '#fff',
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+              }}
               open={state.backdropCalendar}
             >
               <DateRange
@@ -289,7 +293,11 @@ export const RoomSelection: React.FC = () => {
               />
             </Backdrop>
             <Backdrop
-              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              sx={{
+                color: '#fff',
+                zIndex: (theme) => theme.zIndex.drawer + 1,
+                backgroundColor: `${COLORS.CREAM}`,
+              }}
               open={state.backdropOccupancy}
             >
               <ReservationOccupancyCard

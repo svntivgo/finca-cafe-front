@@ -27,6 +27,7 @@ import { useLocation } from 'react-router-dom';
 import { Calendar } from 'react-date-range';
 import { addDays } from 'date-fns';
 import { es } from 'date-fns/locale';
+import { Link } from 'react-router-dom';
 
 const initialValues = {
   date: addDays(new Date(), 1),
@@ -299,7 +300,9 @@ export const ReservationCoffeeTourForm: React.FC = () => {
                 onBlur={formik.handleBlur}
                 checked={formik.values.termsConditions}
               />{' '}
-              *Acepto los terminos de privacidad
+              <Link to="/terminos-condiciones/" target="_blank">
+                *Acepto los terminos de privacidad
+              </Link>
               {formik.touched.termsConditions &&
               formik.errors.termsConditions ? (
                 <div className="error">{formik.errors.termsConditions}</div>
@@ -322,7 +325,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
               <Paragraph
                 style={{
                   color: `${COLORS.GREEN}`,
-                  fontSize: '0.5rem',
+                  fontSize: '0.6rem',
                   fontWeight: '600',
                 }}
                 text={`Importe de ${formatMoney(

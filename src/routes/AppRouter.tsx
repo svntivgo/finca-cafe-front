@@ -19,6 +19,7 @@ import {
   Hotels,
   MiradorCafe,
   ReservationCoffeeTourForm,
+  TermsConditions,
 } from '../components/organisms';
 
 //Shared
@@ -109,6 +110,7 @@ const AppRouter: React.FC = () => {
           />
           <Route path="/mirador-del-cafe-carta-bar/" Component={Bar} />
           <Route path="/mirador-del-cafe-carta-cafe/" Component={Cafe} />
+          <Route path="/terminos-condiciones/" Component={TermsConditions} />
           <Route path="*" Component={NotFound} />
         </Routes>
         <Footer />

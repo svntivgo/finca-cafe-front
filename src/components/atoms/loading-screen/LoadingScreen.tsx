@@ -15,6 +15,9 @@ const LoadingScreenWrapper = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index: 9999;
 `;
 
 const Loader = styled.div`

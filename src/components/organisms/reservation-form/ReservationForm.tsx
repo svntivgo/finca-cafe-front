@@ -24,12 +24,13 @@ import { WompiApi } from '../../../services/wompi-api';
 import { customAlphabet } from 'nanoid';
 import { FincafeBack } from '../../../services/fincafe-back';
 import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { HotelFive } from '../../../services';
 import { CONSTANTS } from '../../../constants/constants';
 import { MinorAgesToMinorsInfo } from '../../../shared/helper/minors-util';
 import { getTotalRoomPrice } from '../../../shared/helper/calculator';
 import { SelectChangeEvent } from '@mui/material';
+import { formatHotelFiveQuery } from '../../../shared/helper/date-formatter';
 
 const initialValues: formSchema = {
   name: '',
@@ -327,7 +328,9 @@ export const ReservationForm: React.FC = () => {
                 onBlur={formik.handleBlur}
                 checked={formik.values.termsConditions}
               />{' '}
-              *Acepto los terminos de privacidad
+              <Link to="/terminos-condiciones/" target="_blank">
+                *Acepto los terminos de privacidad
+              </Link>
               {formik.touched.termsConditions &&
               formik.errors.termsConditions ? (
                 <div className="error">{formik.errors.termsConditions}</div>
@@ -336,22 +339,11 @@ export const ReservationForm: React.FC = () => {
             <StyledContactSpan />
           </StyledContactFormContainer>
           <PaymentButtonContainerStyled>
-            <Button
-              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              disabled
-              style={{
-                ...GREEN_BUTTON,
-                borderRadius: '3rem',
-              }}
-              text="Pagar ahora"
-              type="submit"
-            />
-            <StyledContactSpan />
             <div>
               <Paragraph
                 style={{
                   color: `${COLORS.GREEN}`,
-                  fontSize: '0.5rem',
+                  fontSize: '0.6rem',
                   fontWeight: '600',
                 }}
                 text={`Importe de ${formatMoney(
@@ -364,16 +356,29 @@ export const ReservationForm: React.FC = () => {
                       reservation.extras.tourCafe.quantity,
                 )} COP debido el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
-                }/${actualDate.getFullYear()}.`}
+                }/${actualDate.getFullYear()}. Habitación tipo ${reservation.room.name.toLocaleUpperCase()}, Check-In: ${formatHotelFiveQuery(
+                  reservation.dates.start,
+                )}, Check-Out: ${formatHotelFiveQuery(reservation.dates.end)}`}
               />
               <Paragraph
                 style={{
                   color: `${COLORS.GREEN}`,
                 }}
                 text={`Proporcione un
-                método de pago válido.`}
+                  método de pago válido.`}
               />
             </div>
+            <Button
+              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              disabled
+              style={{
+                ...GREEN_BUTTON,
+                borderRadius: '3rem',
+              }}
+              text="Pagar ahora"
+              type="submit"
+            />
+            <StyledContactSpan />
           </PaymentButtonContainerStyled>
         </Form>
       </Formik>

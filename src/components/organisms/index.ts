@@ -14,4 +14,5 @@ export * from './room-list';
 export * from './room-selection';
 export * from './rooms';
 export * from './stepper';
+export * from './terms-conditions';
 export * from './tour-cafe';
