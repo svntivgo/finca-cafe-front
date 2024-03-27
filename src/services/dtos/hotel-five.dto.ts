@@ -1,24 +1,3 @@
-export interface IReservationHotelFive {
-  nombre: string;
-  identidad: string;
-  tipoIdentidad: string;
-  telefono: string;
-  email: string;
-  idTransaccion: string;
-  valorTransaccion: number;
-  valorTotal: number;
-  idHabitacion: string;
-  inicio: number;
-  fin: number;
-  numeroPersonas: number;
-}
-
-export interface IReservationHotelFiveResponse {
-  idReserva: string;
-  nReserva: number;
-  estadoReserva: string;
-}
-
 export interface IDocumentTypesHotelFiveResponse {
   tipodocuid: number;
   nombre: string;
@@ -51,6 +30,7 @@ export interface IHabitaciones {
   fechaInicio: number;
   fechaFin: number;
   totalReserva: number;
+  totalReservaIVA: number;
   totalReservaSinIva: number;
   disponibilidad: IDisponibilidad[];
   caracteristicas: ICaracteristicas[];

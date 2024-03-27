@@ -28,6 +28,8 @@ import { useLocation } from 'react-router-dom';
 import { HotelFive } from '../../../services';
 import { CONSTANTS } from '../../../constants/constants';
 import { MinorAgesToMinorsInfo } from '../../../shared/helper/minors-util';
+import { getTotalRoomPrice } from '../../../shared/helper/calculator';
+import { SelectChangeEvent } from '@mui/material';
 
 const initialValues: formSchema = {
   name: '',
@@ -58,13 +60,6 @@ export const ReservationForm: React.FC = () => {
         idType.toString(),
       );
 
-      const totalPriceRoom = reservation.room.price;
-      const totalCafeTour =
-        reservation.extras.tourCafe.price *
-        reservation.extras.tourCafe.quantity;
-
-      const totalReservation = totalPriceRoom + totalCafeTour;
-
       setCustomer({
         name,
         lastName,
@@ -74,7 +69,20 @@ export const ReservationForm: React.FC = () => {
         city,
         id,
         idType,
+        isVatPayer,
       });
+
+      const totalPriceRoom = getTotalRoomPrice({
+        isVatPayer,
+        vat: reservation.room.iva,
+        price: reservation.room.price,
+      });
+
+      const totalCafeTour =
+        reservation.extras.tourCafe.price *
+        reservation.extras.tourCafe.quantity;
+
+      const totalReservation = totalPriceRoom + totalCafeTour;
 
       const characters =
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -98,7 +106,7 @@ export const ReservationForm: React.FC = () => {
         room: reservation.room.id,
         roomName: reservation.room.name,
         roomPrice: reservation.room.price,
-        roomIva: isVatPayer ? reservation.room.iva : 0,
+        roomIva: reservation.room.iva,
         roomTotal: totalPriceRoom,
         extra: '',
         extraIva: 0,
@@ -109,7 +117,7 @@ export const ReservationForm: React.FC = () => {
         transactionGateway: 'Wompi',
         transactionReference: stringReference,
       };
-      console.log('🚀 ~ onSubmit: ~ reservationData:', reservationData);
+
       const reservationCheckout = async () => {
         const wompi = new WompiApi();
         const fincafeBack = new FincafeBack();
@@ -121,6 +129,12 @@ export const ReservationForm: React.FC = () => {
           stringReference,
           `${totalReservation}00`,
           signatureIntegrity,
+        );
+        wompi.checkout(
+          'publicKey',
+          'stringReference',
+          '`${totalReservation}00`',
+          'signatureIntegrity',
         );
       };
       await reservationCheckout();
@@ -135,6 +149,16 @@ export const ReservationForm: React.FC = () => {
     const roundedAmount = amount.toFixed(2);
 
     return `$${roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
+  }
+
+  function handleIsVatPayer(event: SelectChangeEvent<unknown>) {
+    const value = event.target.value;
+    const isVatPayer = !CONSTANTS.HOTEL.EXCLUDE_IVA.includes(value as string);
+    !isVatPayer &&
+      alert(
+        'La excensión del pago del IVA será válida únicamente si se presenta el documento de identidad en el hotel; caso contrario deberá pagar el impuesto en el hotel.',
+      );
+    setCustomer({ ...reservation.customer, isVatPayer });
   }
 
   async function getDocumentTypes() {
@@ -199,7 +223,10 @@ export const ReservationForm: React.FC = () => {
                 id="idType"
                 name="idType"
                 options={documentTypes}
-                onChange={formik.handleChange}
+                onChange={(e) => {
+                  handleIsVatPayer(e);
+                  formik.handleChange(e);
+                }}
                 onBlur={formik.handleBlur}
                 value={formik.values.idType}
                 error={formik.touched.idType && Boolean(formik.errors.idType)}
@@ -310,7 +337,8 @@ export const ReservationForm: React.FC = () => {
           </StyledContactFormContainer>
           <PaymentButtonContainerStyled>
             <Button
-              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              disabled
               style={{
                 ...GREEN_BUTTON,
                 borderRadius: '3rem',
@@ -327,7 +355,11 @@ export const ReservationForm: React.FC = () => {
                   fontWeight: '600',
                 }}
                 text={`Importe de ${formatMoney(
-                  reservation.room.price +
+                  getTotalRoomPrice({
+                    isVatPayer: reservation.customer.isVatPayer,
+                    vat: reservation.room.iva,
+                    price: reservation.room.price,
+                  }) +
                     reservation.extras.tourCafe.price *
                       reservation.extras.tourCafe.quantity,
                 )} COP debido el ${actualDate.getDate()}/${

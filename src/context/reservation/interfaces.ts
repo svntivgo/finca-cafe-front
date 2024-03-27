@@ -47,6 +47,7 @@ export interface Customer {
   city: string;
   id: string;
   idType: number;
+  isVatPayer: boolean;
 }
 
 export interface ExtrasDetail {

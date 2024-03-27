@@ -41,6 +41,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       city: '',
       id: '',
       idType: 13,
+      isVatPayer: true,
     },
     extras: {
       tourCafe: {

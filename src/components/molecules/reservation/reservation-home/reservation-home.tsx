@@ -17,6 +17,7 @@ import { ReservationOccupancyCard } from '../reservation-occupancy-card/reservat
 import { useReservation } from '../../../../context';
 import { Link } from 'react-router-dom';
 import { COLORS } from '../../../../constants/colors';
+import { DEVICE_SCREEN } from '../../../../shared/helper/screen';
 
 export const ReservationHome: React.FC = () => {
   const { setDates, setOccupancy, setRoom, reservation } = useReservation();
@@ -107,7 +108,16 @@ export const ReservationHome: React.FC = () => {
               }}
             />
             <Link to={'/reserva/selecciona'}>
-              <Button style={GREEN_BUTTON} text="Reservar" />
+              <Button
+                style={{
+                  ...GREEN_BUTTON,
+                  fontSize: '0.8rem',
+                  padding: `${
+                    DEVICE_SCREEN.isDesktop ? '0.5rem 16px' : '0.5rem 1rem'
+                  }`,
+                }}
+                text="Reservar"
+              />
             </Link>
             <Backdrop
               sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

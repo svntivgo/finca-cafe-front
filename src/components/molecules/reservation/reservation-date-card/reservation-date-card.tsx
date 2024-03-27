@@ -13,7 +13,7 @@ export const ReservationDateCard: React.FC<ReservationDateCardProps> = (
       <Paragraph
         style={{
           color: `${COLORS.WHITE}`,
-          fontSize: '2.5rem',
+          fontSize: '2.25rem',
           fontWeight: '200',
           textAlign: 'center',
         }}

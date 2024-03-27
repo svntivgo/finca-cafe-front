@@ -33,6 +33,7 @@ import { formatHotelFiveQuery } from '../../../shared/helper/date-formatter';
 import LoadingScreen from '../../atoms/loading-screen/LoadingScreen';
 import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 import { MinorAgesToMinorsUtil } from '../../../shared/helper/minors-util';
+import { getTotalRoomPrice } from '../../../shared/helper/calculator';
 
 export const RoomSelection: React.FC = () => {
   const steps = [
@@ -144,8 +145,8 @@ export const RoomSelection: React.FC = () => {
 
         if (foundRoom) {
           foundRoom.id = habitacion.id;
-          foundRoom.price = habitacion.totalReserva;
-          foundRoom.iva = habitacion.ivaId;
+          foundRoom.price = habitacion.totalReservaSinIva;
+          foundRoom.iva = habitacion.totalReservaIVA;
           availableRooms.push(foundRoom);
         }
       }
@@ -225,11 +226,20 @@ export const RoomSelection: React.FC = () => {
             <Button
               style={{
                 ...GREEN_BUTTON_ALT,
-                fontSize: `${DEVICE_SCREEN.isDesktop ? '0.8rem' : '0.6rem'}`,
-                padding: `${DEVICE_SCREEN.isDesktop ? '6px 16px' : '6px 6px'}`,
+                fontSize: '0.6rem',
+                padding: `${
+                  DEVICE_SCREEN.isDesktop ? '0.5rem 16px' : '0.5rem 0.2rem'
+                }`,
+                margin: `${
+                  DEVICE_SCREEN.isDesktop ? '0.5rem 16px' : '0 0.2rem'
+                }`,
               }}
               text={`${formatMoney(
-                reservation.room.price +
+                getTotalRoomPrice({
+                  isVatPayer: reservation.customer.isVatPayer,
+                  vat: reservation.room.iva,
+                  price: reservation.room.price,
+                }) +
                   reservation.extras.tourCafe.price *
                     reservation.extras.tourCafe.quantity,
               )} COP`}
