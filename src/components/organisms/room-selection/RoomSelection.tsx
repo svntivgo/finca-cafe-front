@@ -227,7 +227,7 @@ export const RoomSelection: React.FC = () => {
             <Button
               style={{
                 ...GREEN_BUTTON_ALT,
-                fontSize: '0.6rem',
+                fontSize: `${DEVICE_SCREEN.isDesktop ? '1rem' : '0.6rem'}`,
                 padding: `${
                   DEVICE_SCREEN.isDesktop ? '0.5rem 16px' : '0.5rem 0.2rem'
                 }`,

@@ -369,8 +369,8 @@ export const ReservationForm: React.FC = () => {
               />
             </div>
             <Button
-              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              disabled
+              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              // disabled
               style={{
                 ...GREEN_BUTTON,
                 borderRadius: '3rem',

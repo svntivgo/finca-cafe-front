@@ -311,16 +311,6 @@ export const ReservationCoffeeTourForm: React.FC = () => {
             <StyledContactSpan />
           </StyledContactFormContainer>
           <PaymentButtonContainerStyled>
-            <Button
-              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              style={{
-                ...GREEN_BUTTON,
-                borderRadius: '3rem',
-              }}
-              text="Pagar ahora"
-              type="submit"
-            />
-            <StyledContactSpan />
             <div>
               <Paragraph
                 style={{
@@ -340,9 +330,20 @@ export const ReservationCoffeeTourForm: React.FC = () => {
                   color: `${COLORS.GREEN}`,
                 }}
                 text={`Proporcione un
-                método de pago válido.`}
+                  método de pago válido.`}
               />
             </div>
+            <Button
+              disabled
+              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              style={{
+                ...GREEN_BUTTON,
+                borderRadius: '3rem',
+              }}
+              text="Pagar ahora"
+              type="submit"
+            />
+            <StyledContactSpan />
           </PaymentButtonContainerStyled>
         </Form>
       </Formik>
