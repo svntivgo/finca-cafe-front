@@ -95,22 +95,25 @@ export const ReservationOccupancyCard: React.FC<
       >
         {divsArray.map((_num, i) => {
           return (
-            <SelectInput
-              key={`age_${i}`}
-              label={`Edad niño ${i + 1}`}
-              options={MINOR_AGES}
-              value={
-                reservation.minorAges.find((child) => child.index === i + 1)
-                  ?.age ?? 0
-              }
-              onChange={(e) => childAgeHandler(i + 1, e.target.value as number)}
-              error={false}
-              helperText="string | false | undefined;"
-              style={{
-                backgroundColor: 'whitesmoke',
-                width: '150px',
-              }}
-            />
+            <div key={`age_${i}`} style={{ marginTop: '1rem' }}>
+              <SelectInput
+                label={`Edad niño ${i + 1}`}
+                options={MINOR_AGES}
+                value={
+                  reservation.minorAges.find((child) => child.index === i + 1)
+                    ?.age ?? 0
+                }
+                onChange={(e) =>
+                  childAgeHandler(i + 1, e.target.value as number)
+                }
+                error={false}
+                helperText=""
+                style={{
+                  backgroundColor: 'whitesmoke',
+                  width: '150px',
+                }}
+              />
+            </div>
           );
         })}
       </div>

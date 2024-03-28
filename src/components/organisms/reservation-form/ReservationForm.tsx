@@ -131,12 +131,6 @@ export const ReservationForm: React.FC = () => {
           `${totalReservation}00`,
           signatureIntegrity,
         );
-        wompi.checkout(
-          'publicKey',
-          'stringReference',
-          '`${totalReservation}00`',
-          'signatureIntegrity',
-        );
       };
       await reservationCheckout();
     },
@@ -172,7 +166,10 @@ export const ReservationForm: React.FC = () => {
 
   useEffect(() => {
     void getDocumentTypes().then((response) => {
-      setDocumentTypes(response);
+      const responseFiltered = response.filter(
+        (document) => document.value != 11 && document.value != 12,
+      );
+      setDocumentTypes(responseFiltered);
     });
   }, []);
 
@@ -354,7 +351,7 @@ export const ReservationForm: React.FC = () => {
                   }) +
                     reservation.extras.tourCafe.price *
                       reservation.extras.tourCafe.quantity,
-                )} COP debido el ${actualDate.getDate()}/${
+                )} COP a pagar el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
                 }/${actualDate.getFullYear()}. Habitación tipo ${reservation.room.name.toLocaleUpperCase()}, Check-In: ${formatHotelFiveQuery(
                   reservation.dates.start,

@@ -321,7 +321,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
                 text={`Importe de ${formatMoney(
                   (formik.values.isEnglish ? 130000 : 90000) *
                     reservation.extras.tourCafe.quantity,
-                )} COP debido el ${actualDate.getDate()}/${
+                )} COP a pagar el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
                 }/${actualDate.getFullYear()}.`}
               />

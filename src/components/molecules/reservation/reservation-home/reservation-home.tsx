@@ -37,13 +37,13 @@ export const ReservationHome: React.FC = () => {
       },
     ],
     occupancy: {
-      adults: reservation.occupancy?.adults ?? 0,
+      adults: reservation.occupancy?.adults ?? 1,
       minors: reservation.occupancy?.minors ?? 0,
     },
   });
 
   const setAdult = (adding: number) => {
-    state.occupancy.adults + adding >= 0 &&
+    state.occupancy.adults + adding >= 1 &&
       setState((prevState) => ({
         ...prevState,
         occupancy: {

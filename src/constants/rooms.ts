@@ -163,7 +163,7 @@ export const ROOMS_TIPICA: Room[] = [
     photo: SuiteFamiliar,
     photos: GALLERY_FAMILIAR_CONNECTING,
     description:
-      'Dos habitaciones contiguas, cada una con dos camas king-size una opción ideal para familias o grupos que desean estar juntos pero con la privacidad de habitaciones separadas.',
+      'Dos habitaciones contiguas, cada una con dos camas dobles, una opción ideal para familias o grupos que desean estar juntos pero con la privacidad de habitaciones separadas.',
     detailsUrl: '/',
     reserveUrl: '/',
     inverted: false,
