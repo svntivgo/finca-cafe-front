@@ -29,7 +29,7 @@ import {
 } from '..';
 import { ROOMS_BOURBON, ROOMS_TIPICA, Room } from '../../../constants/rooms';
 import { HotelFive, IHabitaciones } from '../../../services';
-import { formatHotelFiveQuery } from '../../../shared/helper/date-formatter';
+import { formatHotelFiveQuery, formatMoney } from '../../../shared/helper/formatter';
 import LoadingScreen from '../../atoms/loading-screen/LoadingScreen';
 import { DEVICE_SCREEN } from '../../../shared/helper/screen';
 import { MinorAgesToMinorsUtil } from '../../../shared/helper/minors-util';
@@ -47,6 +47,7 @@ export const RoomSelection: React.FC = () => {
     setRoom,
     setExtras,
     setIsLoading,
+    setCoupon,
     reservation,
   } = useReservation();
   const [activeStep, setActiveState] = useState(0);
@@ -164,6 +165,7 @@ export const RoomSelection: React.FC = () => {
       ...reservation.extras,
       tourCafe: { ...reservation.extras.tourCafe, quantity: 0 },
     });
+    setCoupon('')
   }, [1]);
 
   useEffect(() => {
@@ -176,16 +178,6 @@ export const RoomSelection: React.FC = () => {
         setIsLoading(false);
       });
   }, [reservation.dates, reservation.occupancy]);
-
-  function formatMoney(amount: number) {
-    if (isNaN(amount)) {
-      return 'Invalid amount';
-    }
-
-    const roundedAmount = amount.toFixed(2);
-
-    return `$${roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
-  }
 
   return (
     <>
@@ -235,15 +227,14 @@ export const RoomSelection: React.FC = () => {
                   DEVICE_SCREEN.isDesktop ? '0.5rem 16px' : '0 0.2rem'
                 }`,
               }}
-              text={`${formatMoney(
-                getTotalRoomPrice({
-                  isVatPayer: reservation.customer.isVatPayer,
-                  vat: reservation.room.iva,
-                  price: reservation.room.price,
-                }) +
-                  reservation.extras.tourCafe.price *
-                    reservation.extras.tourCafe.quantity,
-              )} COP`}
+              text={`${formatMoney(getTotalRoomPrice({
+                isVatPayer: reservation.customer.isVatPayer,
+                vat: reservation.room.iva,
+                price: reservation.room.price,
+                coffeTour: reservation.extras.tourCafe.price *
+                reservation.extras.tourCafe.quantity,
+                coupon: reservation.coupon
+              }))} COP`}
             />
           </StyledInfoContainer>
           <Paragraph

@@ -50,14 +50,14 @@ export const TourCafeInfo: React.FC = () => {
                 ...LIGHT_FONT_STYLE,
                 color: `${COLORS.CREAM}`,
               }}
-              text="$90.000 COP + IVA por persona o"
+              text="$90.000 COP o"
             />
             <Paragraph
               style={{
                 ...LIGHT_FONT_STYLE,
                 color: `${COLORS.CREAM}`,
               }}
-              text="$130.000 COP + IVA si requieres guía en inglés."
+              text="$130.000 COP"
             />
             <Paragraph
               style={{

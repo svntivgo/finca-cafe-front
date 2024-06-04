@@ -2,6 +2,7 @@ import React from 'react';
 import { RoomCard, RoomEquipments, WingCard } from '../../molecules';
 import { COLORS } from '../../../constants/colors';
 import { RoomListProps } from '..';
+import { HOTELS } from '../../../constants/hotels';
 
 export const RoomList: React.FC<RoomListProps> = (props) => {
   return (
@@ -23,6 +24,7 @@ export const RoomList: React.FC<RoomListProps> = (props) => {
             id={room.id}
             iva={room.iva}
             photos={room.photos}
+            priceInfo
           />
           <WingCard background={COLORS.PEARL_BLACK} inverted>
             <RoomEquipments
@@ -33,7 +35,7 @@ export const RoomList: React.FC<RoomListProps> = (props) => {
               isHotWater={true}
               isCoffeOpenBar={true}
               isHotelInsurance={true}
-              isPool={true}
+              isPool={room.hotel.name !== HOTELS.BOURBON.NAME}
               isOpticFiber={false}
               title="EQUIPAMENTO HOTEL"
             />

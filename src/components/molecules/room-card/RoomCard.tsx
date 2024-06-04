@@ -18,6 +18,7 @@ import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
 import { Link } from 'react-router-dom';
 import { DEVICE_SCREEN } from '../../../shared/helper/screen';
+import { formatMoney } from '../../../shared/helper/formatter';
 
 export const RoomCard: React.FC<RoomCardProps> = (props) => {
   const { setRoom, reservation } = useReservation();
@@ -41,6 +42,28 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
           }}
           text={props.description}
         />
+        {props.priceInfo && (
+          <div
+            style={{
+              display: 'flex',
+              placeContent: 'space-between',
+              placeItems: 'center',
+              margin: '0 16px 0 0',
+            }}
+          >
+            <Button
+              style={{ ...ROOM_BUTTON, marginLeft: '0' }}
+              text={props.hotel.name}
+              onClick={() => ({})}
+            />
+            <Paragraph
+              style={{
+                fontWeight: '400',
+              }}
+              text={formatMoney(props.price + props.iva)}
+            />
+          </div>
+        )}
         <StyledSpanRoomCard />
         <StyleSeparator />
         <StyledButtonsContainer>

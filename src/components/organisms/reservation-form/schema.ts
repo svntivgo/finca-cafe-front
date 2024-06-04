@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { COUPONS_KEYS } from '../../../constants/coupons';
 
 export const validationSchema = Yup.object().shape({
   name: Yup.string().required('Campo obligatorio'),
@@ -13,6 +14,7 @@ export const validationSchema = Yup.object().shape({
   email: Yup.string()
     .required('Campo obligatorio')
     .email('Dirección de correo electrónico no válida'),
+  coupon: Yup.string().oneOf(COUPONS_KEYS, 'No es un cupón válido'),
   country: Yup.string().required('Campo obligatorio'),
   city: Yup.string().required('Campo obligatorio'),
   countCafeTour: Yup.number().integer(),

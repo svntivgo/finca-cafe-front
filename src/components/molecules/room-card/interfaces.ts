@@ -18,5 +18,6 @@ export interface RoomCardProps extends Room {
   price: number;
   photos: IGallery[];
   disableDetail?: boolean;
+  priceInfo?: boolean;
   reserveAction: () => void;
 }

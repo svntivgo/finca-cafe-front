@@ -251,9 +251,7 @@ export const GALLERY_STANDARD_TWIN: IGallery[] = [
   {
     photo: StandardTwin_6,
   },
-  {
-    photo: StandardTwin_7,
-  },
+
 ];
 
 export const GALLERY_SUITE_JACUZZI: IGallery[] = [

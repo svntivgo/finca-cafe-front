@@ -20,9 +20,9 @@ import {
 } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
-import { WompiApi } from '../../../services/wompi-api';
+// import { WompiApi } from '../../../services/wompi-api';
 import { customAlphabet } from 'nanoid';
-import { FincafeBack } from '../../../services/fincafe-back';
+// import { FincafeBack } from '../../../services/fincafe-back';
 import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
 import { Link, useLocation } from 'react-router-dom';
 import { HotelFive } from '../../../services';
@@ -30,17 +30,18 @@ import { CONSTANTS } from '../../../constants/constants';
 import { MinorAgesToMinorsInfo } from '../../../shared/helper/minors-util';
 import { getTotalRoomPrice } from '../../../shared/helper/calculator';
 import { SelectChangeEvent } from '@mui/material';
-import { formatHotelFiveQuery } from '../../../shared/helper/date-formatter';
+import { formatHotelFiveQuery } from '../../../shared/helper/formatter';
 
 const initialValues: formSchema = {
   name: '',
   lastName: '',
   phone: '',
   email: '',
+  coupon: '',
   country: '',
   city: '',
   id: '',
-  idType: 0,
+  idType: '',
   countCafeTour: 0,
   termsConditions: false,
 };
@@ -50,15 +51,15 @@ export const ReservationForm: React.FC = () => {
   const [documentTypes, setDocumentTypes] = useState([initDocumentTypes]);
   const location = useLocation();
   const actualDate = new Date(Date.now());
-  const { setCustomer, reservation } = useReservation();
+  const { setCustomer, setCoupon, reservation } = useReservation();
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      const { name, lastName, phone, email, country, city, id, idType } =
+      const { name, lastName, phone, email, country, city, id, idType, coupon } =
         values;
       const isVatPayer = !CONSTANTS.HOTEL.EXCLUDE_IVA.includes(
-        idType.toString(),
+        Number(idType).toString(),
       );
 
       setCustomer({
@@ -69,21 +70,26 @@ export const ReservationForm: React.FC = () => {
         country,
         city,
         id,
-        idType,
+        idType: Number(idType),
         isVatPayer,
       });
 
-      const totalPriceRoom = getTotalRoomPrice({
-        isVatPayer,
-        vat: reservation.room.iva,
-        price: reservation.room.price,
-      });
+      const vat = isVatPayer ? reservation.room.iva : 0
+
+      const totalPriceRoom = vat + reservation.room.price
 
       const totalCafeTour =
         reservation.extras.tourCafe.price *
         reservation.extras.tourCafe.quantity;
 
-      const totalReservation = totalPriceRoom + totalCafeTour;
+      const totalReservation = getTotalRoomPrice({
+        isVatPayer: reservation.customer.isVatPayer,
+        vat: reservation.room.iva,
+        price: reservation.room.price,
+        coffeTour: reservation.extras.tourCafe.price *
+        reservation.extras.tourCafe.quantity,
+        coupon: reservation.coupon
+      });
 
       const characters =
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -97,7 +103,9 @@ export const ReservationForm: React.FC = () => {
         country,
         city,
         docNumber: id,
-        docType: idType,
+        docType: Number(idType),
+        isVatPayer,
+        coupon,
         adults: reservation.occupancy.adults,
         minors: reservation.occupancy.minors,
         minorsInfo: MinorAgesToMinorsInfo(reservation.minorAges),
@@ -118,21 +126,22 @@ export const ReservationForm: React.FC = () => {
         transactionGateway: 'Wompi',
         transactionReference: stringReference,
       };
+      console.log("🚀 ~ onSubmit: ~ reservationData:", reservationData)
 
-      const reservationCheckout = async () => {
-        const wompi = new WompiApi();
-        const fincafeBack = new FincafeBack();
-        const { data: fincafeBackResponse } =
-          await fincafeBack.createReservationTransaction(reservationData);
-        const { publicKey, signatureIntegrity } = fincafeBackResponse;
-        wompi.checkout(
-          publicKey,
-          stringReference,
-          `${totalReservation}00`,
-          signatureIntegrity,
-        );
-      };
-      await reservationCheckout();
+      // const reservationCheckout = async () => {
+      //   const wompi = new WompiApi();
+      //   const fincafeBack = new FincafeBack();
+      //   const { data: fincafeBackResponse } =
+      //     await fincafeBack.createReservationTransaction(reservationData);
+      //   const { publicKey, signatureIntegrity } = fincafeBackResponse;
+      //   wompi.checkout(
+      //     publicKey,
+      //     stringReference,
+      //     `${totalReservation}00`,
+      //     signatureIntegrity,
+      //   );
+      // };
+      // await reservationCheckout();
     },
   });
 
@@ -270,6 +279,22 @@ export const ReservationForm: React.FC = () => {
                 helperText={formik.touched.email && formik.errors.email}
               />
             </StyledContactInputContainer>
+            <StyledContactInputContainer>
+              <InputField
+                label="Cupón de descuento"
+                type="coupon"
+                id="coupon"
+                name="coupon"
+                onChange={(e) => {
+                  formik.handleChange(e)
+                  setCoupon(e.target.value)
+                }}
+                onBlur={formik.handleBlur}
+                value={formik.values.coupon}
+                error={formik.touched.coupon && Boolean(formik.errors.coupon)}
+                helperText={formik.touched.coupon && formik.errors.coupon}
+              />
+            </StyledContactInputContainer>
           </StyledContactFormContainer>
           <StyledContactFormContainer>
             <Paragraph style={FORM_LABEL_FONT_STYLE} text="Dirección" />
@@ -343,15 +368,14 @@ export const ReservationForm: React.FC = () => {
                   fontSize: '0.6rem',
                   fontWeight: '600',
                 }}
-                text={`Importe de ${formatMoney(
-                  getTotalRoomPrice({
-                    isVatPayer: reservation.customer.isVatPayer,
-                    vat: reservation.room.iva,
-                    price: reservation.room.price,
-                  }) +
-                    reservation.extras.tourCafe.price *
-                      reservation.extras.tourCafe.quantity,
-                )} COP a pagar el ${actualDate.getDate()}/${
+                text={`Importe de ${formatMoney(getTotalRoomPrice({
+                  isVatPayer: reservation.customer.isVatPayer,
+                  vat: reservation.room.iva,
+                  price: reservation.room.price,
+                  coffeTour: reservation.extras.tourCafe.price *
+                  reservation.extras.tourCafe.quantity,
+                  coupon: reservation.coupon
+                }))} COP a pagar el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
                 }/${actualDate.getFullYear()}. Habitación tipo ${reservation.room.name.toLocaleUpperCase()}, Check-In: ${formatHotelFiveQuery(
                   reservation.dates.start,
@@ -366,8 +390,8 @@ export const ReservationForm: React.FC = () => {
               />
             </div>
             <Button
-              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              // disabled
+              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              disabled
               style={{
                 ...GREEN_BUTTON,
                 borderRadius: '3rem',

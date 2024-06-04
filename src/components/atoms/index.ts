@@ -7,3 +7,4 @@ export * from './inputs';
 export * from './loading-screen';
 export * from './menu-items';
 export * from './paragraph';
+export * from './video';

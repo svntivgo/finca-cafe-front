@@ -63,6 +63,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       date: new Date(),
     },
     isLoading: true,
+    coupon: '',
   });
 
   const setOccupancy = (occupancy: Occupancy) => {
@@ -121,6 +122,13 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
     }));
   };
 
+  const setCoupon = (coupon: string) => {
+    setReservation((prevState) => ({
+      ...prevState,
+      coupon,
+    }));
+  };
+
   return (
     <ReservationContext.Provider
       value={{
@@ -133,6 +141,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
         setExtras,
         setCoffeeTour,
         setIsLoading,
+        setCoupon,
       }}
     >
       {children}

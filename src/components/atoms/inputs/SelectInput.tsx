@@ -18,7 +18,7 @@ interface SelecInputProps extends Omit<SelectProps, 'variant'> {
 
 interface Options {
   label: string;
-  value: number;
+  value: string | number;
 }
 
 export const SelectInput: React.FC<SelecInputProps> = ({

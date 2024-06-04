@@ -6,6 +6,7 @@ export interface formSchemaCoffeTour {
   email: string;
   country: string;
   city: string;
+  preferredTime: string;
   isEnglish?: boolean;
   id: string;
   idType: string;

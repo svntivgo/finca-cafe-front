@@ -7,6 +7,7 @@ export interface Reservation {
   extras: Extras;
   coffeeTour: CoffeeTour;
   isLoading: boolean;
+  coupon: string;
 }
 
 export interface Occupancy {
@@ -67,6 +68,7 @@ export interface CoffeeTour {
   email: string;
   country: string;
   city: string;
+  preferredTime: string;
   isEnglish: boolean;
   id: string;
   idType: string;
@@ -83,4 +85,5 @@ export interface ReservationContextType {
   setExtras: (extra: Extras) => void;
   setCoffeeTour: (coffeeTour: CoffeeTour) => void;
   setIsLoading: (isLoading: boolean) => void;
+  setCoupon: (coupon: string) => void;
 }

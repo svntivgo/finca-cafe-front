@@ -15,6 +15,7 @@ export const validationSchemaCoffeTour = Yup.object().shape({
     .email('Dirección de correo electrónico no válida'),
   country: Yup.string().required('Campo obligatorio'),
   city: Yup.string().required('Campo obligatorio'),
+  preferredTime: Yup.string().required('Campo obligatorio'),
   isEnglish: Yup.boolean().optional(),
   countCafeTour: Yup.number().integer(),
   termsConditions: Yup.boolean()

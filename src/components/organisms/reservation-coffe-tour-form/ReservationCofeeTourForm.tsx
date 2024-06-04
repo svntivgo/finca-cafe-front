@@ -16,6 +16,7 @@ import {
   GREEN_BUTTON,
   InputField,
   Paragraph,
+  SelectInput,
 } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
@@ -28,6 +29,7 @@ import { Calendar } from 'react-date-range';
 import { addDays } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
+import { formatMoney } from '../../../shared/helper/formatter';
 
 const initialValues = {
   date: addDays(new Date(), 1),
@@ -37,6 +39,7 @@ const initialValues = {
   email: '',
   country: '',
   city: '',
+  preferredTime: '',
   isEnglish: false,
   id: '',
   idType: '',
@@ -60,6 +63,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
         email,
         country,
         city,
+        preferredTime,
         isEnglish,
         id,
         idType,
@@ -73,6 +77,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
         email,
         country,
         city,
+        preferredTime,
         isEnglish,
         countCafeTour: reservation.extras.tourCafe.quantity,
         id,
@@ -97,6 +102,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
         email,
         country,
         city,
+        preferredTime,
         numberOfPersons: reservation.extras.tourCafe.quantity,
         isEnglish,
         date,
@@ -124,16 +130,6 @@ export const ReservationCoffeeTourForm: React.FC = () => {
       await reservationCheckout();
     },
   });
-
-  function formatMoney(amount: number) {
-    if (isNaN(amount)) {
-      return 'Invalid amount';
-    }
-
-    const roundedAmount = amount.toFixed(2);
-
-    return `$${roundedAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`;
-  }
 
   return (
     <StyledContactContainer location={location.pathname}>
@@ -259,11 +255,31 @@ export const ReservationCoffeeTourForm: React.FC = () => {
               />
             </StyledContactInputContainer>
           </StyledContactFormContainer>
+            <StyledContactFormContainer>
+            <StyledContactSpan />
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
+              text="Horario de preferencia"
+            />
+            <StyledContactInputContainer>
+              <SelectInput
+                label="Horario preferencia"
+                id="preferredTime"
+                name="preferredTime"
+                options={[{label: '10:00 A.M.', value: '10:00 A.M.'}, {label: '02:00 P.M.', value: '02:00 P.M.'}]}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.preferredTime}
+                error={formik.touched.preferredTime && Boolean(formik.errors.preferredTime)}
+                helperText={formik.touched.preferredTime && formik.errors.preferredTime}
+              />
+            </StyledContactInputContainer>
+            </StyledContactFormContainer>
           <StyledContactFormContainer>
             <StyledContactSpan />
             <Paragraph
               style={FORM_LABEL_FONT_STYLE}
-              text="Idioma de preferencia."
+              text="Idioma de preferencia"
             />
             <div style={{ color: '#9A9A9A' }}>
               <input

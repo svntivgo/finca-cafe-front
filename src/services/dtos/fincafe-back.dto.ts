@@ -3,8 +3,10 @@ export interface IReservationTransaction {
   lastname: string;
   docNumber: string;
   docType: number;
+  isVatPayer: boolean;
   phone: string;
   email: string;
+  coupon?: string;
   country: string;
   city: string;
   minorsInfo: IMinorInfo;
@@ -46,6 +48,7 @@ export interface ICoffeeTourReservation {
   email: string;
   country: string;
   city: string;
+  preferredTime: string;
   numberOfPersons: number;
   isEnglish: boolean;
   date: Date;
