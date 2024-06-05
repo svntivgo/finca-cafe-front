@@ -38,33 +38,28 @@ import ParejaStandard_1 from '../assets/rooms/suite-pareja/room-1.jpg';
 import ParejaStandard_2 from '../assets/rooms/suite-pareja/room-2.jpg';
 import ParejaStandard_3 from '../assets/rooms/suite-pareja/room-3.jpg';
 import ParejaStandard_4 from '../assets/rooms/suite-pareja/room-4.jpg';
+import ParejaStandard_5 from '../assets/rooms/suite-pareja/room-5.jpg';
 
 import CuadrupleStandard_1 from '../assets/rooms/suite-cuadruple/room-1.jpg';
 import CuadrupleStandard_2 from '../assets/rooms/suite-cuadruple/room-2.jpg';
 import CuadrupleStandard_3 from '../assets/rooms/suite-cuadruple/room-3.jpg';
 import CuadrupleStandard_4 from '../assets/rooms/suite-cuadruple/room-4.jpg';
+import CuadrupleStandard_5 from '../assets/rooms/suite-cuadruple/room-5.jpg';
 
 import FamiliarConnecting_1 from '../assets/rooms/suite-familiar/room-1.jpg';
 import FamiliarConnecting_2 from '../assets/rooms/suite-familiar/room-2.jpg';
 import FamiliarConnecting_3 from '../assets/rooms/suite-familiar/room-3.jpg';
-import FamiliarConnecting_4 from '../assets/rooms/suite-familiar/room-4.jpg';
 
 import StandardTwin_1 from '../assets/rooms/standard-twin/room-1.jpg';
 import StandardTwin_2 from '../assets/rooms/standard-twin/room-2.jpg';
 import StandardTwin_3 from '../assets/rooms/standard-twin/room-3.jpg';
 import StandardTwin_4 from '../assets/rooms/standard-twin/room-4.jpg';
-import StandardTwin_5 from '../assets/rooms/standard-twin/room-5.jpg';
-import StandardTwin_6 from '../assets/rooms/standard-twin/room-6.jpg';
-import StandardTwin_7 from '../assets/rooms/standard-twin/room-7.jpg';
 
 import SuiteJacuzzi_1 from '../assets/rooms/suite-jacuzzi/room-1.jpg';
 import SuiteJacuzzi_2 from '../assets/rooms/suite-jacuzzi/room-2.jpg';
 import SuiteJacuzzi_3 from '../assets/rooms/suite-jacuzzi/room-3.jpg';
 import SuiteJacuzzi_4 from '../assets/rooms/suite-jacuzzi/room-4.jpg';
 import SuiteJacuzzi_5 from '../assets/rooms/suite-jacuzzi/room-5.jpg';
-import SuiteJacuzzi_6 from '../assets/rooms/suite-jacuzzi/room-6.jpg';
-import SuiteJacuzzi_7 from '../assets/rooms/suite-jacuzzi/room-7.jpg';
-
 export interface IGallery {
   photo: string;
   title?: string;
@@ -200,6 +195,9 @@ export const GALLERY_PAREJA_STANDARD: IGallery[] = [
   {
     photo: ParejaStandard_4,
   },
+  {
+    photo: ParejaStandard_5,
+  },
 ];
 
 export const GALLERY_CUADRUPLE_STANDARD: IGallery[] = [
@@ -215,6 +213,9 @@ export const GALLERY_CUADRUPLE_STANDARD: IGallery[] = [
   {
     photo: CuadrupleStandard_4,
   },
+  {
+    photo: CuadrupleStandard_5,
+  },
 ];
 
 export const GALLERY_FAMILIAR_CONNECTING: IGallery[] = [
@@ -226,9 +227,6 @@ export const GALLERY_FAMILIAR_CONNECTING: IGallery[] = [
   },
   {
     photo: FamiliarConnecting_3,
-  },
-  {
-    photo: FamiliarConnecting_4,
   },
 ];
 
@@ -245,13 +243,6 @@ export const GALLERY_STANDARD_TWIN: IGallery[] = [
   {
     photo: StandardTwin_4,
   },
-  {
-    photo: StandardTwin_5,
-  },
-  {
-    photo: StandardTwin_6,
-  },
-
 ];
 
 export const GALLERY_SUITE_JACUZZI: IGallery[] = [
@@ -269,11 +260,5 @@ export const GALLERY_SUITE_JACUZZI: IGallery[] = [
   },
   {
     photo: SuiteJacuzzi_5,
-  },
-  {
-    photo: SuiteJacuzzi_6,
-  },
-  {
-    photo: SuiteJacuzzi_7,
   },
 ];
