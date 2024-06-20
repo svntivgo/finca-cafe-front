@@ -28,7 +28,7 @@ export const ImageDescriptionButton: React.FC<ImageDescriptionButtonProps> = (
           <Button
             style={{
               ...WHITE_BUTTON,
-              fontSize: '0.5rem',
+              fontSize: '1rem',
               margin: '16px 0 0 0',
             }}
             text="Ver carta"

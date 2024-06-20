@@ -8,15 +8,19 @@ import {
 } from '..';
 import { Button, Paragraph } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
-import { SERVICES } from '../../../constants/services';
 import { useReservation } from '../../../context';
 
 export const CafeTourService: React.FC<{
   isEnglish?: boolean;
   simpleForm?: boolean;
+  normalPrice: number;
+  englishPrice: number;
 }> = (props) => {
   const [count, setCount] = useState(0);
   const { setExtras, reservation } = useReservation();
+  const price = props.isEnglish
+  ? props.englishPrice
+  : props.normalPrice
 
   useEffect(() => {}, [reservation.extras.tourCafe.quantity]);
 
@@ -30,11 +34,7 @@ export const CafeTourService: React.FC<{
         <div>
           <Paragraph
             style={{ color: `${COLORS.PEARL_GREY}`, textAlign: 'center' }}
-            text={`$${
-              props.isEnglish
-                ? SERVICES.CAFE_TOUR.english
-                : SERVICES.CAFE_TOUR.normal
-            }`}
+            text={`$${price}`}
           />
           <Paragraph
             style={{ color: `${COLORS.PEARL_GREY}`, textAlign: 'center' }}
@@ -54,8 +54,9 @@ export const CafeTourService: React.FC<{
               count > 0 &&
                 setExtras({
                   ...reservation.extras,
-                  tourCafe: { ...reservation.extras.tourCafe, quantity: count },
+                  tourCafe: { ...reservation.extras.tourCafe, quantity: count - 1, price },
                 });
+
             }}
           >
             <Paragraph
@@ -82,6 +83,7 @@ export const CafeTourService: React.FC<{
                 tourCafe: {
                   ...reservation.extras.tourCafe,
                   quantity: count + 1,
+                  price
                 },
               });
             }}
@@ -100,9 +102,7 @@ export const CafeTourService: React.FC<{
       <Paragraph
         text={`Total: ${
           count *
-          (props.isEnglish
-            ? SERVICES.CAFE_TOUR.english
-            : SERVICES.CAFE_TOUR.normal)
+          (price)
         } COP`}
         color={COLORS.PEARL_GREY}
       />
@@ -122,7 +122,7 @@ export const CafeTourService: React.FC<{
             onClick={() =>
               setExtras({
                 ...reservation.extras,
-                tourCafe: { ...reservation.extras.tourCafe, quantity: count },
+                tourCafe: { ...reservation.extras.tourCafe, quantity: count, price },
               })
             }
           />

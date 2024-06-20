@@ -40,7 +40,7 @@ const HOTELS = {
       'La mezcla del lujo contemporáneo con la inspiración del encanto característico de las haciendas cafeteras. Bourbon está especialmente diseñado y equipado para estadías de placer, negocios y bodas.',
   },
   TIPICA: {
-    NAME: 'Tipica',
+    NAME: 'Typica',
     DESCRIPTION:
       'Ubicado junto a una finca cafetera tradicional con acceso a los cultivos donde nace nuestro café, nuestro alojamiento tradicional es perfecto para extranjeros y nacionales que desean conocer la cultura cafetera y una estadía tradicional con todo el confort de sus habitaciones y espacios',
   },

@@ -48,13 +48,14 @@ export const RoomCard: React.FC<RoomCardProps> = (props) => {
               display: 'flex',
               placeContent: 'space-between',
               placeItems: 'center',
-              margin: '0 16px 0 0',
+              margin: '32px 16px 0 0',
             }}
           >
-            <Button
-              style={{ ...ROOM_BUTTON, marginLeft: '0' }}
-              text={props.hotel.name}
-              onClick={() => ({})}
+            <Paragraph
+              style={{
+                fontWeight: '400',
+              }}
+              text={`Hotel ${props.hotel.name}`}
             />
             <Paragraph
               style={{

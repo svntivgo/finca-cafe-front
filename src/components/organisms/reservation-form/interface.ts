@@ -9,5 +9,6 @@ export interface formSchema {
   lastName: string;
   name: string;
   phone: string;
+  isEnglish: boolean;
   termsConditions: boolean;
 }

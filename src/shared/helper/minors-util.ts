@@ -1,13 +1,14 @@
 import { MinorAges, Minors } from '../../context';
 import { IMinor } from '../../services/dtos/fincafe-back.dto';
 
-const childrenMaxAge = 5;
+const childrenMinAge = 4;
+const childrenMaxAge = 12;
 export const MinorAgesToMinorsUtil = (minors: MinorAges[]) => {
   let children = 0;
   let youngs = 0;
 
   minors.forEach((minor) => {
-    if (minor.age <= childrenMaxAge) {
+    if (minor.age > childrenMinAge && minor.age < childrenMaxAge) {
       children++;
       return;
     }

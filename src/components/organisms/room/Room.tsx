@@ -48,6 +48,7 @@ export const Room: React.FC = () => {
               <Paragraph
                 style={{
                   ...LIGHT_FONT_STYLE,
+                  color: COLORS.CREAM,
                   fontFamily: 'Royale',
                   fontSize: '3rem',
                   textAlign: 'justify',

@@ -56,6 +56,7 @@ export function ReservationProvider({ children }: { children: ReactNode }) {
       email: '',
       country: '',
       city: '',
+      preferredTime: '',
       isEnglish: false,
       id: '',
       idType: '',

@@ -48,6 +48,7 @@ export const RoomSelection: React.FC = () => {
     setExtras,
     setIsLoading,
     setCoupon,
+    setCustomer,
     reservation,
   } = useReservation();
   const [activeStep, setActiveState] = useState(0);
@@ -124,9 +125,9 @@ export const RoomSelection: React.FC = () => {
     const { children, youngs } = MinorAgesToMinorsUtil(minorAges);
 
     const { data } = await hotelApi.rooms({
-      cantAdultos: adult,
-      cantJovenes: youngs,
-      cantMenores: children,
+      cantAdultos: adult + youngs,
+      cantJovenes: children,
+      cantMenores: 0,
       fechaIni: formatHotelFiveQuery(start),
       fechaFin: formatHotelFiveQuery(end),
     });
@@ -165,6 +166,7 @@ export const RoomSelection: React.FC = () => {
       ...reservation.extras,
       tourCafe: { ...reservation.extras.tourCafe, quantity: 0 },
     });
+    setCustomer({...reservation.customer, isVatPayer: true})
     setCoupon('')
   }, [1]);
 

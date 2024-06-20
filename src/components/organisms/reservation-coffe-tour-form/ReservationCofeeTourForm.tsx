@@ -30,6 +30,7 @@ import { addDays } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Link } from 'react-router-dom';
 import { formatMoney } from '../../../shared/helper/formatter';
+import { SERVICES } from '../../../constants/services';
 
 const initialValues = {
   date: addDays(new Date(), 1),
@@ -84,10 +85,9 @@ export const ReservationCoffeeTourForm: React.FC = () => {
         idType,
       });
 
-      console.log(reservation.extras.tourCafe.quantity);
-
-      const price = isEnglish ? 130000 : 90000;
-      const totalReservation = price * reservation.extras.tourCafe.quantity;
+      const totalReservation =
+        reservation.extras.tourCafe.price *
+        reservation.extras.tourCafe.quantity;
 
       const characters =
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -105,7 +105,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
         preferredTime,
         numberOfPersons: reservation.extras.tourCafe.quantity,
         isEnglish,
-        date,
+        date: date.toDateString(),
         transactionReference: stringReference,
         transactionTotal: totalReservation,
         transactionGateway: 'Wompi',
@@ -255,7 +255,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
               />
             </StyledContactInputContainer>
           </StyledContactFormContainer>
-            <StyledContactFormContainer>
+          <StyledContactFormContainer>
             <StyledContactSpan />
             <Paragraph
               style={FORM_LABEL_FONT_STYLE}
@@ -266,15 +266,23 @@ export const ReservationCoffeeTourForm: React.FC = () => {
                 label="Horario preferencia"
                 id="preferredTime"
                 name="preferredTime"
-                options={[{label: '10:00 A.M.', value: '10:00 A.M.'}, {label: '02:00 P.M.', value: '02:00 P.M.'}]}
+                options={[
+                  { label: '10:00 A.M.', value: '10:00 A.M.' },
+                  { label: '02:00 P.M.', value: '02:00 P.M.' },
+                ]}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.preferredTime}
-                error={formik.touched.preferredTime && Boolean(formik.errors.preferredTime)}
-                helperText={formik.touched.preferredTime && formik.errors.preferredTime}
+                error={
+                  formik.touched.preferredTime &&
+                  Boolean(formik.errors.preferredTime)
+                }
+                helperText={
+                  formik.touched.preferredTime && formik.errors.preferredTime
+                }
               />
             </StyledContactInputContainer>
-            </StyledContactFormContainer>
+          </StyledContactFormContainer>
           <StyledContactFormContainer>
             <StyledContactSpan />
             <Paragraph
@@ -298,7 +306,12 @@ export const ReservationCoffeeTourForm: React.FC = () => {
             <StyledContactSpan />
           </StyledContactFormContainer>
           <StyledContactFormContainer>
-            <CafeTourService isEnglish={formik.values.isEnglish} simpleForm />
+            <CafeTourService
+              isEnglish={formik.values.isEnglish}
+              normalPrice={SERVICES.CAFE_TOUR.normal}
+              englishPrice={SERVICES.CAFE_TOUR.english}
+              simpleForm
+            />
           </StyledContactFormContainer>
           <StyledContactFormContainer>
             <Paragraph style={FORM_LABEL_FONT_STYLE} text="Consentimiento" />
@@ -335,7 +348,7 @@ export const ReservationCoffeeTourForm: React.FC = () => {
                   fontWeight: '600',
                 }}
                 text={`Importe de ${formatMoney(
-                  (formik.values.isEnglish ? 130000 : 90000) *
+                  reservation.extras.tourCafe.price *
                     reservation.extras.tourCafe.quantity,
                 )} COP a pagar el ${actualDate.getDate()}/${
                   actualDate.getMonth() + 1
@@ -350,8 +363,8 @@ export const ReservationCoffeeTourForm: React.FC = () => {
               />
             </div>
             <Button
-              disabled
-              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              // disabled
+              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
               style={{
                 ...GREEN_BUTTON,
                 borderRadius: '3rem',

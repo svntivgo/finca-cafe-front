@@ -39,7 +39,7 @@ export const InternalPlace: React.FC<InternalPlaceProps> = (props) => {
           />
         )}
         <Button
-          style={BLACK_GOLD_BUTTON}
+          style={{...BLACK_GOLD_BUTTON, fontSize: '1.5rem'}}
           text="Carta"
           onClick={() => openNewTab(props.menu)}
         />

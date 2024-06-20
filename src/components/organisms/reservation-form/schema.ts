@@ -18,6 +18,7 @@ export const validationSchema = Yup.object().shape({
   country: Yup.string().required('Campo obligatorio'),
   city: Yup.string().required('Campo obligatorio'),
   countCafeTour: Yup.number().integer(),
+  isEnglish: Yup.boolean(),
   termsConditions: Yup.boolean()
     .oneOf([true], 'Debes aceptar los términos de privacidad')
     .required('Debes aceptar los términos de privacidad'),

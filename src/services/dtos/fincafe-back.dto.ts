@@ -18,10 +18,12 @@ export interface IReservationTransaction {
   roomPrice: number;
   roomIva: number;
   roomTotal: number;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
+  isEnglish: boolean;
   extra: string;
   extraPrice: number;
+  extraQuantity: number;
   extraIva: number;
   extraTotal: number;
   transactionReference: string;
@@ -51,7 +53,7 @@ export interface ICoffeeTourReservation {
   preferredTime: string;
   numberOfPersons: number;
   isEnglish: boolean;
-  date: Date;
+  date: string;
   transactionReference: string;
   transactionTotal: number;
   transactionGateway: string;

@@ -20,9 +20,9 @@ import {
 } from '../../atoms';
 import { COLORS } from '../../../constants/colors';
 import { useReservation } from '../../../context';
-// import { WompiApi } from '../../../services/wompi-api';
+import { WompiApi } from '../../../services/wompi-api';
 import { customAlphabet } from 'nanoid';
-// import { FincafeBack } from '../../../services/fincafe-back';
+import { FincafeBack } from '../../../services/fincafe-back';
 import { IReservationTransaction } from '../../../services/dtos/fincafe-back.dto';
 import { Link, useLocation } from 'react-router-dom';
 import { HotelFive } from '../../../services';
@@ -31,6 +31,7 @@ import { MinorAgesToMinorsInfo } from '../../../shared/helper/minors-util';
 import { getTotalRoomPrice } from '../../../shared/helper/calculator';
 import { SelectChangeEvent } from '@mui/material';
 import { formatHotelFiveQuery } from '../../../shared/helper/formatter';
+import { SERVICES } from '../../../constants/services';
 
 const initialValues: formSchema = {
   name: '',
@@ -43,6 +44,7 @@ const initialValues: formSchema = {
   id: '',
   idType: '',
   countCafeTour: 0,
+  isEnglish: false,
   termsConditions: false,
 };
 
@@ -56,7 +58,7 @@ export const ReservationForm: React.FC = () => {
     initialValues,
     validationSchema,
     onSubmit: async (values) => {
-      const { name, lastName, phone, email, country, city, id, idType, coupon } =
+      const { name, lastName, phone, email, country, city, id, idType, coupon, isEnglish } =
         values;
       const isVatPayer = !CONSTANTS.HOTEL.EXCLUDE_IVA.includes(
         Number(idType).toString(),
@@ -109,39 +111,42 @@ export const ReservationForm: React.FC = () => {
         adults: reservation.occupancy.adults,
         minors: reservation.occupancy.minors,
         minorsInfo: MinorAgesToMinorsInfo(reservation.minorAges),
-        startDate: reservation.dates.start,
-        endDate: reservation.dates.end,
+        startDate: reservation.dates.start.toDateString(),
+        endDate: reservation.dates.end.toDateString(),
         hotelName: reservation.room.hotel,
         room: reservation.room.id,
         roomName: reservation.room.name,
         roomPrice: reservation.room.price,
         roomIva: reservation.room.iva,
         roomTotal: totalPriceRoom,
+        isEnglish,
         extra: '',
         extraIva: 0,
         extraPrice: reservation.extras.tourCafe.price,
+        extraQuantity: reservation.extras.tourCafe.quantity,
         extraTotal: totalCafeTour,
         reservationTotal: totalReservation,
         transactionTotal: totalReservation,
         transactionGateway: 'Wompi',
         transactionReference: stringReference,
       };
-      console.log("🚀 ~ onSubmit: ~ reservationData:", reservationData)
 
-      // const reservationCheckout = async () => {
-      //   const wompi = new WompiApi();
-      //   const fincafeBack = new FincafeBack();
-      //   const { data: fincafeBackResponse } =
-      //     await fincafeBack.createReservationTransaction(reservationData);
-      //   const { publicKey, signatureIntegrity } = fincafeBackResponse;
-      //   wompi.checkout(
-      //     publicKey,
-      //     stringReference,
-      //     `${totalReservation}00`,
-      //     signatureIntegrity,
-      //   );
-      // };
-      // await reservationCheckout();
+      console.log(reservationData)
+      
+      const reservationCheckout = async () => {
+        const wompi = new WompiApi();
+        const fincafeBack = new FincafeBack();
+        const { data: fincafeBackResponse } =
+          await fincafeBack.createReservationTransaction(reservationData);
+        const { publicKey, signatureIntegrity } = fincafeBackResponse;
+        wompi.checkout(
+          publicKey,
+          stringReference,
+          `${totalReservation}00`,
+          signatureIntegrity,
+        );
+      };
+      await reservationCheckout();
     },
   });
 
@@ -326,13 +331,39 @@ export const ReservationForm: React.FC = () => {
             </StyledContactInputContainer>
           </StyledContactFormContainer>
           <StyledContactFormContainer>
+            <StyledContactSpan />
+            <Paragraph
+              style={FORM_LABEL_FONT_STYLE}
+              text="Idioma de preferencia"
+            />
+            <div style={{ color: '#9A9A9A' }}>
+              <input
+                type="checkbox"
+                id="isEnglish"
+                name="isEnglish"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                checked={formik.values.isEnglish}
+              />{' '}
+              Do you prefer the english tour?
+              {formik.touched.isEnglish && formik.errors.isEnglish ? (
+                <div className="error">{formik.errors.isEnglish}</div>
+              ) : null}
+            </div>
+            <StyledContactSpan />
+          </StyledContactFormContainer>
+          <StyledContactFormContainer>
             <Paragraph
               style={FORM_LABEL_FONT_STYLE}
               text="Servicios adicionales"
             />
             <Paragraph style={FORM_LABEL_FONT_STYLE} text="(Opcional)" />
+            <Paragraph
+              style={{...FORM_LABEL_FONT_STYLE, fontSize: '1rem'}}
+              text="Si reservas tu alojamiento obtendrás hasta un 10% de descuento en el Tour del Café"
+            />
             <StyledContactSpan />
-            <CafeTourService />
+            <CafeTourService normalPrice={SERVICES.CAFE_TOUR.normalDiscount} englishPrice={SERVICES.CAFE_TOUR.englishDiscount} isEnglish={formik.values.isEnglish} />
           </StyledContactFormContainer>
           <StyledContactFormContainer>
             <Paragraph style={FORM_LABEL_FONT_STYLE} text="Consentimiento" />
@@ -390,8 +421,8 @@ export const ReservationForm: React.FC = () => {
               />
             </div>
             <Button
-              // disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
-              disabled
+              disabled={formik.isSubmitting || !formik.isValid || !formik.dirty}
+              // disabled
               style={{
                 ...GREEN_BUTTON,
                 borderRadius: '3rem',
