@@ -33,7 +33,7 @@ export interface Hotel {
   ROOMS: Record<string, Room>;
 }
 
-export type HotelKey = 'BOURBON' | 'TIPICA';
+export type HotelKey = 'BOURBON' | 'TYPICA';
 export type RoomKey =
   | 'SUITE_JACUZZI'
   | 'ESTANDAR_TWIN'
@@ -91,7 +91,7 @@ export const HOTELS: Hotels = {
       },
     },
   },
-  TIPICA: {
+  TYPICA: {
     NAME: 'Typica',
     DESCRIPTION:
       'Ubicado junto a una finca cafetera tradicional con acceso a los cultivos donde nace nuestro café, nuestro alojamiento tradicional es perfecto para extranjeros y nacionales que desean conocer la cultura cafetera y una estadía tradicional con todo el confort de sus habitaciones y espacios',
@@ -115,7 +115,7 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
-        hotel: 'TIPICA',
+        hotel: 'TYPICA',
         photos: GALLERY_PAREJA_STANDARD,
       },
       CUADRUPLE_ESTANDAR: {
@@ -137,7 +137,7 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
-        hotel: 'TIPICA',
+        hotel: 'TYPICA',
         photos: GALLERY_CUADRUPLE_STANDARD,
       },
       FAMILIAR_CONNECTING: {
@@ -159,7 +159,7 @@ export const HOTELS: Hotels = {
           ROOM_EQUIPMENTS.HOT_WATER,
           ROOM_EQUIPMENTS.OPTIC_FIBER,
         ],
-        hotel: 'TIPICA',
+        hotel: 'TYPICA',
         photos: GALLERY_FAMILIAR_CONNECTING,
       },
     },
