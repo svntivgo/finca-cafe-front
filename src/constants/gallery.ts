@@ -24,6 +24,9 @@ import Bourbon_3 from '../assets/hoteles/bourbon-gallery-3.jpg';
 import Bourbon_4 from '../assets/hoteles/bourbon-gallery-4.jpg';
 import Bourbon_5 from '../assets/hoteles/bourbon-gallery-5.jpg';
 import Bourbon_6 from '../assets/hoteles/bourbon-gallery-6.jpg';
+import Bourbon_7 from '../assets/hoteles/bourbon-gallery-7.jpg';
+import Bourbon_8 from '../assets/hoteles/bourbon-gallery-8.jpg';
+import Bourbon_9 from '../assets/hoteles/bourbon-gallery-9.jpg';
 
 import Typica_1 from '../assets/hoteles/typica-gallery-1.jpg';
 import Typica_2 from '../assets/hoteles/typica-gallery-2.jpg';
@@ -33,6 +36,7 @@ import Typica_5 from '../assets/hoteles/typica-gallery-5.jpg';
 import Typica_6 from '../assets/hoteles/typica-gallery-6.jpg';
 import Typica_7 from '../assets/hoteles/typica-gallery-7.jpg';
 import Typica_8 from '../assets/hoteles/typica-gallery-8.jpg';
+import Typica_9 from '../assets/hoteles/typica-gallery-9.jpg';
 
 import ParejaStandard_1 from '../assets/rooms/suite-pareja/room-1.jpg';
 import ParejaStandard_2 from '../assets/rooms/suite-pareja/room-2.jpg';
@@ -153,6 +157,15 @@ export const GALLERY_BOURBON: IGallery[] = [
   {
     photo: Bourbon_6,
   },
+  {
+    photo: Bourbon_7,
+  },
+  {
+    photo: Bourbon_8,
+  },
+  {
+    photo: Bourbon_9,
+  },
 ];
 
 export const GALLERY_TYPICA: IGallery[] = [
@@ -179,6 +192,9 @@ export const GALLERY_TYPICA: IGallery[] = [
   },
   {
     photo: Typica_8,
+  },
+  {
+    photo: Typica_9,
   },
 ];
 
