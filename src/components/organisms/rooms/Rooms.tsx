@@ -131,7 +131,7 @@ export const Rooms: React.FC = () => {
                   color: `${COLORS.WHITE}`,
                   textAlign: 'justify',
                 }}
-                text={HOTELS.TIPICA.DESCRIPTION}
+                text={HOTELS.TYPICA.DESCRIPTION}
               />
             </WingCard>
           </StyledHotelDescriptionText>

@@ -29,7 +29,7 @@ export const HotelsDescription: React.FC = () => {
     },
     {
       photo: TypicaPhoto,
-      hotelName: HOTELS.TIPICA.NAME.toLocaleUpperCase(),
+      hotelName: HOTELS.TYPICA.NAME.toLocaleUpperCase(),
       title:
         'UN HOSPEDAJE QUE TE CONECTA CON LA MAGÍA DEL CAFÉ PAISAJE CULTURAL CAFETERO',
       description:

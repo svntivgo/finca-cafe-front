@@ -23,7 +23,7 @@ import { HOTELS, Room } from '../../../constants/hotels';
 
 export const MenuRooms: React.FC = () => {
   const bourbonRooms: Record<string, Room> = HOTELS.BOURBON.ROOMS;
-  const tipicaRooms: Record<string, Room> = HOTELS.TIPICA.ROOMS;
+  const tipicaRooms: Record<string, Room> = HOTELS.TYPICA.ROOMS;
 
   return (
     <WingCard background={COLORS.PEARL_BLACK}>
@@ -49,7 +49,7 @@ export const MenuRooms: React.FC = () => {
               <StyledMenuItem>
                 <Paragraph
                   style={{ ...MENU_ROOM_FONT_STYLE, fontFamily: 'Poppins' }}
-                  text={`Hotel ${HOTELS.TIPICA.NAME}`}
+                  text={`Hotel ${HOTELS.TYPICA.NAME}`}
                 />
               </StyledMenuItem>
             </StyledLinkMenuRooms>
